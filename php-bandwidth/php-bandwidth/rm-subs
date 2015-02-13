@@ -1,0 +1,9 @@
+git rm -rf ./.git/modules/*
+rm -rf ./.git/modules/*
+rm -rf ./.git/modules/*
+rm -rf ./lib/
+git rm -rf ./lib/
+git rm -rf ./.git/modules/
+git rm -rf ./.gitmodules
+rm -rf ./php-bandwidth
+git rm -rf ./php-bandwidth

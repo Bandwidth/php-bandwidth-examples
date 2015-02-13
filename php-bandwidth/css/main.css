@@ -1,0 +1,101 @@
+/**
+ * Main CSS File for Catapult's Examples
+ * 
+ * @author Nadir Hamid
+ */
+
+body {
+  margin: 0 auto !important;
+}
+
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+ul.normal-list {
+  list-style: normal;
+}
+
+ul.normal-list li {
+  list-style: normal;
+}
+
+.nav-wrap {
+  position: relative;
+  min-height: 100%;
+  width: 20%;
+  float: left;
+}
+
+ul.left-nav {
+  width: 20% !important;
+  border-right: 1px solid #E3E3E3;
+  float: left;
+  width: inherit;
+  position: fixed;
+  height: 2000px;
+}
+
+ul.left-nav li {
+  padding: 10px;
+  border-bottom: 1px solid #E3E3E3;
+}
+
+.app-content {
+  float: left;
+  width: 70%;
+  margin: 0 20px 0 22%;
+}
+
+.app-content .box {
+  padding: 10px;
+  border: 1px solid #E3E3E3; 
+}
+
+table {
+  width: 100%;
+}
+
+table th {
+  padding: 4px;
+  border-right: 1px solid #E3E3E3
+}
+
+table tr {
+  border: 1px solid #E3E3E3;
+}
+
+table tr td {
+  padding: 20px;
+}
+.box .status {
+  float: left;
+  margin-right: 7px;
+}
+.box small {
+  float: left;
+  margin-top: 1px;
+  margin-left: 5px;
+}
+.status {
+  width: 16px;
+  height: 16px;
+
+  background: red;
+  border-radius: 7em;
+}
+.status.success {
+  background: green;
+}
+.status.error {
+  background: red;
+}
+.status.warning {
+  background: orange;
+}

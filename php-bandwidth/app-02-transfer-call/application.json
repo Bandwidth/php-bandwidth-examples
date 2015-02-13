@@ -1,0 +1,8 @@
+{
+  "applicationName": "Incoming Call Transfers",
+  "applicationDescription": "Transfers phone calls via two listed numbers",
+  "transferNumber":"+12135147679", 
+  "transferSpeakSentence": "Hello we are transfering your call",
+  "listeningNumber": "+12033430980",
+  "timeout": "" 
+}
