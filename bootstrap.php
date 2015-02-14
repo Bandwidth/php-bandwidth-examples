@@ -41,8 +41,11 @@ $applications = array(
   array(
     "name" => "Basic Voice Mail",
     "link" => "app-04-basic-voicemail"
+  ),
+  array(
+    "name" => "Basic Conference",
+    "link" => "app-05-basic-conference"
   )
-
 );
 
 // include the sqLite database

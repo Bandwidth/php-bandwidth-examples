@@ -4,7 +4,8 @@ Application 001 -- Auto Replies
 To set up auto replies application the following should be checked:
  1. Please make sure the number used in applications.json, 'autoReplyNumber'
     is listed with this callback url 
- 2. 
+ 2. Setup the callbackUrl in applications.json this will need to be 
+ the full address.
 
 
 Other Notes:

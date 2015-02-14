@@ -5,7 +5,7 @@
   "bandwidthTokenSecret": "o5ky4rsoacdd2oqvzl4cy6j3uqv6zpgjs3izbba",
   "voicemailNumber": "+1333",
   "voicemailSentence": "Please leave a message at the beep",
-  "voicemailFile": "http://159.100.186.106/php-bandwidth-examples/app-04-basic-voicemail/files/beep.wav",
+  "voicemailFile": "./files/beep.wav",
   "voicemailVoice": "Jorge",
   "callbackUrl": ""
 }

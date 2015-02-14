@@ -6,8 +6,7 @@ require_once("./config.php");
 // it will use your last number send to the number in auto replies.
 // Result, would mock the same functionality as phsically sending the message 
 
-$application = json_decode(file_get_contents(realpath("./application.json")));
-$client = new Catapult\Client($application->bandwidthUserId, $application->bandwidthToken, $application->bandwidthTokenSecret);
+$client = new Catapult\Client;
 $phoneNumbers = new Catapult\PhoneNumbers;
 
 // send our message

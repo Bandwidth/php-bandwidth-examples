@@ -3,5 +3,6 @@
   "applicationDescription": "This application will set voice reminders",
   "voiceReminderNumber": "+12135147675",
   "voiceReminderSentence": "Thank you",
-  "voiceReminderVoice": "Jorge"
+  "voiceReminderVoice": "Jorge",
+  "callbackUrl": ""
 }

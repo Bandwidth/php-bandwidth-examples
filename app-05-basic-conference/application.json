@@ -1,0 +1,7 @@
+{
+  "title": "Basic Conference",
+  "applicationName": "Member Conference",
+  "conferenceFromNumber": "+212332",
+  "conferenceVoice": "Jorge",
+  "conferenceMembersToAdd": [ "+212332" ]
+}

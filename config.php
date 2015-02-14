@@ -1,4 +1,6 @@
 <?php
+
+require_once("php-bandwidth/source/Catapult.php");
 require_once("db.php");
 
 /** set the credentials path without this it would use the Catapult source tree! **/

@@ -38,6 +38,7 @@ if ($event->eventType == "answer") {
    */
 
 
+  $call = new Catapult\Call($event->id);
   $call->playAudio(array(
      "audioFile" => $application->voicemailFile
   ));

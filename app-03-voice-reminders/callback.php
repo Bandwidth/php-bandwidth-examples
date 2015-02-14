@@ -60,10 +60,6 @@ if ($event->eventType == 'answer') {
    * Step 3.
    * The user said something. This means 
    * we should hangup the call, cleanup 
-   *
-   *
-   *
-   *
    */
 
    $call = new Call($event->id);
