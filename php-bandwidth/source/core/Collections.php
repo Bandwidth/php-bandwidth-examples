@@ -252,10 +252,8 @@ class CollectionObject {
       $class = $this->getName();
       $clname = "Catapult\\" . $class;
       $proto = new $clname;
-
-      // forward our arguments
       $protolist = $proto->listAll(func_get_args());
-      
+
       $this->data = $protolist->data; 
     }
   }

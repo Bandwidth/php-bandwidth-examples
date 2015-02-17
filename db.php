@@ -20,7 +20,8 @@ $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
  * please go to ./setup.json
  *
  */
-$db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile,SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+
+$db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
 $cols = array(
   "`from`", "`to`", "`meta`", "`date`"
 );
@@ -32,35 +33,45 @@ $cols = array(
  * meta is general purpose and will be used for 
  * the data in each application
  */
-foreach ($applications as $app) {
-  $hastable = false;
+foreach (array_merge($applications, $tables) as $app) {
   if ($db->query("SELECT * FROM `" . $app['name'] . "`") == false) {
-    $sql = "CREATE TABLE `" . $app['name'] . "` (
-      `from` VARCHAR(255),
-      `to` VARCHAR(255),
-      `meta` VARCHAR(255),
-      `date` VARCHAR(255) 
-    );";
+    if (isset($app['schema'])) {
+      $sql = $app['schema'];
+    } else {
+      $sql = "CREATE TABLE `" . $app['name'] . "` (
+        `from` VARCHAR(255),
+        `to` VARCHAR(255),
+        `meta` VARCHAR(255),
+        `date` VARCHAR(255) 
+      );";
+    }
 
     $result = $db->query($sql);
   }
 
 }
 
-
+function updateRecord() {
+  global $db;
+  global $cols;
+}
 
 /**
- * add a record in one of four application
+ * add a record in one of the  application or data 
  * tables
  *
  * @param recordarray: array with no key context
  */
-function addRecord($apptable, $recordarray) {
+function addRecord($apptable, $recordarray, $colsarray=null) {
   global $db;
   global $cols;
   $recstr = '';
   $valstr = '';
-  $strcols = implode($cols, ",");
+  if (is_array($colsarray)) {
+    $strcols = implode($colsarray, ",");
+  } else {
+    $strcols = implode($cols, ",");
+  } 
   foreach ($recordarray as $r) {
     $recstr .= "'$r',";
   } 
@@ -71,4 +82,32 @@ function addRecord($apptable, $recordarray) {
   $result = $db->query($q); 
 
 } 
+
+function getCount($expr) {
+  global $db;
+
+  $q = $db->query($expr);
+  while ($r = $q->fetchArray()) {
+    return $r['count'];
+  }
+}
+
+function getKey($expr, $key) {
+  global $db;
+
+  $q = $db->query($expr);
+  while ($r = $q->fetchArray()) {
+    return $r[$key];
+  }
+}
+
+function getRow($expr) {
+  global $db;
+  $q = $db->query($expr);
+  while ($r = $q->fetchArray()) {
+    return $r;
+  }
+  return $null;
+}
+
 ?>

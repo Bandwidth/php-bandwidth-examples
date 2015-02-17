@@ -7,6 +7,9 @@ Includes:
   - Call Transfers 
   - Voice Reminders
   - Basic Voice Mail
+  - Basic Conference
+  - Advanced Conference
+  - Keypad Simulator
 
 
 Setup
@@ -32,15 +35,15 @@ Heroku
 -------------------------------------------------------
 you will need to create an application you can then deploy 
 
-heroku create "php-bandwidth-examples"
-git push heroku master
+  heroku create "php-bandwidth-examples"
+  git push heroku master
 
 
 AWS
 -----------------------------------------------------------
 
-eb start
-git aws.push
+  eb start
+  git aws.push
 
 
 
@@ -95,6 +98,41 @@ Setting up:
   2. Enter a valid number for your voice mail 
 
 
+App 005 Basic Conference
+---------------------------------------------------------
+
+Requirements:
+A number to use for the conference
+
+Setting up:
+  1. use callback.php as the callback to your application
+  under https://catapult.inetwork.com/pages/catapult.jsf
+  2. Enter valid attendees and initial from number
+  in application.json
+
+
+App 006 Advanced Conference
+---------------------------------------------------------
+
+Requirements:
+A number to use for the conference
+
+Setting up:
+  Setup is similar to basic conference
+
+
+App 007 Keypad Simulator
+--------------------------------------------------------
+
+Keypad simulator is a quick way to simulate a fully capable keypad service it will provide an easy way to capture DTMF keys
+sequentially save them using SQLite and even perform transfers.
+
+Setting up:
+   1. Enter valid numerical sequences for your keypad
+   2. Needs a valid incoming number 
+   3. Existing start and intermediatte speech texts
+
+
 Other Notes
 ===========================================================
 
@@ -103,3 +141,4 @@ These examples need:
   Catapult PHP SDK 0.7.0
   SQLite3
   PHP 5.3.0
+

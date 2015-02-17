@@ -313,7 +313,6 @@ final class Client {
       }
 
       curl_setopt($this->hndl, CURLOPT_URL, $url);
-
       /* setup auth */
       curl_setopt($this->hndl, CURLOPT_USERPWD, $this->auth[0] . ':' . $this->auth[1]);
       $raw = curl_exec($this->hndl);

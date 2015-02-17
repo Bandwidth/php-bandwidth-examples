@@ -17,8 +17,10 @@ namespace Catapult;
 class Event {
     public function __construct($data=null) 
     {
+      /*
       if (!(in_array($_SERVER['HTTP_METHOD'], array("GET", "POST"))))
         throw new \CatapultApiException("Catapult events only accept GET and POST");
+      */
 
 
       if ($data!=null) {// mocking tests only

@@ -25,6 +25,7 @@ class CollectionObject {
     {
       $this->data = array();
       $this->order = array();
+
       if ($data instanceof DataPacketCollection) {
         $data = $data->get();
         $cnt = 0;

@@ -1,0 +1,15 @@
+{
+  "title": "Advanced Conference",
+  "table": "Advanced Conference",
+  "datatable": "Advanced Conference Data",
+  "applicationName": "Advanced Conference",
+  "conferenceFromNumber": "",
+  "conferenceAttendees": ["+12332"],
+  "conferenceNotInvited": "Sorry this conference is invite only. If you feel we are in error. Please call +",
+  "conferenceNoEntry": "Sorry you didn't enter the right digits",
+  "conferenceDigits": "Please enter your digits",
+  "conferenceFullname": "Please enter your fullname.",
+  "conferenceJoinMessage": "Thank you for joining the conference",
+  "conferenceLeaveMessage": "Goodbye",
+  "conferenceGatherDigits": "#1234"
+}

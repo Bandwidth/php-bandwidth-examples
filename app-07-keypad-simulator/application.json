@@ -1,0 +1,32 @@
+{
+    "title": "Keypad Simulator",
+    "table": "Keypad Simulator",
+    "datatable": "Keypad Simulator Data",
+    "applicationName": "Keypad Simulator",
+    "keypadSimulatorNumber": "+2323223",
+    "keypadSimulatorWrongDigit": "Sorry that was not a valid digit for this selection!",
+    "keypadSimulatorVoice": "Jorge",
+    "keypadSimulatorExitSpeech": "Thank you for taking the to checkout our Catapult Keypad Simulator. We hope to  see you soon. Have a nice day.",
+    "keypadSimulatorExitDigit": "#",
+    "keypadSimulatorNumbers": {
+        "1": {
+            "1": {
+                "speech": "Wearetransferingyounow.",
+                "transfer": true,
+                "transferNumber": "+2322"
+            },
+            "speech": "Hello this is our technical assistance line press one if you'd like to be transferred to the next available Catapult developer!"
+        },
+        "2": {
+            "speech": "ThanksforcallingCatapultaccountservices.Whatcanwedotohelp"
+        },
+        "3": {
+            "1": {
+                "speech": "Nice."
+            },
+            "2": {},
+            "speech": "HellothisistheCatapultlinefordeveloperspress1ifyou'veusedthePHPsdk2ifyouplanto"
+        },
+        "speech": "Hello you hve reached the Catapult Web Service Line.Please enter 1 if you would like technical assistance 2 if your calling regarding your account 3 if your calling for our Catapult service"
+    }
+}

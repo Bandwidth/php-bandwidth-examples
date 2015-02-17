@@ -13,35 +13,17 @@ require_once(realpath("./config.php"));
 //
 
 $client = new Catapult\Client;
+$query = $db->query("SELECT * FROM `Advanced Conference`;");
+$conferencesCnt = count($query)-1;
 
-// First check what's in our database
-// this keeps all our conferences together
-$query = $db->query("SELECT * FROM `Basic Conference`; ");
-$conferencesCnt = count($query) - 1;
-
-
-// make sure our from number
-// is a valid one
-$phoneNumber = new Catapult\PhoneNumber($application->conferenceFromNumber);
-
-if (!($phoneNumber->isValid())) {
-  $message = "Your phone number is not in E.164 format";
-}
-
-// is this a phone in our
-// catapult list
 $phoneNumbers = new Catapult\PhoneNumbersCollection;
 $phoneNumbers->listAll();
 $phoneNumbers->find(array("number" => $application->conferenceFromNumber));
 
-
 if ($phoneNumbers->isEmpty()) {
-  $message = $application->conferenceFromNumber . " is not a phone number in your catapult list";
+  $message = $application->conferenceFromNumber . " is not a phone number in your catapult list"; 
 }
 
-// make sure all outgoing
-// numbers are in proper
-// format
 foreach ($application->conferenceAttendees as $cMember) {
   $phoneNumber = new Catapult\PhoneNumber($cMember);
   if (!($phoneNumber->isValid())) {
@@ -49,10 +31,9 @@ foreach ($application->conferenceAttendees as $cMember) {
   }
 }
 
-if (!isset($message)) {
+if (!isset($member)) {
   $status = "success";
-  $message = "Nice you can start this conference by clicking initiate or phoning yourself";
+  $message = "Nice you start this conference"; 
 }
-
 
 ?>

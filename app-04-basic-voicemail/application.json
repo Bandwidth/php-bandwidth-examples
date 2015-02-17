@@ -5,7 +5,7 @@
   "bandwidthTokenSecret": "o5ky4rsoacdd2oqvzl4cy6j3uqv6zpgjs3izbba",
   "voicemailNumber": "+1333",
   "voicemailSentence": "Please leave a message at the beep",
-  "voicemailFile": "./files/beep.wav",
+  "voicemailFile": "http://example.com/files/beep.wav",
   "voicemailVoice": "Jorge",
   "callbackUrl": ""
 }

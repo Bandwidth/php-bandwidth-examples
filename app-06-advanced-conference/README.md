@@ -1,0 +1,18 @@
+Application 006 -- Advanced Conference
+===================================================
+
+Advanced conference will deploy an application that
+allows your members to specify nicknames and be
+associated to codes. These codes will to be entered
+whenever joining the conference.
+
+
+Prerequisites
+  To setup advanced conferences you need to ensure:
+    1. You have set a valid number in applications.json
+    2. Properties in applications.json are valid
+
+Differences from Basic
+--------------------------------------------------
+In advance we combine conferencing and gathers. Also
+try to add more database usage.

@@ -1,11 +1,12 @@
 <?php
 
 require_once("../php-bandwidth/source/Catapult.php");
+require_once("../config.php");
 require_once("./config.php");
 // This will initiate a call on you behalf, so you
 // can get this example working quicker.  
 
-$cli = new Catapult\Client($application->bandwidthUserId, $application->bandwidthToken, $application->bandwidthTokenSecret);
+$cli = new Catapult\Client;
 $phoneNumbers = new Catapult\PhoneNumbers;
 $calls=new Catapult\Call;
 $call = new Catapult\Call(array(

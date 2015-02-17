@@ -45,6 +45,54 @@ $applications = array(
   array(
     "name" => "Basic Conference",
     "link" => "app-05-basic-conference"
+  ),
+  array(
+    "name" => "Advanced Conference",
+    "link" => "app-06-advanced-conference"
+  ),
+  array(
+    "name" => "Keypad Simulator",
+    "link" => "app-07-keypad-simulator"
+  )
+
+
+);
+
+/**
+ * Data tables these will carry
+ * different schema and will be used
+ * for internal storage
+ */
+$tables = array(
+  array(
+    "name" => "Advanced Conference Data",
+    "schema" => "CREATE TABLE `Advanced Conference Data` (
+        `callFrom` VARCHAR(255),
+        `receiverCallFrom` VARCHAR(255),
+        `code` VARCHAR(255),
+        `fullName` VARCHAR(255),
+        `conferenceId` VARCHAR(255),
+        `digits` VARCHAR(255)
+    ); ",
+    "type" => "data"
+  ),
+  array(
+    "name" => "Basic Conference Data",
+    "schema" => "CREATE TABLE `Basic Conference Data` (
+        `callFrom` VARCHAR(255),
+        `conferenceId` VARCHAR(255)
+    ); ",
+    "type" => "data"
+  ),
+
+  array(
+    "name" => "Keypad Simulator Data",
+    "schema" => "CREATE TABLE `Keypad Simulator Data` (
+        `level` VARCHAR(255),
+        `callFrom` VARCHAR(255),
+        `key` VARCHAR(255)
+    ); ",
+    "type" => "data"
   )
 );
 

@@ -9,13 +9,13 @@ final class RecordingCollection extends CollectionObject {
 final class TranscriptionCollection extends CollectionObject {
     public function getName()
     {
-        return "transcription";
+        return "Transcription";
     }
 }
 class MessageCollection extends CollectionObject {
     public function getName()
     {
-        return "message";
+        return "Message";
     }
 }
 final class BridgeCollection extends AudioMixin {
@@ -76,6 +76,12 @@ final class CallEventsCollection extends CollectionObject {
     public function getName()
     {
         return "CallEvents";
+    }
+}
+final class ConferenceCollection extends CollectionObject {
+    public function getName()
+    {
+        return "Conference";    
     }
 }
 
