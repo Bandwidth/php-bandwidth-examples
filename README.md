@@ -138,7 +138,7 @@ Other Notes
 
 These examples need:
 
-\tCatapult PHP SDK 0.7.0
-\tSQLite3
-\tPHP 5.3.0
+Catapult PHP SDK 0.7.0
+SQLite3
+PHP 5.3.0
 

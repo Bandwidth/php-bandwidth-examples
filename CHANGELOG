@@ -1,0 +1,64 @@
+Catapult PHP SDK Examples 0.1.0
+============================================
+updates for each application. Each module
+will be available seperaty so if you need a specific
+version of a application please install that respository
+independatly
+
+App 001 
+--------------------------------------------------------
+0.1.0:
+SMS Auto replies using callback.php initiate.php and
+base.php.
+
+
+
+App 002 
+-----------------------------------------------------------
+0.1.0:
+Transfer call
+same support as App 001 
+
+App 003
+-----------------------------------------------------------
+0.1.0:
+Voice Reminders
+same support as App 001 without initiate button
+
+ 
+App 004
+-----------------------------------------------------------
+0.1.0:
+Basic Voice Mail
+same support as App 001 without initiate button
+
+ 
+
+App 005 
+
+-----------------------------------------------------------
+0.1.0
+Basic Conference
+same support as App 001
+info:
+uses sqLite data to keep conferences with Catapult
+Conference models
+ 
+
+App 006
+
+-----------------------------------------------------------
+0.1.0
+Advanced Conference
+same support as App 001
+sqLite usage like App 005
+
+App 007
+
+-----------------------------------------------------------
+0.1.0
+Keypad Simulator 
+- same support as App 001 without initiate button
+- uses sqLite like App 005
+
+
