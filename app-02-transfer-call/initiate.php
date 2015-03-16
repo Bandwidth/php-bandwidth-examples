@@ -1,8 +1,7 @@
 <?php
 
-require_once("../php-bandwidth/source/Catapult.php");
-require_once("../config.php");
-require_once("./config.php");
+require_once(__DIR__."../config.php");
+require_once(__DIR__."./config.php");
 // This will initiate a call on you behalf, so you
 // can get this example working quicker.  
 

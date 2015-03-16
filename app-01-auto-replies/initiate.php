@@ -1,8 +1,7 @@
 <?php
 
-require_once("../php-bandwidth/source/Catapult.php");
-require_once("../config.php");
-require_once("./config.php");
+require_once(__DIR__."../config.php");
+require_once(__DIR__."./config.php");
 // NOTE: This is for those who need to send themselves a message!
 // it will use your last number send to the number in auto replies.
 // Result, would mock the same functionality as phsically sending the message 

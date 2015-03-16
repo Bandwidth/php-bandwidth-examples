@@ -1,9 +1,8 @@
 <?php
-require_once("../php-bandwidth/source/Catapult.php");
 // include both configs
 
-require_once(realpath("../config.php"));
-require_once(realpath("./config.php"));
+require_once(__DIR__."/config.php");
+require_once(__DIR__."./config.php");
 
 // Voice Reminders Application 
 //

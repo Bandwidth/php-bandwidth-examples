@@ -1,6 +1,6 @@
 <?php
-require_once("../config.php");
-require_once("./config.php");
+require_once(__DIR__."../config.php");
+require_once(__DIR__."./config.php");
 
 // Transfer Calls
 // This is a simple implementation of call transferring.

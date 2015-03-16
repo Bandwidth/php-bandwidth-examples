@@ -1,7 +1,7 @@
 <?php
 
-require_once(realpath("../config.php"));
-require_once(realpath("./config.php"));
+require_once(realpath(__DIR__."../config.php"));
+require_once(realpath(__DIR__."/config.php"));
 
 // IMPORTANT: 
 // This file is the base wrapper behind
