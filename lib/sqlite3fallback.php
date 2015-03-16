@@ -23,7 +23,7 @@ final class SQLite3FallbackQuery {
   // fetchArray
   public function fetchArray() {
     if ($this->query) {
-      return mysqli_fetch_array($this->query);
+      return mysqli_fetch_assoc($this->query);
     }
 
     return array();
@@ -66,7 +66,11 @@ class SQLite3Fallback2Query {
     $this->query = $query;
   }
   public function fetchArray() {
-    return pg_fetch_row($this->query);
+    if ($this->query) {
+     return pg_fetch_assoc($this->query);
+    }
+
+    return false;
   }
 }
 

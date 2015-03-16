@@ -1,13 +1,16 @@
 <?php
 
+require_once("./db.php");
+// test
+//
+
+$db->query("INSERT INTO `sms_auto_replies` ('from', 'to', 'date', 'meta') ('', '', '', ''); ");
 
 
-require_once("./lib/sqlite3fallback.php");
+$q = pg_query("SELECT * FROM sms_auto_replies; ");
+while ($row = pg_fetch_assoc($q)) {
+echo var_dump($row);
+}
 
-
-extract(parse_url(getenv("DATABASE_URL")));
-
-
-$db = new SQLite3Fallback2("user=$user password=$password host=$host dbname=" . substr($path, 1));
 
 ?>
