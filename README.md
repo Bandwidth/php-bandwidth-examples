@@ -63,10 +63,13 @@ you will need to create an application you can then deploy
   git push heroku master
 
 
-To run these examples on heroku you will need clearDB, which can
+To run these examples on heroku you will need clearDB OR postgres, which can
 be installed using:
 
+  heroku addons:add heroku-postgresql:dev 
+  OR 
   heroku addons:add cleardb:ignite 
+
 
 
 
@@ -226,8 +229,13 @@ PHP 5.3.0
 Apache HTTPd >= 2.2 OR nGinx 
 
 
+Deploying Anywhere:
+  SQLite3
+
+
 When using Heroku:
+  PostGresQL 
   ClearDB with MySQL
 
 AWS:
-  MySQL (needs testing)
+  MySQL

@@ -2,7 +2,7 @@
 
 
 require_once(__DIR__."/db.php");
-require_once(__DIR__."/menu.php");
+require_once(__DIR__."/functions.php");
 require_once(__DIR__."/lib/php-bandwidth/source/Catapult.php");
 /** set the credentials path without this it would use the Catapult source tree! **/
 Catapult\Credentials::setPath(__DIR__);

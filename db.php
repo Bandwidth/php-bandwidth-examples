@@ -39,8 +39,7 @@ if (class_exists(SQLite3)) {
   // mysql so we will run with
   // the native SQLite3 wrapper
   
-
-   require_once(__DIR__."/db.sqlite.php");
+   $db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
 
    define("DB_TILDE", "`");
 } else {

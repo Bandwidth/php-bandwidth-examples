@@ -38,6 +38,7 @@ $files = array(
 require_once(__DIR__ . "/config.php");
 // include the sqLite database
 
+
 foreach ($files as $file) 
   if ($file['type']=='js')
     printf("<script src='%s' type='text/javascript'></script>\n", "../".$file['type']."/".$file['file'].".".$file['type']);

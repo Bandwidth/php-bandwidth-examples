@@ -1,23 +1,13 @@
 <?php
 
-require_once("./config.php");
+require_once("./lib/php-bandwidth/source/Catapult.php");
+
+Catapult\Credentials::setPath(__DIR__);
 $client = new Catapult\Client;
 $calls = new Catapult\CallCollection;
-
-$cnt = 0;
-
-
-  $calls_ =  $calls->listAll(array("size" => 1000, "page" => $cnt))->get();
-while (count($calls_) > 0) {
-echo count($calls_);
-  foreach ($calls_ as $call) {
-  if ($call->state == "started" || $call->state == "active") {
+foreach ($calls->listAll()->get() as $call) {
+  if ($call->state == Catapult\CALL_STATES::active) {
     $call->hangup();
   }
-  $cnt ++;
-  $calls = new Catapult\CallCollection;
-  $calls_ =  $calls->listAll(array("size" => 1000, "page" => $cnt))->get();
-}
-
 }
 ?>

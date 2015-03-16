@@ -61,61 +61,60 @@ $applications = array(
  */
 $tables = array(
   array(
-    "table" => "advanced_conference_data",
-    "schema" => "CREATE TABLE advanced_conference_data (
-        callFrom VARCHAR(255),
-        receiverCallFrom VARCHAR(255),
-        code VARCHAR(255),
-        attended VARCHAR(255),
-        conferenceId VARCHAR(255),
-        digits VARCHAR(255)
-    ); ",
+    "table" => "basic_conference_data",
+    "schema" => array(
+      array("callFrom", "VARCHAR(255)"),
+      array("receiverCallFrom", "VARCHAR(255)"),
+      array("attended", "VARCHAR(255)"),
+      array("conferenceId", "VARCHAR(255)"),
+      array("digits", "VARCHAR(255)")
+    ),
     "type" => "data"
   ),
   array(
 
     "table" => "voice_reminders_data",
-    "schema" => "CREATE TABLE voice_reminders_data (
-      callId VARCHAR(255),
-      recordingId VARCHAR(255), 
-      title VARCHAR(255),
-      speech VARCHAR(255),
-      initiated VARCHAR(255),
-      message VARCHAR(255),
-      month VARCHAR(255), 
-      thanks VARCHAR(255),
-      year VARCHAR(255),
-      date VARCHAR(255)
-    ); ",
+    "schema" => array(
+      array("callId", "VARCHAR(255)"),
+      array("recordingId", "VARCHAR(255)"),
+      array("title", "VARCHAR(255)"),
+      array("speech", "VARCHAR(255)"),
+      array("initiated", "VARCHAR(255)"),
+      array("message", "VARCHAR(255)"),
+      array("thanks", "VARCHAR(255)"),
+      array("year", "VARCHAR(255)"),
+      array("month", "VARCHAR(255)"),
+      array("date", "VARCHAR(255)")
+    ),
     "type" => "data"
 
   ),
   array(
     "table" => "basic_voice_mail_data",
-    "schema" => "CREATE TABLE basic_voice_mail_data (
-       callId VARCHAR(255),
-       recordingId VARCHAR(255),
-       mediaName VARCHAR(255),
-       initiated VARCHAR(255),
-       date VARCHAR(255)
-     ); " 
+    "schema" => array(
+      array("callId", "VARCHAR(255)"),
+      array("recordingId", "VARCHAR(255)"),
+      array("mediaName", "VARCHAR(255)"),
+      array("initiated", "VARCHAR(255)"),
+      array("date", "VARCHAR(255)")
+     ) 
   ),
   array(
     "table" => "basic_conference_data",
-    "schema" => "CREATE TABLE basic_conference_data (
-        callFrom VARCHAR(255),
-        conferenceId VARCHAR(255),
-        callId VARCHAR(255)
-    ); ",
+    "schema" => array(
+        array("callFrom", "VARCHAR(255)"),
+        array("conferenceId", "VARCHAR(255)"),
+        array("callId", "VARCHAR(255)"),
+      ),
     "type" => "data"
   ),
    array(
     "table" => "keypad_simulator_data",
-    "schema" => "CREATE TABLE keypad_simulator_data (
-        level VARCHAR(255),
-        callId VARCHAR(255),
-        key VARCHAR(255)
-    ); ",
+    "schema" => array(
+        array("level", "VARCHAR(255)"),
+        array("callId", "VARCHAR(255)"),
+        array("key", "VARCHAR(255)"),
+      ),
     "type" => "data"
   )
 );
