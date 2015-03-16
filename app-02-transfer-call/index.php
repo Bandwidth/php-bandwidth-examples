@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <?php
-require_once("base.php");
+require_once(__DIR__."/base.php");
 ?>
 <html>
 <head>
 <title><?php echo $application->applicationName; ?></title>
-<?php require_once("../bootstrap.php"); ?>
+<?php require_once(__DIR__."/../bootstrap.php"); ?>
 </head>
   <body>
     <div style="float:left;width:30%; ">

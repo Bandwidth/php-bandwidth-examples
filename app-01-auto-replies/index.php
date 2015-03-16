@@ -1,8 +1,8 @@
 <html>
 <head>
 <title><?php echo $application->applicationTitle; ?></title>
-<?php require_once("base.php"); ?>
-<?php require_once("../bootstrap.php"); ?>
+<?php require_once(__DIR__."/base.php"); ?>
+<?php require_once(__DIR__"/../bootstrap.php"); ?>
 </head>
 
 <!-- 
