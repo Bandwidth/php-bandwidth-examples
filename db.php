@@ -118,6 +118,11 @@ if (class_exists(SQLite3)) {
 
 
 }
+if ($db->postgresql) {
+  define("RESERVED", '"');
+} else {
+  define("RESERVED", DB_TILDE);
+}
 
 
 /**
@@ -134,12 +139,6 @@ foreach (array_merge($applications, $tables) as $app) {
       $sql = $app['schema'];
       
     } else {
-      if ($db->postgresql) {
-        define("RESERVED", '"');
-      } else {
-        define("RESERVED", DB_TILDE);
-      }
-
 
       $sql = "CREATE TABLE " . $app['table'] . " (
         " . RESERVED . "from"  . RESERVED . " VARCHAR(255),
