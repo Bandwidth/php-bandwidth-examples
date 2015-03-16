@@ -1,8 +1,8 @@
 <?php
 // include both configs
 
+require_once(__DIR__."/../config.php");
 require_once(__DIR__."/config.php");
-require_once(__DIR__."./config.php");
 
 // Voice Reminders Application 
 //

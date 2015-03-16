@@ -30,8 +30,6 @@ if (FALSE) {
   // we have native
   // support for 
   // SQLite3
-  //require_once(__DIR__."sqlite3.php");
-
   //$db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
 } else {
   // either heroku or
@@ -52,12 +50,13 @@ if (FALSE) {
   // as this will use the clearDB
   // configuration
 
-  if (TRUE) {
+  require_once(__DIR__ . "/lib/sqlite3fallback.php");
+  $heroku_cdb = getenv("CLEARDB_DATABASE_URL");
+  if ($heroku_cdb) {
 
-    require_once(__DIR__ . "/lib/sqlite3fallback.php");
     // the following
     // should work on heroku
-    $cleardb = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $cleardb = parse_url($heroku_cdb);
     $username = $cleardb['username'];
     $password = $cleardb['password'];
     $db = substr($cleardb, 1);
@@ -72,6 +71,14 @@ if (FALSE) {
     //
     //
     //  TODO needs aws support
+    $username = getenv("MYSQL_USERNAME");
+    $password = getenv("MYSQL_PASS");
+    $db = getenv("MYSQL_DB");
+    $host = getenv("MYSQL_HOST");
+
+    $db = new SQLite3Fallback($host, $username, $password, $db);
+
+
 
   }
 

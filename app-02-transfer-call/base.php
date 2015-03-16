@@ -1,7 +1,7 @@
 <?php
 
-require_once(__DIR__.'../config.php');
-require_once(__DIR__."./config.php");
+require_once(__DIR__.'/../config.php');
+require_once(__DIR__."/config.php");
 
 // IMPORTANT: 
 // This file is the base wrapper behind

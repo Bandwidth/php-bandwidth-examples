@@ -1,7 +1,7 @@
 <?php 
 
-require_once(__DIR__."../config.php");
-require_once(__DIR__."config.php");
+require_once(__DIR__."/../config.php");
+require_once(__DIR__."/config.php");
 
 // IMPORTANT
 // this provides rules for checking your
@@ -39,7 +39,7 @@ $phoneNumbers = $phoneNumbers->listAll(array("size"=>1000))
 // and we can safely say the number is 
 // not one of ours
 if ($phoneNumbers->isEmpty()) {
-  $message = $application->keypadSimulatorNumber . " is not a not listed under your catapult account" ;
+  $message = $application->keypadSimulatorNumber . " is not listed under your catapult account" ;
 }
 
 // Recommended Validation
@@ -48,7 +48,7 @@ if ($phoneNumbers->isEmpty()) {
 // when it isn't we won't be able
 // to do anything so this is usually
 // a good rule
-if ($phoneNumbers->first()->numberState !== "enabled") {
+if (is_object($phoneNumbers->first()) && $phoneNumbers->first()->numberState !== "enabled") {
   $message = $application->keypadSimulatorNumber . " is not enabled.";
 }
 

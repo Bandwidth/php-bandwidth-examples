@@ -1,6 +1,5 @@
 <?php
-require_once("../php-bandwidth/source/Catapult.php");
-require_once("../config.php");
+require_once(__DIR__."/../config.php");
 require_once(__DIR__ . "/config.php");
 //
 // Voice Reminders with Catapult. This

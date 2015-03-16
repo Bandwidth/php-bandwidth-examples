@@ -9,8 +9,8 @@
 //
 // php /app-03-voice-reminders/initiate.php 
 
-require_once(__DIR__."../config.php");
-require_once(__DIR__."./config.php");
+require_once(__DIR__."/../config.php");
+require_once(__DIR__."/config.php");
 
 $rows = getRows(sprintf("SELECT * FROM `%s`; ", $application->datatable));
 foreach ($rows as $row) {

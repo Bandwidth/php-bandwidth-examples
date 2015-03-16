@@ -1,6 +1,6 @@
 <?php
-require_once(__DIR__."../config.php");
-require_once(__DIR__."./config.php");
+require_once(__DIR__."/../config.php");
+require_once(__DIR__."/config.php");
 
 // IMPORTANT
 // this provides rules for checking your application
@@ -26,7 +26,6 @@ $client = new Catapult\Client;
 
 // uses sqlite in doing
 $messages = $db->query("SELECT * FROM `" . $application->applicationTable . "`;");
-echo var_dump($messages);
 $messagesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM `%s`; ", $application->applicationTable)); // SQLite returns + 1
 
 
