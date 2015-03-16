@@ -15,6 +15,13 @@ when implementing .
 
 - Has Been Testing
 
+App 002
+--------------------------------------------------
+
+Add documentation to call states
+
+- Has Been Tested
+
 App 003
 ---------------------------------------------------
 
@@ -50,12 +57,16 @@ App 005
 -------------------------------------------------
 Basic conference 
 
+Has Been Tested
+
 App 006
 -------------------------------------------------
 
 Application 006 on success should provide a gather
 code for each attendee make sure each trial returns
 the needed codes and fills the database accordingly
+
+Needs Testing
 
 App 007
 ---------------------------------------------------
@@ -64,6 +75,7 @@ replace SQlite usage with Catapult Gathers. Use str_split
 and index positioning in place of current SQLite level
 storing
 
+Needs Testing
 
 Tests
 --------------------------------------------------
@@ -83,7 +95,7 @@ the same directory order where there is one
 top level config and one application config
 
 
-MVC
+MVC -- Maybe
 -------------------------------------------------
 
 Migrate to Yii 2.0 as it has good support for active

@@ -33,8 +33,7 @@ $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
 // Apache HTTPd >= 2.2
 // nGinx (not tested)
 // lightppd
-$cdb = getenv("CLEARDB_DATABASE_URL");
-if (!$cdb) {
+if (class_exists(SQLite3)) {
   // this means we're not running
   // with heroku cleardb, so we will
   // try SQLite3 when the class isn't
@@ -43,14 +42,13 @@ if (!$cdb) {
   // heroku by default will stop
   // running without this:
 
-   //require_once(__DIR__."/db.sqlite.php");
+   require_once(__DIR__."/db.sqlite.php");
 } else {
   // either heroku or
   // without SQlite3
   // we can use ClearDB 
   // here
 
-  error_reporting(E_ALL);
   // Note:
   //
   // to run on Heroku please use:

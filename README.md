@@ -77,6 +77,13 @@ AWS
   git aws.push
 
 
+for AWS you will need to set:
+
+  MYSQL_USER
+  MYSQL_PASSWORD
+  MYSQL_HOST
+  MYSQL_DB
+
 
 
 
