@@ -12,7 +12,7 @@ final class PhoneNumber extends Types {
     public function perform($warn) 
     {
       $m = array();
-      preg_match("/^([0-9\(\)\/\+ \-]*)$/", $this->number, $m);
+      preg_match("/^\+([0-9]{10,})$/", $this->number, $m);
 
       if (!sizeof($m) > 0 && $warn) {
         throw new \CatapultApiException("Invalid phone number inputed: " . $number);

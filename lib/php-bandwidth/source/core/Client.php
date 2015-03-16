@@ -285,10 +285,11 @@ final class Client {
       }
 
       if ($method == "POST") { 
-        if (!is_string($data))
-                $pure = json_encode($data);
-        else
-                $pure = $data;
+        if (!is_string($data)) {
+          $pure = json_encode($data);
+        } else {
+          $pure = $data;
+        }
 
         curl_setopt($this->hndl, CURLOPT_POSTFIELDS, (string) $pure);
         curl_setopt($this->hndl, CURLOPT_HTTPHEADER, array(

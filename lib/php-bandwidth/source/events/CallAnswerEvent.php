@@ -9,8 +9,13 @@
 namespace Catapult;
 
 final class AnswerCallEvent extends EventType {
+    /**
+     * Init forms:
+     * AnswerCallEvent()
+     * AnswerCallEvent(array)
+     */
     public function __construct() {
-      $data = Ensure::Input(Converter::toArray(json_decode(file_get_contents("php://input"))));
+      $data = Ensure::Input(func_get_args(), Converter::toArray(json_decode(file_get_contents("php://input"))));
 
       parent::_init($data, new Call);
     }

@@ -39,7 +39,17 @@ final class Voice extends Types {
 	{
 		$this->voice = $voice;
 		$this->gender = self::$available_voices[$voice];
+    $this->merge = true;
+
+    $this->perform();
 	}
+
+  public function toArray() {
+    return array(
+       "voice" => $this->voice,
+       "gender" => $this->gender
+    );
+  }
 
   public function perform($warn=TRUE) 
   {
@@ -59,5 +69,3 @@ final class Voice extends Types {
 	}
 
 }
-?>
-

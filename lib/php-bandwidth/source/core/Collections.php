@@ -21,7 +21,7 @@ class CollectionObject {
     *
     * @param data -> initial set of data
     */	 
-    public function __construct($data=array(), $quiet = TRUE)
+    public function __construct($data=array(), AppendsResource $appends = NULL, $quiet = TRUE)
     {
       $this->data = array();
       $this->order = array();
@@ -36,7 +36,6 @@ class CollectionObject {
           */
 
            $primary = ResolverResource::key($d);
-           
            /**
             * by default don't fetch the contents
             * of the model. This is useful when loading large lists
@@ -47,6 +46,15 @@ class CollectionObject {
               $this->data[$d[$primary]] = $this->setup($d);
           }
 
+
+          /**
+           * add any additional
+           * things we may need
+           */
+
+          if ($appends) {
+           AppendsResource::Make($this->data[$d[$primary]], $appends);
+          }
           $this->order[$cnt] = $d{$primary};
 
           $cnt ++;
@@ -205,7 +213,6 @@ class CollectionObject {
               if ($d[$k] === $term)
                 $out[] = $d;
           }
-
         }
       }
 
@@ -259,6 +266,20 @@ class CollectionObject {
       $this->data = $protolist->data; 
 
       return $protolist;
+    }
+
+    /**
+     * make one array
+     * all inner data should
+     * have toArray/1 available
+     */
+    public function toArray()
+    {
+      $arr = array();
+      foreach ($this->data as $d) {
+        $arr[] = $d->toArray();
+      }
+      return $arr;
     }
   }
 
@@ -387,10 +408,30 @@ final class DataPacket extends BaseUtilities {
       }
 
       foreach ($args as $k => $arg)
-        if (is_array($arg) || !method_exists($arg, "__toString"))
+        if (is_array($arg) || !method_exists($arg, "__toString")) {
           $this->data[$k] = $arg;
-        else 
-          $this->data[$k] = (string) $arg;
+
+        } elseif (isset($arg->merge) && $arg->merge) {
+          /**
+           * treats a merge
+           * all mergers need to
+           * provide toArray/1
+           */
+          $this->data = array_merge($this->data,$arg->toArray());
+        } else {
+          /**
+           * some may serialize later
+           * as we don't need to double
+           * encode
+           */
+          if (isset($arg->serialize) 
+              && !$arg->serialize) {
+
+            $this->data[$k] = $arg;
+          } else {
+            $this->data[$k] = (string) $arg;
+          }
+        }
     }
 
     /**
@@ -413,10 +454,21 @@ final class DataPacket extends BaseUtilities {
       return $this->data;
     }
 
-    /** we need this since get only can be called once */
+    /** 
+     * check for membership in the data
+     * additionally chekc both data and data[0]
+     * as arguments can be polymorphic
+     *
+     * @param key -> a key in the data
+     */
     public function has($key)
     {
-      return isset($this->data[$key]) ? TRUE : FALSE;
+      if (isset($this->data[$key])
+         || isset($this->data[0][$key])) {
+        return true;
+      }
+
+      return  FALSE;
     }
 
     /**

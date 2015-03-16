@@ -28,6 +28,7 @@ $inboundCallEvent = new Catapult\AnswerCallEvent;
 $errorCallEvent = new Catapult\ErrorCallEvent;
 $hangupCallEvent = new Catapult\HangupCallEvent;
 $timeoutCallEvent = new Catapult\TimeoutCallEvent;
+$rejectCallEvent = new Catapult\RejectCallEvent;
 
 try {
 
@@ -81,6 +82,12 @@ try {
     // treat timeouts
     $call = new Catapult\Call($timeoutCallEvent->callId);
     $call->hangup();
+  }
+
+  if ($rejectCallEvent->isActive()) {
+    // Recommended
+    //
+    // treat a rejected call
   }
 
 } catch (CatapultApiException $e) {

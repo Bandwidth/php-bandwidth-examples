@@ -1,7 +1,7 @@
 <?php
 
-require_once(__DIR__."../config.php");
-require_once(__DIR__."config.php");
+require_once(__DIR__."/../config.php");
+require_once(__DIR__."/config.php");
 
 
 // SMS Auto Reply Callback
@@ -40,6 +40,7 @@ try {
     "direction" => Catapult\MESSAGE_DIRECTIONS::in
   ));
 
+
   // Important
   //
   // we don't want to message ourselves
@@ -48,7 +49,6 @@ try {
   if ($messageEvent->from == $application->autoReplyNumber) {
     exit(1); 
   }
-
 
   // Important
   // we need to check if this event

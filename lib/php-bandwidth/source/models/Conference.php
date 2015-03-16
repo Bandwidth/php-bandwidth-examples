@@ -29,10 +29,10 @@ final class Conference extends AudioMixin {
 
       parent::_init($data, new DependsResource,
         new LoadsResource(
-          array("primary" => "GET", "id" => "id", "silent" => false)
+          array("primary" => "GET", "id" => "id", "silent" => false, "init" => "")
         ),
         new SchemaResource(
-          array("fields" => array("id", "state", "from", "created_time", "completed_time", "fallback_url"), 
+          array("fields" => array("id", "state", "from", "createdTime", "completedTime", "fallbackUrl"), 
               "needs" => array(
               "id", "state", "from"
               )

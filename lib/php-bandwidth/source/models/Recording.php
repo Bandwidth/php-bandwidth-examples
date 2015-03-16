@@ -49,5 +49,18 @@ final class Recording extends GenericResource {
 
       return $media;
     }
+
+    /**
+     * list all the transcriptions
+     * on this recording.
+     * TODO: replace with SubFunctionsResource when list/1
+     * is added to PrototypalUtility
+     */
+    public function listTranscriptions()
+    {
+      $uri = new URIResource($this->path, array($this->id, "transcriptions"));
+  
+      return new TranscriptionCollection(new DataPacketCollection($this->client->get((string) $uri)), $this->id);
+    }
 }
 ?>

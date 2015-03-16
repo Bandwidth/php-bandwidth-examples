@@ -1,7 +1,7 @@
 <?php
 
-require_once(__DIR__."../config.php");
-require_once(__DIR__."./config.php");
+require_once(__DIR__."/../config.php");
+require_once(__DIR__."/config.php");
 // This will initiate a call on you behalf, so you
 // can get this example working quicker.  
 
@@ -13,5 +13,12 @@ $call = new Catapult\Call(array(
   "to" => $application->listeningNumber,
 ));
 
-printf("We've ringed: %s, 'it' should transfer your call, and store the result in: %s", $call->to, "./index.php");
+// To display the record in the listing
+// we will need a small timeout
+// this is not always guarenteed to work, the result
+// however will either be active  or transferred
+//
+sleep(3);
+
+route("./index.php");
 ?>

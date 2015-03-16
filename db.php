@@ -33,17 +33,24 @@ $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
 // Apache HTTPd >= 2.2
 // nGinx (not tested)
 // lightppd
-try {
-  // we have native
-  // support for 
-  // SQLite3
-  $db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
-} catch (Exception $e) {
+$cdb = getenv("CLEARDB_DATABASE_URL");
+if (!$cdb) {
+  // this means we're not running
+  // with heroku cleardb, so we will
+  // try SQLite3 when the class isn't
+  // found try basic PDO
+  
+  // heroku by default will stop
+  // running without this:
+
+   require_once(__DIR__."/db.sqlite.php");
+} else {
   // either heroku or
   // without SQlite3
   // we can use ClearDB 
   // here
 
+  error_reporting(E_ALL);
   // Note:
   //
   // to run on Heroku please use:
@@ -191,5 +198,6 @@ function getRows($expr) {
   }
   return $rows;
 }
+
 
 ?>
