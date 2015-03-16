@@ -14,7 +14,11 @@ final class SQLite3FallbackQuery {
   // same function as sqlite3
   // fetchArray
   public function fetchArray() {
-    return mysqli_fetch_array($this->query);
+    if ($this->query) {
+      return mysqli_fetch_array($this->query);
+    }
+
+    return array();
   }
 }
 final class SQLite3Fallback {

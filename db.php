@@ -26,12 +26,19 @@ $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
  */
 
 
-if (FALSE) {
+// by default try running
+// locally, this will check only SQLite
+// and should work on
+// 
+// Apache HTTPd >= 2.2
+// nGinx (not tested)
+// lightppd
+try {
   // we have native
   // support for 
   // SQLite3
-  //$db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
-} else {
+  $db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+} catch (Exception $e) {
   // either heroku or
   // without SQlite3
   // we can use ClearDB 
@@ -78,8 +85,6 @@ if (FALSE) {
 
     $db = new SQLite3Fallback($host, $username, $password, $db);
 
-
-
   }
 
 }
@@ -97,7 +102,8 @@ $cols = array(
  * the data in each application
  */
 foreach (array_merge($applications, $tables) as $app) {
-  if ($db->query("SELECT * FROM `" . $app['name'] . "`") == false) {
+  $res = $db->query("SELECT * FROM `" . $app['name'] . "`");
+  if (!$res) {
     if (isset($app['schema'])) {
       $sql = $app['schema'];
     } else {
