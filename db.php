@@ -43,7 +43,7 @@ if (!$cdb) {
   // heroku by default will stop
   // running without this:
 
-   require_once(__DIR__."/db.sqlite.php");
+   //require_once(__DIR__."/db.sqlite.php");
 } else {
   // either heroku or
   // without SQlite3
