@@ -25,12 +25,12 @@ $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
  *
  */
 
-if (false) {
+try {
   // we have native
   // support for 
   // SQLite3
   $db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
-} else {
+} catch (\Exception $e) {
   // either heroku or
   // without SQlite3
   // we can use ClearDB 
@@ -52,19 +52,13 @@ if (false) {
   if (TRUE) {
 
     require_once(__DIR__ . "/lib/sqlite3fallback.php");
-    $username = "root";
-    $password = "";
-    $db = "test_heroku";
-    $host = "localhost";
     // the following
     // should work on heroku
-    /*
     $cleardb = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $username = $cleardb['username'];
     $password = $cleardb['password'];
     $db = substr($cleardb, 1);
     $host = $cleardb['host']
-    */
 
     $db = new SQLite3Fallback($host, $username, $password, $db);
   } else {
