@@ -1,8 +1,8 @@
 {
     "title": "Keypad Simulator",
-    "applicationTable": "Keypad Simulator",
+    "applicationTable": "keypad_simulator",
     "applicationDataTable": "keypad_simulator_data",
-    "applicationName": "keypad_simulator",
+    "applicationName": "Keypad Simulator",
     "keypadSimulatorNumber": "+17192995670",
     "keypadSimulatorWrongDigit": "Sorry that was not a valid digit for this selection!",
     "keypadSimulatorVoice": "Bridget",

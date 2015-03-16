@@ -24,8 +24,8 @@ require_once(__DIR__ . "/config.php");
 
 
 $client = new Catapult\Client;
-$reminders = $db->query("SELECT * FROM `" . $application->applicationName . "`; ");
-$remindersCnt = getCount(sprintf("SELECT COUNT(*) as count FROM `%s`;",$application->applicationName));
+$reminders = $db->query("SELECT * FROM `" . $application->applicationTable . "`; ");
+$remindersCnt = getCount(sprintf("SELECT COUNT(*) as count FROM `%s`;",$application->applicationTable));
 
 // Implementors Note:
 // when using apps: 01 and 02 you may have noticed we

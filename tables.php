@@ -129,9 +129,6 @@ $tables = array(
   array(
     "table" => "sip_domains_data",
     "schema" => "CREATE TABLE sip_domains_data ( 
-      domain VARCHAR(255),
-      from VARCHAR(255),
-      to VARCHAR(255)
     ); ",
     "type" => "data"
   )

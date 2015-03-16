@@ -120,10 +120,6 @@ if (class_exists(SQLite3)) {
 }
 
 
-$cols = array(
-  "from", "to", "meta", "date"
-);
-
 /**
  * Let each table have: date, from, url and to fields
  * some applications will need a url field.
@@ -138,11 +134,18 @@ foreach (array_merge($applications, $tables) as $app) {
       $sql = $app['schema'];
       
     } else {
+      if ($db->postgresql) {
+        define("RESERVED", '"');
+      } else {
+        define("RESERVED", DB_TILDE);
+      }
+
+
       $sql = "CREATE TABLE " . $app['table'] . " (
-        from VARCHAR(255),
-        to VARCHAR(255),
-        meta VARCHAR(255),
-        date VARCHAR(255) 
+        " . RESERVED . "from"  . RESERVED . " VARCHAR(255),
+        " . RESERVED . "to"  .  RESERVED . " VARCHAR(255),
+        " . RESERVED . "meta"  .  RESERVED . " VARCHAR(255),
+        " . RESERVED . "data"  .  RESERVED . " VARCHAR(255)
       );";
     }
 

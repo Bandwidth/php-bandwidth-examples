@@ -21,7 +21,7 @@ $calls = $db->query(sprintf(
 ", $application->applicationTable)); 
 
 $callCnt = getCount(sprintf(
-  "SELECT COUNT(*) as count FROM `%s`", $application->applicationName
+  "SELECT COUNT(*) as count FROM `%s`", $application->applicationTable
 ));
 
 $status = 'error';
