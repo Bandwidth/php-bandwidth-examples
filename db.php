@@ -3,6 +3,7 @@
 require_once(__DIR__."/bootstrap.php");
 require_once(__DIR__."/tables.php");
 require_once(__DIR__."/config.php");
+require_once(__DIR__."/functions.php");
 
 $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
 /**
@@ -73,9 +74,7 @@ if (class_exists(SQLite3)) {
     $postdb = extract(parse_url($heroku_post));
     $db = new SQLite3Fallback2("user=$user password=$pass host=$host dbname=" . substr($path, 1));
     define("DB_TILDE", "");
-  }
-
-  elseif ($heroku_cdb) {
+  } elseif ($heroku_cdb) {
 
     // the following
     // should work on heroku
@@ -125,38 +124,8 @@ if ($db->postgresql) {
 }
 
 
-/**
- * Let each table have: date, from, url and to fields
- * some applications will need a url field.
- *
- * meta is general purpose and will be used for 
- * the data in each application
- */
-foreach (array_merge($applications, $tables) as $app) {
-  $res = $db->query("SELECT * FROM " . DB_TILDE . "" . $app['table'] . "".  DB_TILDE);
-  if (!$res) {
-    if (isset($app['schema'])) {
-      $sql = $app['schema'];
-      
-    } else {
+makeTables($db, $applications, $tables);
 
-      $sql = "CREATE TABLE " . $app['table'] . " (
-        " . RESERVED . "from"  . RESERVED . " VARCHAR(255),
-        " . RESERVED . "to"  .  RESERVED . " VARCHAR(255),
-        " . RESERVED . "meta"  .  RESERVED . " VARCHAR(255),
-        " . RESERVED . "date"  .  RESERVED . " VARCHAR(255)
-      );";
-    }
-
-    $result = $db->query($sql);
-  }
-
-}
-
-function updateRecord() {
-  global $db;
-  global $cols;
-}
 
 /**
  * add a record in one of the  application or data 
@@ -179,7 +148,7 @@ function addRecord($apptable, $recordarray, $colsarray=null) {
   } 
   $recstr = preg_replace("/,$/", "", $recstr);
 
-  $q = "INSERT INTO " . RESERVED . "$apptable" . RESERVED . "($strcols) VALUES ($recstr); ";
+  $q = "INSERT INTO $apptable ($strcols) VALUES ($recstr); ";
  
   $result = $db->query($q); 
 } 
