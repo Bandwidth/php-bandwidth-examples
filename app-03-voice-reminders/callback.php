@@ -292,7 +292,7 @@ if ($gatherCallEvent->isActive()) {
         // be given for this context
         // and we need to set them
         // to empty
-        $gather->digits = "#";
+        $digits = $application->voiceReminderTerminatingDigits;
 
         sleep(3);
 
@@ -327,7 +327,7 @@ if ($gatherCallEvent->isActive()) {
       // gather ending
 
       updateRow(sprintf(
-        "UPDATE `%s` SET `%s` = '%s' WHERE `callId` = '%s';", $application->applicationDataTable, $currentSequence, $gather->digits, $call->id));
+        "UPDATE `%s` SET `%s` = '%s' WHERE `callId` = '%s';", $application->applicationDataTable, $currentSequence, $digits, $call->id));
 
 
 

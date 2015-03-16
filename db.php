@@ -64,7 +64,18 @@ if (class_exists(SQLite3)) {
 
   require_once(__DIR__ . "/lib/sqlite3fallback.php");
   $heroku_cdb = getenv("CLEARDB_DATABASE_URL");
-  if ($heroku_cdb) {
+
+  // use heroku postgresql
+  $heroku_post = getenv("DATABASE_URL");
+
+  if ($heroku_post) {
+    // use the heroku postgresql
+    // support 
+    $postdb = extract(parse_url($heroku_post));
+    $db = new SQLite3Fallback2("user=$user password=$pass host=$host dbname=" . substr($path, 1));
+  }
+
+  elseif ($heroku_cdb) {
 
     // the following
     // should work on heroku
@@ -79,9 +90,7 @@ if (class_exists(SQLite3)) {
     // simple mysqli fallback
     // make no assumption as to 
     // what we're using
-    //
-    //
-    //
+    // for AWS
     //  TODO needs aws support
     $username = getenv("MYSQL_USERNAME");
     $password = getenv("MYSQL_PASS");
@@ -93,13 +102,17 @@ if (class_exists(SQLite3)) {
   }
 
 
+  // when we have no db
+  // past this point, we will
+  // still try to run, warn and store
+  // no data
+  if (!$db->isConnected()) {
+    header("location: ./home/error.php");
+  }
+
+
 }
 
-// add exception
-// for Heroku
-if ($db->db == null || !$db->db) {
-  exit("To run with Heroku please add ClearDB to your application");
-}
 
 $cols = array(
   "`from`", "`to`", "`meta`", "`date`"
