@@ -1,7 +1,7 @@
 {
   "applicationTitle": "Advanced Conferences",
-  "applicationTable": "Advanced Conference",
-  "applicationDataTable": "Advanced Conference Data",
+  "applicationTable": "advanced_conference",
+  "applicationDataTable": "advanced_conference_data",
   "applicationName": "Advanced Conference",
   "conferenceFromNumber": "+14086478591",
   "conferenceInitiateNumber": "+12033508712",

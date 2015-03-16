@@ -352,7 +352,7 @@ if ($hangupCallEvent->isActive()) {
   // get our basic data 
   $call = new Catapult\Call($hangupCallEvent->callId);
   $last = getRow(
-    sprintf("SELECT FROM `%s`; ", $application->applicationTable)
+    sprintf("SELECT * FROM `%s`; ", $application->applicationTable)
   );
   $conference = new Catapult\Conference($last['conferenceId']);
 

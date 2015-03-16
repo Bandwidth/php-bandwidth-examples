@@ -132,12 +132,13 @@ $cols = array(
  * the data in each application
  */
 foreach (array_merge($applications, $tables) as $app) {
-  $res = $db->query("SELECT * FROM " . DB_TILDE . "" . $app['name'] . "".  DB_TILDE);
+  $res = $db->query("SELECT * FROM " . DB_TILDE . "" . $app['table'] . "".  DB_TILDE);
   if (!$res) {
     if (isset($app['schema'])) {
       $sql = $app['schema'];
+      
     } else {
-      $sql = "CREATE TABLE `" . $app['name'] . "` (
+      $sql = "CREATE TABLE " . $app['table'] . " (
         `from` VARCHAR(255),
         `to` VARCHAR(255),
         `meta` VARCHAR(255),

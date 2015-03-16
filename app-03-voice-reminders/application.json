@@ -1,8 +1,8 @@
 {
   "applicationName": "Voice Reminders",
-  "applicationTable": "Voice Reminders",
+  "applicationTable": "voice_reminders",
   "applicationTitle": "Voice Reminders",
-  "applicationDataTable": "Voice Reminders Data",
+  "applicationDataTable": "voice_reminders_data",
   "applicationDescription": "This application will set voice reminders",
   "voiceReminderNumber": "+16204506654",
   "voiceReminderThanks": "Thanks, we have saved your voice reminder and date. We will remind you on this date",

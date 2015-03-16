@@ -9,30 +9,37 @@
 $applications = array(
   array(
     "name" => "SMS Auto Replies",
+    "table" => "sms_auto_replies",
     "link" => "app-01-auto-replies"
   ),
   array(
     "name" => "Incoming Call Transfers",
+    "table" => "incoming_call_transfers",
     "link" => "app-02-transfer-call"
   ),
   array(
     "name" => "Voice Reminders",
+    "table" => "voice_reminders",
     "link" => "app-03-voice-reminders"
   ),
   array(
     "name" => "Basic Voice Mail",
+    "table" => "basic_voice_mail",
     "link" => "app-04-basic-voicemail"
   ),
   array(
     "name" => "Basic Conference",
+    "table" => "basic_conference",
     "link" => "app-05-basic-conference"
   ),
   array(
     "name" => "Advanced Conference",
+    "table" => "advanced_conference",
     "link" => "app-06-advanced-conference"
   ),
   array(
     "name" => "Keypad Simulator",
+    "table" => "keypad_simulator",
     "link" => "app-07-keypad-simulator"
   ),
 /*
@@ -54,8 +61,8 @@ $applications = array(
  */
 $tables = array(
   array(
-    "name" => "Advanced Conference Data",
-    "schema" => "CREATE TABLE `Advanced Conference Data` (
+    "table" => "advanced_conference_data",
+    "schema" => "CREATE TABLE advanced_conference_data (
         `callFrom` VARCHAR(255),
         `receiverCallFrom` VARCHAR(255),
         `code` VARCHAR(255),
@@ -67,8 +74,8 @@ $tables = array(
   ),
   array(
 
-    "name" => "Voice Reminders Data",
-    "schema" => "CREATE TABLE `Voice Reminders Data` (
+    "table" => "voice_reminders_data",
+    "schema" => "CREATE TABLE voice_reminders_data (
       `callId` VARCHAR(255),
       `recordingId` VARCHAR(255), 
       `title` VARCHAR(255),
@@ -84,8 +91,8 @@ $tables = array(
 
   ),
   array(
-    "name" => "Basic Voice Mail Data",
-    "schema" => "CREATE TABLE `Basic Voice Mail Data` (
+    "table" => "basic_voice_mail_data",
+    "schema" => "CREATE TABLE basic_voice_mail_data (
        `callId` VARCHAR(255),
        `recordingId` VARCHAR(255),
        `mediaName` VARCHAR(255),
@@ -94,8 +101,8 @@ $tables = array(
      ); " 
   ),
   array(
-    "name" => "Basic Conference Data",
-    "schema" => "CREATE TABLE `Basic Conference Data` (
+    "table" => "basic_conference_data",
+    "schema" => "CREATE TABLE basic_conference_data (
         `callFrom` VARCHAR(255),
         `conferenceId` VARCHAR(255),
         `callId` VARCHAR(255)
@@ -103,8 +110,8 @@ $tables = array(
     "type" => "data"
   ),
    array(
-    "name" => "Keypad Simulator Data",
-    "schema" => "CREATE TABLE `Keypad Simulator Data` (
+    "table" => "keypad_simulator_data",
+    "schema" => "CREATE TABLE keypad_simulator_data (
         `level` VARCHAR(255),
         `callId` VARCHAR(255),
         `key` VARCHAR(255)
@@ -112,16 +119,16 @@ $tables = array(
     "type" => "data"
   ),
   array(
-    "name" => "BaML Call Transfers Data",
-    "schema" => "CREATE TABLE `BaML Call Transfers Data` (
+    "table" => "baml_call_transfers_data",
+    "schema" => "CREATE TABLE baml_call_transfers_data (
       `verb` VARCHAR(255),
       `markup` VARCHAR(255)
     ); ",
     "type" => "data"
   ),
   array(
-    "name" => "SIP Domains Data",
-    "schema" => "CREATE TABLE `SIP Domains Data` (
+    "table" => "sip_domains_data",
+    "schema" => "CREATE TABLE sip_domains_data ( 
       `domain` VARCHAR(255),
       `from` VARCHAR(255),
       `to` VARCHAR(255)

@@ -1,7 +1,7 @@
 {
   "applicationName": "Basic Voice Mail",
-  "applicationTable": "Basic Voice Mail",
-  "applicationDataTable": "Basic Voice Mail Data",
+  "applicationTable": "basic_voice_mail",
+  "applicationDataTable": "basic_voice_mail_data",
   "voicemailNumber": "+18726661384",
   "voicemailSentence": "This person is busy. Please leave a message at the beep. When you are done please hit pound or hangup",
   "voicemailFile": "http://159.100.186.106/projects/php-bandwidth-examples/app-04-basic-voicemail/files/beep.wav", 

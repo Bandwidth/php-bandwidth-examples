@@ -1,7 +1,7 @@
 {
   "applicationName": "Incoming Call Transfers",
   "applicationTitle": "Incoming Call Transfers",
-  "applicationTable": "Incoming Call Transfers",
+  "applicationTable": "incoming_call_transfers",
   "applicationDescription": "Transfers phone calls via two listed numbers",
   "transferNumber":"+12135162702", 
   "transferSpeakSentence": "Hello we are transfering your call",
