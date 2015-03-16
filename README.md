@@ -62,6 +62,11 @@ you will need to create an application you can then deploy
   git push heroku master
 
 
+To run these examples on heroku you will need clearDB, which can
+be installed using:
+
+  heroku addons:add cleardb:ignite 
+
 
 
 AWS
