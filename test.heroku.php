@@ -8,4 +8,5 @@ function pg_connection_string_from_database_url() {
 }
 
 $db = new SQLite3Fallback2(pg_connection_string_from_database_url());
+echo var_dump($db);
 ?>
