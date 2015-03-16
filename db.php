@@ -144,7 +144,7 @@ foreach (array_merge($applications, $tables) as $app) {
         " . RESERVED . "from"  . RESERVED . " VARCHAR(255),
         " . RESERVED . "to"  .  RESERVED . " VARCHAR(255),
         " . RESERVED . "meta"  .  RESERVED . " VARCHAR(255),
-        " . RESERVED . "data"  .  RESERVED . " VARCHAR(255)
+        " . RESERVED . "date"  .  RESERVED . " VARCHAR(255)
       );";
     }
 
