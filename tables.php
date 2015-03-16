@@ -63,12 +63,12 @@ $tables = array(
   array(
     "table" => "advanced_conference_data",
     "schema" => "CREATE TABLE advanced_conference_data (
-        `callFrom` VARCHAR(255),
-        `receiverCallFrom` VARCHAR(255),
-        `code` VARCHAR(255),
-        `attended` VARCHAR(255),
-        `conferenceId` VARCHAR(255),
-        `digits` VARCHAR(255)
+        callFrom VARCHAR(255),
+        receiverCallFrom VARCHAR(255),
+        code VARCHAR(255),
+        attended VARCHAR(255),
+        conferenceId VARCHAR(255),
+        digits VARCHAR(255)
     ); ",
     "type" => "data"
   ),
@@ -76,16 +76,16 @@ $tables = array(
 
     "table" => "voice_reminders_data",
     "schema" => "CREATE TABLE voice_reminders_data (
-      `callId` VARCHAR(255),
-      `recordingId` VARCHAR(255), 
-      `title` VARCHAR(255),
-      `speech` VARCHAR(255),
-      `initiated` VARCHAR(255),
-      `message` VARCHAR(255),
-      `month` VARCHAR(255), 
-      `thanks` VARCHAR(255),
-      `year` VARCHAR(255),
-      `date` VARCHAR(255)
+      callId VARCHAR(255),
+      recordingId VARCHAR(255), 
+      title VARCHAR(255),
+      speech VARCHAR(255),
+      initiated VARCHAR(255),
+      message VARCHAR(255),
+      month VARCHAR(255), 
+      thanks VARCHAR(255),
+      year VARCHAR(255),
+      date VARCHAR(255)
     ); ",
     "type" => "data"
 
@@ -93,45 +93,45 @@ $tables = array(
   array(
     "table" => "basic_voice_mail_data",
     "schema" => "CREATE TABLE basic_voice_mail_data (
-       `callId` VARCHAR(255),
-       `recordingId` VARCHAR(255),
-       `mediaName` VARCHAR(255),
-       `initiated` VARCHAR(255),
-       `date` VARCHAR(255)
+       callId VARCHAR(255),
+       recordingId VARCHAR(255),
+       mediaName VARCHAR(255),
+       initiated VARCHAR(255),
+       date VARCHAR(255)
      ); " 
   ),
   array(
     "table" => "basic_conference_data",
     "schema" => "CREATE TABLE basic_conference_data (
-        `callFrom` VARCHAR(255),
-        `conferenceId` VARCHAR(255),
-        `callId` VARCHAR(255)
+        callFrom VARCHAR(255),
+        conferenceId VARCHAR(255),
+        callId VARCHAR(255)
     ); ",
     "type" => "data"
   ),
    array(
     "table" => "keypad_simulator_data",
     "schema" => "CREATE TABLE keypad_simulator_data (
-        `level` VARCHAR(255),
-        `callId` VARCHAR(255),
-        `key` VARCHAR(255)
+        level VARCHAR(255),
+        callId VARCHAR(255),
+        key VARCHAR(255)
     ); ",
     "type" => "data"
   ),
   array(
     "table" => "baml_call_transfers_data",
     "schema" => "CREATE TABLE baml_call_transfers_data (
-      `verb` VARCHAR(255),
-      `markup` VARCHAR(255)
+      verb VARCHAR(255),
+      markup VARCHAR(255)
     ); ",
     "type" => "data"
   ),
   array(
     "table" => "sip_domains_data",
     "schema" => "CREATE TABLE sip_domains_data ( 
-      `domain` VARCHAR(255),
-      `from` VARCHAR(255),
-      `to` VARCHAR(255)
+      domain VARCHAR(255),
+      from VARCHAR(255),
+      to VARCHAR(255)
     ); ",
     "type" => "data"
   )
