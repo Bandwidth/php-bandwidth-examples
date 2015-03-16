@@ -5,6 +5,18 @@ will be available seperaty so if you need a specific
 version of a application please install that respository
 independatly
 
+ALL
+---------------------------------------------------------
+
+0.2.0 examples will now use new event formats.
+More info on change in php-bandwidth CHANGELOG.
+
+Implementors can now look at the callback.php for
+the application which will describe the application
+according to the "recommended", "optional" and "important"
+steps. 
+
+
 App 001 
 --------------------------------------------------------
 0.1.0:
@@ -60,5 +72,4 @@ App 007
 Keypad Simulator 
 - same support as App 001 without initiate button
 - uses sqLite like App 005
-
 

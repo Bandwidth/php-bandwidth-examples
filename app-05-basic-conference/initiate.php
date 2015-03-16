@@ -14,10 +14,13 @@ require_once("config.php");
 $client = new Catapult\Client;
 // First we start our primary
 // call. This should be using ourselves
+// and call to the conferenceFromNumber
 $call = new Catapult\Call(array(
-  "from" => $application->conferenceFromNumber,
+  "from" => $application->conferenceInitiateNumber,
   "to" => $application->conferenceFromNumber
 ));
+
+sleep(40);
 
 // add this as saved record
 // the conference 

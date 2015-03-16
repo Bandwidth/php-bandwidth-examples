@@ -1,0 +1,2 @@
+ (line: 276) - APPLICATION: [Mar/03/15:18:12:14] - Request was brought back with error => {"Content-Type":"text\/plain","Date":"Sun, 15 Mar 2015 18:12:14 GMT","Server":"Jetty(8.1.10.v20130312)","Vary":"Accept-Encoding","Content-Length":"42","Connection":"keep-alive"}
+ (line: 276) - APPLICATION: [Mar/03/15:19:39:12] - Request was brought back with error => {"Content-Type":"text\/plain","Date":"Sun, 15 Mar 2015 19:39:12 GMT","Server":"Jetty(8.1.10.v20130312)","Vary":"Accept-Encoding","transfer-encoding":"chunked","Connection":"keep-alive"}

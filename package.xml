@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0" packagerversion="1.4.8">
+ <name>sqlite3</name>
+ <summary>PHP extension to manage SQLite3 databases (http://www.sqlite.org)</summary>
+ <description>This extension allows PHP scripts to query/update SQLite3 databases.
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>bfleisch</user>
+   <name>Bruno Fleisch</name>
+   <email>bfleisch@users.sourceforge.net</email>
+   <role>lead</role>
+  </maintainer>
+  </maintainers>
+ <release>
+  <version>0.5</version>
+  <date>2007-04-04</date>
+  <license>revised BSD license</license>
+  <state>alpha</state>
+  <notes>See  included ChangeLog for details...
+  </notes>
+  <deps>
+   <dep type="php" rel="ge" version="4.0.0"/>
+  </deps>
+  <filelist>
+   <file role="php" name="DB/sqlite3.php"/>
+   <file role="data" name="examples/example1.php"/>
+   <file role="data" name="examples/example2.php"/>
+   <file role="data" name="examples/example3.php"/>
+   <file role="data" name="examples/example4.php"/>
+   <file role="data" name="examples/example5.php"/>
+   <file role="data" name="contrib/php4-sqlite3.spec"/>
+   <file role="data" name="contrib/php5-sqlite3.spec"/>
+   <file role="src" name="config.m4"/>
+   <file role="data" name="COPYING"/>
+   <file role="data" name="EXPERIMENTAL"/>
+   <file role="src" name="php_sqlite3.c"/>
+   <file role="src" name="php_sqlite3.h"/>
+   <file role="data" name="README"/>
+   <file role="data" name="ChangeLog"/>
+  </filelist>
+ </release>
+</package>

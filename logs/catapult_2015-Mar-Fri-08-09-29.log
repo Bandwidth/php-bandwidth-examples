@@ -1,0 +1,1 @@
+/var/www/php-bandwidth-examples/test.php (line: 6) - APPLICATION: [Mar/03/15:20:09:29] - You have not initialized the client yet. Please use: Catapult\Client(params..)

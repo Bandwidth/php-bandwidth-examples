@@ -1,32 +1,45 @@
 {
     "title": "Keypad Simulator",
-    "table": "Keypad Simulator",
-    "datatable": "Keypad Simulator Data",
+    "applicationTable": "Keypad Simulator",
+    "applicationDataTable": "Keypad Simulator Data",
     "applicationName": "Keypad Simulator",
-    "keypadSimulatorNumber": "+2323223",
+    "keypadSimulatorNumber": "+17192995670",
     "keypadSimulatorWrongDigit": "Sorry that was not a valid digit for this selection!",
-    "keypadSimulatorVoice": "Jorge",
+    "keypadSimulatorVoice": "Bridget",
+    "keypadSimulatorVoiceGender": "female",
     "keypadSimulatorExitSpeech": "Thank you for taking the to checkout our Catapult Keypad Simulator. We hope to  see you soon. Have a nice day.",
     "keypadSimulatorExitDigit": "#",
+    "keypadSimulatorTimeout": "Sorry the call was timed out. Please resume your call",
     "keypadSimulatorNumbers": {
         "1": {
             "1": {
-                "speech": "Wearetransferingyounow.",
+                "speech": "We are transfering you now.",
                 "transfer": true,
                 "transferNumber": "+2322"
             },
             "speech": "Hello this is our technical assistance line press one if you'd like to be transferred to the next available Catapult developer!"
         },
         "2": {
-            "speech": "ThanksforcallingCatapultaccountservices.Whatcanwedotohelp"
+            "speech": "Thanks for calling Catapult account services.What can we do to help. Please press 1 if you would like to know your account balance, two if you would like to be transferred to an available rep",
+           "1": {
+              "balance": true,
+              "speech": "Your current account balance is: "
+            },
+           "2": {
+              "speech": "Thank you, we are transferring you now.",
+              "transfer": true,
+              "transferNumber": "+3232"
+           }
         },
         "3": {
             "1": {
-                "speech": "Nice."
+                "speech": "You can view the code at http://github.com/bandwidthcom/php-bandwidth"
             },
-            "2": {},
-            "speech": "HellothisistheCatapultlinefordeveloperspress1ifyou'veusedthePHPsdk2ifyouplanto"
+            "2": {
+                "speech": "You can view the code at http://github.com/bandwidthcom/php-bandwidth"
+             },
+            "speech": "Hello this is the Catapult line for developers press 1 if you've used the PHP sdk 2 if you plan to"
         },
-        "speech": "Hello you hve reached the Catapult Web Service Line.Please enter 1 if you would like technical assistance 2 if your calling regarding your account 3 if your calling for our Catapult service"
+        "speech": "Hello you have reached the Catapult Web Service Line.Please enter 1 if you would like technical assistance 2 if your calling regarding your account 3 if your calling for our Catapult service"
     }
 }

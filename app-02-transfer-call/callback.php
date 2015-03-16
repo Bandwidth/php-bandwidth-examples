@@ -1,39 +1,102 @@
 <?php
-require_once("../php-bandwidth/source/Catapult.php");
-require_once("config.php");
+require_once("../config.php");
+require_once("./config.php");
 
 // Transfer Calls
 // This is a simple implementation of call transferring.
 //
-// You can access Answer Call Events directly
-// with Catapult\AnswerCallEvent. Afterwards use transfer/1 
-// with a new call object
+// more accuratly described here:
+// https://catapult.inetwork.com/guides/call-forwarding
+//
+//
+//
+// Tip:
+// You can access Answer Call and Incoming Call Events directly
+// with AnswerCallEvent and IncomingCallEvent. 
+// once you have the call object you can  use transfer/1 
+//
+// By default we listen to applications with auto incoming
+// calls answering set to true.
+
 $client = new Catapult\Client;
+// if you're using manual incoming calls
+// comment this out
+$inboundCallEvent = new Catapult\AnswerCallEvent;
+// uncomment this if your using
+// manual calling
+//$inboundCallEvent = new Catapult\IncomingCallEvent;
+$errorCallEvent = new Catapult\ErrorCallEvent;
+$hangupCallEvent = new Catapult\HangupCallEvent;
+$timeoutCallEvent = new Catapult\TimeoutCallEvent;
 
 try {
 
-  $call = new Catapult\AnswerCallEvent;
+  // Step 1:
+  //
+  // Handle incoming calls these
+  // all need to be coming from the
 
-  if ($call->state == 'started' && $call->direction == 'incoming') {
+  if ($inboundCallEvent->isActive()) {
 
-    $transferCall = new Call($call->id);
-    $transferCall->transfer($application->transferNumber);
+     $call = new Catapult\Call($inboundCallEvent->callId);
+
+     if ($inboundCallEvent->to == $application->listeningNumber) { 
+
+       // Important
+       //
+       // this is for IncomingCallEvent only
+       // we need to accept it
+       // before we transfer
+       if ($call->state == Catapult\CALL_STATES::started) {
+          $call->accept();
+       }
+
+
+       // we have the call object now
+       // and we can transfer
+       $call->transfer($application->transferNumber);
+
+       // Optional 
+       //
+       // log it in the database
+       $date = new DateTime;
+       addRecordBasic($application->applicationTable, array($call->from, $call->to, $call->state, $date->format("Y-m-d")));
+     }
   }
 
+  if ($errorCallEvent->isActive()) {
+    // Recommended
+    //
+    // treat any errors
+  }
+  if ($hangupCallEvent->isActive()) {
+    // Recommended
+    //
+    // treat any hang ups
+  }
 
-  // log it in our SQlite. Internal only
-  $date = new DateTime();
-  addRecord(array($call->from, $application->transferNumber, $transferCall->state, $date->format("Y-M-D H:i:S"))); 
+  if ($timeoutCallEvent->isActive()) {
+    // Recommended
+    //
+    // treat timeouts
+    $call = new Catapult\Call($timeoutCallEvent->callId);
+    $call->hangup();
+  }
 
 } catch (CatapultApiException $e) {
 
-/**
- * Usually the Catapult logger
- * will tell us what happened here 
- * you can add an even more comprehensive message
- * using this exception
- */
+// Recommended:
+//
+// logging the other data can prove
+// to be of benefit especially when debugging
+// things like this as we are uncertain when an error
+// may arise
 
+// Implementors Note:
+// Usually the Catapult logger
+// will tell us what happened here 
+// you can add an even more comprehensive message
+// using this exception
 
 }
 

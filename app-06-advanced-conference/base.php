@@ -13,9 +13,13 @@ require_once(realpath("./config.php"));
 //
 
 $client = new Catapult\Client;
-$query = $db->query("SELECT * FROM `Advanced Conference`;");
-$conferencesCnt = count($query)-1;
+$conferences = $db->query(sprintf("SELECT * FROM `%s`;", $application->applicationTable));
+$conferencesData = $db->query(sprintf("SELECT * FROM `%s`", $application->applicationDataTable));
+$conferencesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM `%s`;", $application->applicationTable));
 
+
+// Validation 1.
+// check if the initial number is valid
 $phoneNumbers = new Catapult\PhoneNumbersCollection;
 $phoneNumbers->listAll();
 $phoneNumbers->find(array("number" => $application->conferenceFromNumber));
@@ -24,6 +28,21 @@ if ($phoneNumbers->isEmpty()) {
   $message = $application->conferenceFromNumber . " is not a phone number in your catapult list"; 
 }
 
+
+// Validation 2 Optional
+// we play a beep
+// which needs to be
+// checked
+$media = new Catapult\MediaURL($application->conferenceBeepFile);
+
+if (!$media->isValid()) {
+  $message = $application->conferenceBeepFile . " is not a valid media file.";
+}
+
+
+// Recommended Validation 3.
+// check if each conference attendee's
+// number is valid
 foreach ($application->conferenceAttendees as $cMember) {
   $phoneNumber = new Catapult\PhoneNumber($cMember);
   if (!($phoneNumber->isValid())) {
@@ -33,7 +52,7 @@ foreach ($application->conferenceAttendees as $cMember) {
 
 if (!isset($member)) {
   $status = "success";
-  $message = "Nice you start this conference"; 
+  $message = "You can begin this conference, use number: " . $application->conferenceFromNumber; 
 }
 
 ?>

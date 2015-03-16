@@ -5,6 +5,13 @@
   </head>
   <body>
   <?php generateMenu(); ?>
+
+
+  <?php if (!isConnected()): ?>
+    <div class="alert">
+      You have not updated credentials.json with your Catapult credentials, please do so to use the examples.
+    </div>
+  <? endif; ?>
   <div class="app-content">
     <h2>Catapult PHP Examples</h2>
 

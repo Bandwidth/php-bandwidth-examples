@@ -29,14 +29,26 @@
     <h3>List of conferences from this application</h3>
     <?php if ($conferencesCnt > 0): ?>
     <table>
+      <th>Conference Id</th>
       <th>From</th>
-      <th>To</th>
-      <th>Text</th>
-    <?php while($entry = $messages->fetchArray()): ?>
+      <th>Date</th>
+      <th>Attendees</th>
+    <?php while($entry = $conferences->fetchArray()): 
+        // get the conference
+        // attendees
+        $conferenceAttendees = getRows(sprintf("SELECT * FROM `%s` WHERE conferenceId = '%s'; ", $application->applicationDataTable, $entry['meta']));
+
+        $attendees = ""; 
+        foreach ($conferenceAttendees as $cs) {
+          $attendees .= $cs['callFrom'] . ", ";
+        } 
+
+    ?>
        <tr> 
+         <td><?php echo $entry['meta']; ?></td>
          <td><?php echo $entry['from']; ?></td>
-         <td><?php echo $entry['to']; ?></td>
-        <td><?php echo $entry['meta']; ?></td>
+         <td><?php echo $entry['date']; ?></td>
+        <td><?php echo $attendees; ?></td>
        </tr>
     <?endwhile; ?> 
     </table>

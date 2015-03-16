@@ -3,13 +3,11 @@ require_once("../php-bandwidth/source/Catapult.php");
 require_once("../config.php");
 require_once("./config.php");
 
-/**
- * Base of Basic VoiceMail
- * this will perform the flow
- * as described here:
- * 
- * https://catapult.inetwork.com/docs/guides/voicemail/
- */
+// Base of Basic VoiceMail
+// this will perform the flow
+// as described here:
+// 
+// https://catapult.inetwork.com/docs/guides/voicemail/
 
 // IMPORTANT: 
 // This file is the base wrapper behind
@@ -25,11 +23,14 @@ $client = new Catapult\Client;
 // get all the voicemail so far
 //
 $voicemail = $db->query("SELECT * FROM `" . $application->applicationName . "`; ");
-$voicemailCnt = count($voicemail) - 1; // SQLite returns + 1
-
+$voicemailCnt = getCount(sprintf("SELECT COUNT(*) as count FROM `%s`; ", $application->applicationName));
 
 $status = 'error';
 
+// Validation 1
+// 
+// Check if our voicemail number
+// is valid
 $PhoneNumber = new Catapult\PhoneNumber($application->voicemailNumber);
 
 if (!$PhoneNumber->isValid()) {
@@ -37,31 +38,32 @@ if (!$PhoneNumber->isValid()) {
 }
 
 
-// list all the numbers
-// and make sure the provided
-// one is in our collection
-
+// Validation 2 
+//
+// check if our voicemail number is
+// listed in our Catapult account
 $PhoneNumbers = new Catapult\PhoneNumbers;
-$PhoneNumbers = $PhoneNumbers->listAll()
+$PhoneNumbers = $PhoneNumbers->listAll(array("size" => 1000))
                              ->find(array("number" => $application->voicemailNumber));
 
 if ($PhoneNumbers->isEmpty()) {
   $message = "Voice Mail number is not listed under your Catapult account";
 }
 
-// make sure the voice 
-// is a valid one
+// Validation 3
+// 
+// Make sure the listed voice
+// is valid
 $Voice = new Catapult\Voice($application->voicemailVoice);
 if (!$Voice->isValid()) {
   $message = "$Voice is not a valid voice for Catapult";
 }
 
-// do a check on the file
-// voicemailFile
-// remember this needs
-// to be a URI 
+// Optional Validation
+//
+// check if the MediaURL is
+// valid media MIME type
 $Media = new Catapult\MediaURL($application->voicemailFile);
-
 
 if (!$Media->isValid()) {
   $message = "Voice mail file does not exist.";

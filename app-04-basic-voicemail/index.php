@@ -43,14 +43,21 @@
         <table>
           <th>From</th>
           <th>To</th>
-          <th>Recording URL</th>
-        <?php foreach ($voicemail as $vm): ?>
+          <th>VoiceMail</th>
+        <?php while ($vm = $voicemail->fetchArray()): 
+          $voiceMailData = getRow(sprintf("SELECT * FROM `%s` WHERE callId = '%s'; ", $application->applicationDataTable, $vm['meta']));
+        ?>
            <tr> 
               <td><?php echo $vm['from']; ?></td>
               <td><?php echo $vm['to']; ?></td>
-              <td><?php echo $vm['meta']; ?></td>
+              <td>
+                <a href="./data/<?php echo $voiceMailData['recordingId']; ?>">
+                Listen to mail
+                </a>
+
+              </td>
            </tr>
-        <? endforeach; ?>
+        <? endwhile; ?>
       <? else: ?>
 
         <small>This app has no voicemail yet..</small>

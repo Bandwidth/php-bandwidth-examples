@@ -16,22 +16,26 @@ $client = new Catapult\Client;
 
 // First check what's in our database
 // this keeps all our conferences together
-$query = $db->query("SELECT * FROM `Basic Conference`; ");
-$conferencesCnt = count($query) - 1;
+$conferences = $db->query(sprintf("SELECT * FROM `%s`; ", $application->applicationName));
+$conferencesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM `%s`;", $application->applicationName));
 
-
+// Validation 1
+//
 // make sure our from number
 // is a valid one
+
 $phoneNumber = new Catapult\PhoneNumber($application->conferenceFromNumber);
 
 if (!($phoneNumber->isValid())) {
   $message = "Your phone number is not in E.164 format";
 }
 
+// Validation 2
+//
 // is this a phone in our
 // catapult list
 $phoneNumbers = new Catapult\PhoneNumbersCollection;
-$phoneNumbers->listAll();
+$phoneNumbers->listAll(array("size" => 1000));
 $phoneNumbers->find(array("number" => $application->conferenceFromNumber));
 
 
@@ -39,9 +43,11 @@ if ($phoneNumbers->isEmpty()) {
   $message = $application->conferenceFromNumber . " is not a phone number in your catapult list";
 }
 
+// Recommended Validation 3
+//
 // make sure all outgoing
 // numbers are in proper
-// format
+// format. 
 foreach ($application->conferenceAttendees as $cMember) {
   $phoneNumber = new Catapult\PhoneNumber($cMember);
   if (!($phoneNumber->isValid())) {
@@ -51,7 +57,7 @@ foreach ($application->conferenceAttendees as $cMember) {
 
 if (!isset($message)) {
   $status = "success";
-  $message = "Nice you can start this conference by clicking initiate or phoning yourself";
+  $message = sprintf("You can begin this conference use number: %s to begin the conference", $application->conferenceFromNumber);
 }
 
 

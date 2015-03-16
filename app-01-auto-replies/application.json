@@ -1,7 +1,10 @@
 {
   "applicationName": "SMS Auto Replies",
+  "applicationTitle": "SMS Auto Replies",
+  "applicationTable": "SMS Auto Replies",
+  "applicationDescription": "This application will auto respond to the incoming number with the listed autoReplyText",
   "autoReplyText": "Hello, I am currently configuring my Catapult Auto Reply application, I will get back to you shortly.",
-  "description": "This application will auto respond to the incoming number with the listed autoReplyText",
   "autoReplyNumber": "+12135147675",
+  "autoReplyInitiateNumber": "+17192991226",
   "autoReplyCallback": "http://159.100.186.106/php-bandwidth-examples/app-01-auto-replies/callback.php"
 }

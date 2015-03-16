@@ -47,6 +47,11 @@ ul.left-nav li {
   border-bottom: 1px solid #E3E3E3;
 }
 
+ul.left-nav li.active {
+  background: #F5F5F5;
+  color: #000;
+}
+
 .app-content {
   float: left;
   width: 70%;
@@ -98,4 +103,34 @@ table tr td {
 }
 .status.warning {
   background: orange;
+}
+
+ul#sip-domains {
+  float: left;
+  width: 50%;
+  border: 1px solid #E3E3E3;
+  background:#F5F5F5;
+  padding:20px;
+}
+
+ul#sip-domains label {
+  margin-top: 10px;
+}
+input[type=submit] {
+  margin-top: 10px;
+}
+
+ul#sip-domains h2.error {
+  color: #FF0000;
+}
+
+ul#sip-domains h2.success {
+  color: darkBlue;
+}
+
+.alert {
+  width: 100%;
+  background: yellow;
+  padding: 5px;
+  color: black;
 }

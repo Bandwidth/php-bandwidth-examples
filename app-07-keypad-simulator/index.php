@@ -22,12 +22,12 @@
     </div>
       
     <h3>List of keypad simulations from this application</h3>
-    <?php if ($keypadCnt > 0): ?>
+    <?php if ($simulationsCnt > 0): ?>
     <table>
       <th>From</th>
       <th>To</th>
-      <th>Text</th>
-    <?php while($entry = $messages->fetchArray()): ?>
+      <th>Call ID</th>
+    <?php while($entry = $simulations->fetchArray()): ?>
        <tr> 
          <td><?php echo $entry['from']; ?></td>
          <td><?php echo $entry['to']; ?></td>

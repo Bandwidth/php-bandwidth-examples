@@ -1,7 +1,13 @@
 {
   "title": "Basic Conference",
-  "applicationName": "Member Conference",
-  "conferenceFromNumber": "+212332",
-  "conferenceVoice": "Jorge",
-  "conferenceAttendees": [ "+212332" ]
+  "applicationName": "Basic Conference",
+  "applicationTitle": "Basic Conference",
+  "applicationTable": "Basic Conference",
+  "applicationDataTable": "Basic Conference Data",
+  "conferenceFromNumber": "+17192992848",
+  "conferenceVoice": "David",
+  "conferenceVoiceGender": "male",
+  "conferenceInitiate": "Initiating Catapult Basic Conference. For entrance, the attendees may dial: +17192992848.",
+  "conferenceInitiateNumber": "+15877784613",
+  "conferenceAttendees": [ "+15877784613" ]
 }

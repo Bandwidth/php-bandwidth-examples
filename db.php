@@ -1,6 +1,10 @@
 <?php
 
 require_once(__DIR__."/bootstrap.php");
+require_once(__DIR__."/tables.php");
+require_once(__DIR__."/config.php");
+
+define("DB_TILDE","`");
 $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
 /**
  * Basic DB wrapper around Catapult examples
@@ -21,7 +25,60 @@ $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
  *
  */
 
-$db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+if (false) {
+  // we have native
+  // support for 
+  // SQLite3
+  $db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+} else {
+  // either heroku or
+  // without SQlite3
+  // we can use ClearDB 
+  // here
+
+  // Note:
+  //
+  // to run on Heroku please use:
+  //
+  // heroku config:set ON_HEROKU=1
+  //
+  //
+  // or if on AWS
+  // ON_AWS
+  //
+  // as this will use the clearDB
+  // configuration
+
+  if (TRUE) {
+
+    require_once(__DIR__ . "/lib/sqlite3fallback.php");
+    $username = "root";
+    $password = "";
+    $db = "test_heroku";
+    $host = "localhost";
+    // the following
+    // should work on heroku
+    /*
+    $cleardb = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $username = $cleardb['username'];
+    $password = $cleardb['password'];
+    $db = substr($cleardb, 1);
+    $host = $cleardb['host']
+    */
+
+    $db = new SQLite3Fallback($host, $username, $password, $db);
+  } else {
+    // simple mysqli fallback
+    // make no assumption as to 
+    // what we're using
+    //
+    //  TODO
+
+  }
+
+}
+
+
 $cols = array(
   "`from`", "`to`", "`meta`", "`date`"
 );
@@ -68,7 +125,7 @@ function addRecord($apptable, $recordarray, $colsarray=null) {
   $recstr = '';
   $valstr = '';
   if (is_array($colsarray)) {
-    $strcols = implode($colsarray, ",");
+    $strcols = DB_TILDE . implode($colsarray, DB_TILDE . "," . DB_TILDE) . DB_TILDE;
   } else {
     $strcols = implode($cols, ",");
   } 
@@ -80,8 +137,11 @@ function addRecord($apptable, $recordarray, $colsarray=null) {
   $q = "INSERT INTO `$apptable` ($strcols) VALUES ($recstr); ";
 
   $result = $db->query($q); 
-
 } 
+
+function addRecordBasic($apptable, $array) {
+  return addRecord($apptable, $array, array('from', 'to', 'meta', 'date'));
+}
 
 function getCount($expr) {
   global $db;
@@ -108,6 +168,16 @@ function getRow($expr) {
     return $r;
   }
   return $null;
+}
+
+function getRows($expr) {
+  global $db;
+  $q = $db->query($expr);
+  $rows = array();
+  while ($row = $q->fetchArray()) {
+    $rows[]=$row;
+  }
+  return $rows;
 }
 
 ?>

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title><?php echo $application->title; ?></title>
+<title><?php echo $application->applicationTitle; ?></title>
 <?php require_once("base.php"); ?>
 <?php require_once("../bootstrap.php"); ?>
 </head>
@@ -29,14 +29,22 @@
     <h3>List of conferences from this application</h3>
     <?php if ($conferencesCnt > 0): ?>
     <table>
+      <th>Conference Id</th>
       <th>From</th>
-      <th>To</th>
-      <th>Text</th>
-    <?php while($entry = $messages->fetchArray()): ?>
+      <th>Gather Codes (access)</th>
+    <?php while($conference = $conferences->fetchArray()): 
+       $conferenceData = getRows(sprintf("SELECT * FROM `%s` WHERE conferenceId = '%s'", $application->applicationDataTable, $conference['meta']));
+       $codes = "";
+       foreach ($conferenceData as $cd) {
+          $codes .= $cd['receiverCallFrom'] .":". $cd['code'] . "<br />";
+       }
+
+
+    ?>
        <tr> 
-         <td><?php echo $entry['from']; ?></td>
-         <td><?php echo $entry['to']; ?></td>
-        <td><?php echo $entry['meta']; ?></td>
+         <td><?php echo $conference['meta']; ?></td>
+         <td><?php echo $conference['from']; ?></td>
+        <td><?php echo $codes; ?></td>
        </tr>
     <?endwhile; ?> 
     </table>

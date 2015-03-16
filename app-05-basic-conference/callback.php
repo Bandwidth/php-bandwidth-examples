@@ -2,42 +2,89 @@
 require_once("../config.php");
 require_once("./config.php");
 
-// Callback for Basic Conference
-// this should attempt to call each
-// recipient afterwards notify all recipients of
-// a join or exit
 
-// Important: When adding calls this
-// conference will retrieve your last confenrence
-// as a reuslt do NOT run this example and another conference simulataneuly
+// Basic Conferences 
+//
+// This applications provides basic implementation of conferences
+// you will need to initiate this conference by dialing
+// in from the number provided in application.json. Also
+// the numbers listed in conferenceAttendees will be used
+// to validate whos allowed in.
 
+
+// Implementors Note:
+// When adding calls this conference will retrieve your last confenrence
+// as a result do NOT run this example and another conference simulataneuly
+
+
+// Set up the client
 $client = new Catapult\Client;
 
-// This listens for a conference 
-// member joining
-//$event = new Catapult\Event;
-$event = new \stdClass;
-$event->from = "+22332";
-$event->id = "c-id";
 
-$event->eventType = "incoming";
+// Important if you want to accept incoming
+// calls automatically change this to AnswerCallEvent
+// this will only work on applications that have
+// auto 'incoming' to off
+$inboundCallEvent = new Catapult\IncomingCallEvent;
+// comment out if using 
+// auto incoming
+// $inboundCallEvent = new Catapult\AnswerCallEvent;
+$conferenceMemberEvent = new Catapult\ConferenceMemberEvent;
+$errorCallEvent = new Catapult\ErrorCallEvent;
+$timeoutCallEvent = new Catapult\TimeoutCallEvent;
+$hangupCallEvent = new Catapult\HangupCallEvent;
+
 // our call is incoming
 // this means it is time to answer
 // and start our conference!
-if ($event->eventType == "incoming") {
-    $call = new Catapult\Call($event->id);
+if ($inboundCallEvent->isActive()) {
 
-    if ($event->from == $application->conferenceFromNumber) {
-      $call->answer();
+    // Step 1
+    //
+    // Take incoming calls and 
+    // validate them agaisnt our conferenceFromNumber
+    //
+    $call = new Catapult\Call($inboundCallEvent->callId);
+
+    // Using one number to dial 
+    // in is best in these cases
+    // as it would only be
+    // started by one member
+    if ($call->to == $application->conferenceFromNumber ) {
+
+      // Important
+      // 
+      // when using the manual
+      // approach this is needed
+      if ($call->state == Catapult\CALL_STATES::started) {
+        $call->accept();
+      }
+
+      $call->speakSentence(array(
+        "sentence" => $application->conferenceInitiate,
+        "voice" => $application->conferenceVoice,
+        "gender" => $application->conferenceVoiceGender
+      ));
 
       // we can now 
       // start our conference
       $conference = new Catapult\Conference(array(
-        "callId" => $call->id
+        "from" => $call->to
+        //"callId" => $call->id
       ));
-      // save this conference
+
+      // Optional 
+      //
+      // save this conference's basic data
       // to our database
-      addRecord($application->datatable, array($call->from, $conference->id), array("callFrom", "conferenceId"));
+      $date = new DateTime;
+      addRecordBasic($application->applicationTable, array($call->from, $call->to, $conference->id, $date->format("Y-m-d")));
+
+      // Important
+      //
+      // we need to save the conference's
+      // data in our database
+      addRecord($application->applicationTable, array($call->from, $conference->id), array("callFrom", "conferenceId"));
 
    } else {
 
@@ -45,21 +92,32 @@ if ($event->eventType == "incoming") {
      // we need to make sure
      // our conference is started
      // and that this is a valid user
+
+
+      // Important
+      //
+      // when using the manual approach
+      // we need to accept the call
+     if ($call->state == Catapult\CALL_STATES::started) {
+      $call->accept();
+     }
   
      $last = getRow(sprintf(
       "SELECT * FROM `%s` WHERE callFrom = '%s'",
-      $call->from)); 
+      $application->applicationDatable, $call->from)); 
      $conferences = new Catapult\Conference($last['conferenceId']);
-      
+     
+
+      // Optional 
+      //
+      // this conference checks whether
+      // the caller is from our accepted
+      // list. This is however optional
      if (in_array($event->from, $application->conferenceAttendees)) {
 
-       /**
-        * accept this
-        * user and add him to
-        * our conference
-        */
-
-        $call->accept();
+        // accept this
+        // user and add him to
+        // our conference
         $conference->addMember(array(
           "joinTone" => false,
           "leaveTone" => false,
@@ -74,17 +132,43 @@ if ($event->eventType == "incoming") {
        $call->accept();
        $call->speakSentence(array(
           "sentence"=>$application->conferenceNoEntry,
+          "gender" => $application->conferenceVoiceGender,
           "voice"=>$application->conferenceVoice
        ));
-        
      }
+
+     // Optional
+     //
+     // we can add the members
+     // entry in our database 
+     // 
+     addRecord($application->applicationDatatable, array($conference->id, $call->id, $call->from), array("conferenceId", "callId", "callFrom"));
    }
-} else if ($eventType == "conference-member") {
+} 
+
+if ($conferenceMemberEvent->isActive()) {
+
+  // Step 2.
+  // once the conference member
+  // has been accepted check 
+  // which state the member is in
+  // this can be in either active or complete.
+  // Here we display a message according
+  // to it.
 
   // use the conference voice
   // for speaking 
+  $call = new Catapult\Call($conferenceMemberEvent->callId);
   $voice = new Catapult\Voice($application->conferenceVoice);
-  $conference = new Catapult\Conference($event->id);
+  $conference = new Catapult\Conference($conferenceMemberEvent->conferenceId);
+  $conferenceMember  = new Catapult\ConferenceMember($conference->id, $conferenceMemberEvent->memberId);
+
+  // Recommended
+  //
+  // we should stop all voice
+  // for this call.
+  $call->stopSentence();
+
 
   // how many conference members
   // are there
@@ -92,22 +176,49 @@ if ($event->eventType == "incoming") {
 
   // is this for a conference
   // member joining or leaving
-  if ($event->state == "active") {
+  if ($conferenceMemberEvent->state == Catapult\CONFERENCE_MEMBER_STATES::STARTED) {
     $conference->speakSentence(array(
       "voice" => $voice,
+      "gender" => $application->conferenceVoiceGender,
       "sentence" => "A user has joined. There is now $activeMembers in the conference"
     ));
-  } else if ($event->state == "complete") {
+  } else if ($conferenceMemberEvent->state == Catapult\CONFERENCE_MEMBER_STATES::DONE) {
 
     $conference->speakSentence(array(
       "voice" => $voice,
+      "gender" => $application->conferenceVoiceGender,
       "sentence" => "A user has left. There is now $activeMembers in the conference"
     ));
-
-    $db->query(sprintf(
-      "DELETE FROM `%s` WHERE callFrom = '%s'", $application->datatable, $call->from
-    ));
-
-
   }
 } 
+
+if ($errorCallEvent->isActive()) {
+  // Recommended
+  //
+  // treat all error call events  
+  // Note: you can use Catapult\CALL_ERROR
+  // in doing this.
+  // i.e: 
+  // if ($errorCallEvent->error == Catapult\CALL_ERROR::NORMAL_CLEARING) {
+  // // .. treat normal clearing error here
+  //
+  //}
+}
+
+if ($timeoutCallEvent->isActive()) {
+  // Recommended
+  //
+  // treat all timeoutCallEvents
+  $call = new Catapult\Call($timeoutCallEvent->callId);
+  $call->hangup();
+}
+
+if ($hangupCallEvent->isActive()) {
+  // Recommended
+  //
+  // treat a hangup we should probably cleanup
+  // any user data. since this is a basic
+  // conference and we're not storing any
+  // we aren't doing anything here.
+}
+  

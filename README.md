@@ -3,6 +3,8 @@ Example Applications For Bandwidth PHP SDK
 
 Includes:
 -----------------------------------------------------
+* coming soon
+
   - SMS Auto Replies
   - Call Transfers 
   - Voice Reminders
@@ -10,6 +12,8 @@ Includes:
   - Basic Conference
   - Advanced Conference
   - Keypad Simulator
+  - BaML Call Transfers *
+  - SIP Domain & Endpoints *
 
 
 Setup
@@ -24,10 +28,28 @@ information relative to the application. To run the app, please
 update this. You will also need to ensure numbers are
 in E.164 format and the Voices are valid for Catapult v1
 
+3. Under your Catapult Account we've used a seperate Application
+for each application listed. You can do so as well by logging
+into your Catapult Account and making the applications. You will
+need to ensure:
+
+  1. Call URLs are setup properly 
+     this is the Callback URL please   
+     point this to the callback.php (each application has one)
+  
+  2. Make sure the numbers used in the application.json
+     belong to the same application. 
+
+4. To start testing please make sure you have
+ran an application once it will create all the table
+for these demos
+
+
+
 Deploying
 =========================================================
 
-Once you've setup your stuff you can deploy. Currently
+Once you've setup your applications you can deploy. Currently
 tested with Heroku and Amazon Elastic Beanstalk.
 
 
@@ -36,7 +58,10 @@ Heroku
 you will need to create an application you can then deploy 
 
   heroku create "php-bandwidth-examples"
+  heroku config:set ON_HEROKU=1
   git push heroku master
+
+
 
 
 AWS
@@ -44,6 +69,8 @@ AWS
 
   eb start
   git aws.push
+
+
 
 
 
@@ -132,13 +159,62 @@ Setting up:
    2. Needs a valid incoming number 
    3. Existing start and intermediatte speech texts
 
+App 008 BaML Call Transfers
+--------------------------------------------------------
+
+This will generate verbs in Bandwidth Markup Language
+the verbs will then be used to update your calls. In the log
+you will be able to see all the markup generated
+
+Setting up:
+We have listed
+  1. Enter a valid initial number and to number
+  2. Initiate a call
+
+App 009  SIP Domains 
+-------------------------------------------------------
+
+This application creates domains and endpoints using
+Catapult. It will provide an interface to do so. Through it
+you will be able to see step approach of creating
+these domains as well as integrating them with the endpoints.
+
+Setting Up:
+  1. Specify valid names to the interface 
+  2. Use these domains in creating your endpoints 
+
+Docs
+---------------------------------------------------------
+
+These applications are documented in the following way:
+  * Steps (these are things that are absolutely needed for the application to run)
+  * Important (things that we need)
+  * Recommendation (these are branches that are optional however highly recommended)
+  * Optional (implementors choice)
+
+Other:
+
+an Implementors Note will describe the segment 
+and whether there are things they should be concerned with
+
+a Tip is a hint on which objects to use
+
+Validation will describe how to validate
+using the Catapult library
 
 Other Notes
 ===========================================================
 
 These examples need:
 
-Catapult PHP SDK 0.7.0
+Catapult PHP SDK >= 0.7.3
 SQLite3
 PHP 5.3.0
+Apache HTTPd >= 2.2 OR nGinx 
 
+
+When using Heroku:
+  ClearDB with MySQL
+
+AWS:
+  MySQL (needs testing)

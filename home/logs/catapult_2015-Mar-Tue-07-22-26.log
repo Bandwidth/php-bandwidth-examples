@@ -1,0 +1,2 @@
+/projects/php-bandwidth-examples/home/index.php (line: 10) - APPLICATION: [Mar/03/15:19:22:26] - function: balance not found in Catapult\Account
+/projects/php-bandwidth-examples/home/index.php (line: 10) - APPLICATION: [Mar/03/15:19:23:06] - credentials.json was not found in directory /var/www/projects/php-bandwidth-examples/credentials.json

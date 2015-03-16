@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.8" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sqlite3</name>
+ <channel>pecl.php.net</channel>
+ <summary>PHP extension to manage SQLite3 databases (http://www.sqlite.org)</summary>
+ <description>This extension allows PHP scripts to query/update SQLite3 databases.</description>
+ <lead>
+  <name>Bruno Fleisch</name>
+  <user>bfleisch</user>
+  <email>bfleisch@users.sourceforge.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2007-04-04</date>
+ <time>16:17:00</time>
+ <version>
+  <release>0.5</release>
+  <api>0.5</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license>revised BSD license</license>
+ <notes>See  included ChangeLog for details...</notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="8b46492e39c8b361998cd8ae4dc5d37e" name="contrib/php4-sqlite3.spec" role="data" />
+   <file md5sum="ce9fdaa8e0e4d799579c3eacab5fe738" name="contrib/php5-sqlite3.spec" role="data" />
+   <file md5sum="3377e0c51c7d141b30c7108adb5b022c" name="DB/sqlite3.php" role="php" />
+   <file md5sum="57128f8d6627b05e2389806be1db7a81" name="examples/example1.php" role="data" />
+   <file md5sum="d44c9564dcd279e1620332af36db7fe6" name="examples/example2.php" role="data" />
+   <file md5sum="2f8e4adbe53c1c8087059b3b82bc523a" name="examples/example3.php" role="data" />
+   <file md5sum="02dc970c8203e8ec00aea8c1666f003f" name="examples/example4.php" role="data" />
+   <file md5sum="879e509fa8d079f746af94ec21c61aad" name="examples/example5.php" role="data" />
+   <file md5sum="3b3fa0b4fddd757118ac057d77c320bd" name="ChangeLog" role="data" />
+   <file md5sum="8205bb9c7e3343c429f4e13e40bcd26c" name="config.m4" role="src" />
+   <file md5sum="e0b234e11971991acbaca214c7653d43" name="COPYING" role="data" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL" role="data" />
+   <file md5sum="a5f0267c0ecdb997344ada7a981cee25" name="php_sqlite3.c" role="src" />
+   <file md5sum="c0023d2d3d36cb93d34a08fa7c396cce" name="php_sqlite3.h" role="src" />
+   <file md5sum="f990af5f9a99c0234cf83fe2897bed46" name="README" role="data" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>sqlite3</providesextension>
+ <extsrcrelease />
+</package>

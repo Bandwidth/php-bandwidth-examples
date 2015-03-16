@@ -1,11 +1,16 @@
 {
   "applicationName": "Basic Voice Mail",
-  "bandwidthUserId": "u-mmuxnl7o2u2ijsdg2hrwdsq",
-  "bandwidthToken": "t-zer7uzfxvsvcbmlkqx6zgsq",
-  "bandwidthTokenSecret": "o5ky4rsoacdd2oqvzl4cy6j3uqv6zpgjs3izbba",
-  "voicemailNumber": "+1333",
-  "voicemailSentence": "Please leave a message at the beep",
-  "voicemailFile": "http://example.com/files/beep.wav",
-  "voicemailVoice": "Jorge",
+  "applicationTable": "Basic Voice Mail",
+  "applicationDataTable": "Basic Voice Mail Data",
+  "voicemailNumber": "+18726661384",
+  "voicemailSentence": "This person is busy. Please leave a message at the beep. When you are done please hit pound or hangup",
+  "voicemailFile": "http://159.100.186.106/projects/php-bandwidth-examples/app-04-basic-voicemail/files/beep.wav", 
+  "voicemailVoice": "Bridget",
+  "voicemailGender": "female",
+  "voicemailInvalid": "Sorry the digit you pressed was invalid",
+  "voicemailTimeout": "Sorry the call timed out",
+  "voicemailThanks": "Thank you we have saved the recordintg. Goodbye",
+  "voicemailIdentifier": "voice-mail-", 
+  "voicemailTerminateDigit": "#",
   "callbackUrl": ""
 }

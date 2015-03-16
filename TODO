@@ -1,0 +1,90 @@
+Catapult SDK Examples Todo
+===================================================
+
+below describes what the test progress is as well as 
+features may be included in the listed
+appliciation as well as what we've put in:
+
+App 001
+--------------------------------------------------
+
+Add documentations any concerns when using
+auto replies. Please read callback.php it will
+better describe any issues, things to avoids
+when implementing .
+
+- Has Been Testing
+
+App 003
+---------------------------------------------------
+
+Features
+Work on the voice reminders new approach should
+follow:
+
+- Speak on incoming call this should include
+an alert and greeting
+
+- Prompt for date followed by gather terminating
+key. Each should be entered seperate seperatly.
+
+- Once a voice reminder is set, at the specified time,
+the application should send the message to the remindee
+
+Application demonstrates the using of recordings as
+they are made on catapult servers
+
+Needs Testing
+
+App 004
+-------------------------------------------------
+
+Features
+Application 4 should demonstrate the saving of media
+files on Catapult servers, using the media object.
+
+Needs Testing
+
+
+App 005
+-------------------------------------------------
+Basic conference 
+
+App 006
+-------------------------------------------------
+
+Application 006 on success should provide a gather
+code for each attendee make sure each trial returns
+the needed codes and fills the database accordingly
+
+App 007
+---------------------------------------------------
+
+replace SQlite usage with Catapult Gathers. Use str_split
+and index positioning in place of current SQLite level
+storing
+
+
+Tests
+--------------------------------------------------
+
+
+Test each application seperatly as part of one test
+applications should output the  information in SQlite
+as well as conduct the standard validation practices
+as defined in base.php
+
+
+Directories, etc
+-------------------------------------------------
+
+Make sure each application is setup properly with
+the same directory order where there is one
+top level config and one application config
+
+
+MVC
+-------------------------------------------------
+
+Migrate to Yii 2.0 as it has good support for active
+record

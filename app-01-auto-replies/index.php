@@ -1,6 +1,6 @@
 <html>
 <head>
-<title><?php echo $application->title; ?></title>
+<title><?php echo $application->applicationTitle; ?></title>
 <?php require_once("base.php"); ?>
 <?php require_once("../bootstrap.php"); ?>
 </head>

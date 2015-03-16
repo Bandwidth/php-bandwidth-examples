@@ -9,3 +9,13 @@ To setup voice mail make sure:
    https://catapult.inetwork.com/docs/api-docs/calls/
 
   2. You need to also setup the callback url to your servers
+
+  3. Please make sure you specify your voicemail number
+
+Note:
+
+This application will receive the media from Catapult's server
+and make and rename it to something unique and identifiable by a
+human. As our last application (003) we are still using the recording
+event.
+
