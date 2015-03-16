@@ -180,7 +180,7 @@ function addRecord($apptable, $recordarray, $colsarray=null) {
   } 
   $recstr = preg_replace("/,$/", "", $recstr);
 
-  $q = "INSERT INTO `$apptable` ($strcols) VALUES ($recstr); ";
+  $q = "INSERT INTO " . DB_TILDE . "apptable" . DB_TILDE . "($strcols) VALUES ($recstr); ";
 
   $result = $db->query($q); 
 } 
@@ -224,6 +224,13 @@ function getRows($expr) {
     $rows[]=$row;
   }
   return $rows;
+}
+
+function getQuery($expr) {
+  global $db;
+  $q = $db->query($expr);
+
+  return $q;
 }
 
 
