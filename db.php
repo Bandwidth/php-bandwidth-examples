@@ -94,8 +94,14 @@ if (!$cdb) {
 
   }
 
+
 }
 
+// add exception
+// for Heroku
+if ($db->db == null || !$db->db) {
+  exit("To run with Heroku please add ClearDB to your application");
+}
 
 $cols = array(
   "`from`", "`to`", "`meta`", "`date`"
