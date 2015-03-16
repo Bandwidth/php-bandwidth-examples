@@ -121,7 +121,7 @@ if (class_exists(SQLite3)) {
 
 
 $cols = array(
-  "`from`", "`to`", "`meta`", "`date`"
+  "from", "to", "meta", "date"
 );
 
 /**
@@ -139,10 +139,10 @@ foreach (array_merge($applications, $tables) as $app) {
       
     } else {
       $sql = "CREATE TABLE " . $app['table'] . " (
-        `from` VARCHAR(255),
-        `to` VARCHAR(255),
-        `meta` VARCHAR(255),
-        `date` VARCHAR(255) 
+        from VARCHAR(255),
+        to VARCHAR(255),
+        meta VARCHAR(255),
+        date VARCHAR(255) 
       );";
     }
 
