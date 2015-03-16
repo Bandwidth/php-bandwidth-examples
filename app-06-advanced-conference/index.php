@@ -33,7 +33,7 @@
       <th>From</th>
       <th>Gather Codes (access)</th>
     <?php while($conference = $conferences->fetchArray()): 
-       $conferenceData = getRows(sprintf("SELECT * FROM `%s` WHERE conferenceId = '%s'", $application->applicationDataTable, $conference['meta']));
+       $conferenceData = getRows(sprintf("SELECT * FROM %s WHERE conferenceId = '%s'", $application->applicationDataTable, $conference['meta']));
        $codes = "";
        foreach ($conferenceData as $cd) {
           $codes .= $cd['receiverCallFrom'] .":". $cd['code'] . "<br />";

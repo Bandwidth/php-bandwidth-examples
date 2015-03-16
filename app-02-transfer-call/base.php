@@ -16,12 +16,12 @@ $client = new Catapult\Client;
 
 // get the application's calls (so far),  from 
 // our database
-$calls = $db->query(sprintf(
-  "SELECT * FROM `%s` 
+$calls = getQuery(sprintf(
+  "SELECT * FROM %s 
 ", $application->applicationTable)); 
 
 $callCnt = getCount(sprintf(
-  "SELECT COUNT(*) as count FROM `%s`", $application->applicationTable
+  "SELECT COUNT(*) as count FROM %s", $application->applicationTable
 ));
 
 $status = 'error';

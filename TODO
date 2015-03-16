@@ -94,9 +94,15 @@ Make sure each application is setup properly with
 the same directory order where there is one
 top level config and one application config
 
+Setup
+------------------------------------------------
 
-MVC -- Maybe
--------------------------------------------------
+The following need to checking when ran:
 
-Migrate to Yii 2.0 as it has good support for active
-record
+- Catapult Client has been setup properly
+   initiate demo request warn if not properly 
+   connected
+
+- Database needs to be setup
+   by either using SQLite or Heroku variant
+

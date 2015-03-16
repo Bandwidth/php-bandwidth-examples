@@ -103,7 +103,7 @@ if ($inboundCallEvent->isActive()) {
      }
   
      $last = getRow(sprintf(
-      "SELECT * FROM `%s` WHERE callFrom = '%s'",
+      "SELECT * FROM %s WHERE callFrom = '%s'",
       $application->applicationDatable, $call->from)); 
      $conferences = new Catapult\Conference($last['conferenceId']);
      

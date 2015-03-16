@@ -113,7 +113,7 @@ if (class_exists(SQLite3)) {
   // still try to run, warn and store
   // no data
   if (!$db->isConnected()) {
-    header("location: ./home/error.php");
+    header("location: ./home/error.db.php");
   }
 
 
@@ -180,7 +180,7 @@ function addRecord($apptable, $recordarray, $colsarray=null) {
   } 
   $recstr = preg_replace("/,$/", "", $recstr);
 
-  $q = "INSERT INTO " . DB_TILDE . "apptable" . DB_TILDE . "($strcols) VALUES ($recstr); ";
+  $q = "INSERT INTO " . DB_TILDE . "$apptable" . DB_TILDE . "($strcols) VALUES ($recstr); ";
 
   $result = $db->query($q); 
 } 

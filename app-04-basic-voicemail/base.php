@@ -21,8 +21,8 @@ $client = new Catapult\Client;
 
 // get all the voicemail so far
 //
-$voicemail = $db->query("SELECT * FROM `" . $application->applicationTable. "`; ");
-$voicemailCnt = getCount(sprintf("SELECT COUNT(*) as count FROM `%s`; ", $application->applicationTable));
+$voicemail = getQuery(sprintf("SELECT * FROM %s", $application->applicationTable));
+$voicemailCnt = getCount(sprintf("SELECT COUNT(*) as count FROM %s; ", $application->applicationTable));
 
 $status = 'error';
 

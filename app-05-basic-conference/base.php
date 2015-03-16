@@ -16,8 +16,8 @@ $client = new Catapult\Client;
 
 // First check what's in our database
 // this keeps all our conferences together
-$conferences = $db->query(sprintf("SELECT * FROM `%s`; ", $application->applicationTable));
-$conferencesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM `%s`;", $application->applicationTable));
+$conferences = getQuery(sprintf("SELECT * FROM %s; ", $application->applicationTable));
+$conferencesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM %s;", $application->applicationTable));
 
 // Validation 1
 //

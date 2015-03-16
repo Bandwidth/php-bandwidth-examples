@@ -164,7 +164,7 @@ if ($inboundCallEvent->isActive()) {
      sleep(5);
 
      $last = getRow(sprintf(
-      "SELECT * FROM `%s` WHERE callFrom = '%s'",
+      "SELECT * FROM %s WHERE callFrom = '%s'",
       $call->to)); 
     
       // Important
@@ -238,7 +238,7 @@ if ($gatherCallEvent->isActive()) {
 
   if ($state == "complete") {
    $last = getRow(sprintf(
-      "SELECT * FROM `%s` WHERE callFrom = '%s' AND receiverCallFrom = '%s'",
+      "SELECT * FROM %s WHERE callFrom = '%s' AND receiverCallFrom = '%s'",
       $application->datatable, $call->to, $call->from)); 
 
     $code = $last['code']; 
@@ -271,7 +271,7 @@ if ($gatherCallEvent->isActive()) {
       // update the SQlite data so 
       // everything is viewable 
       // from the interface
-      updateRow(sprintf("UPDATE `%s` SET attended = 1 WHERE receiverCallFrom = '%s'; ", $call->from));
+      updateRow(sprintf("UPDATE %s SET attended = 1 WHERE receiverCallFrom = '%s'; ", $call->from));
 
 
     } else {
@@ -308,7 +308,7 @@ if ($conferenceMemberEvent->isActive()) {
    $conference = new Catapult\Conference($conferenceMember->conferenceId);
 
    $name = getRow(sprintf(
-      "SELECT name FROM `Advanced Conferences Data` WHERE callFrom = '%s' AND conferenceId = '%s';", $call->from, $conference->id
+      "SELECT name FROM Advanced Conferences Data WHERE callFrom = '%s' AND conferenceId = '%s';", $call->from, $conference->id
    ));
 
 
@@ -352,7 +352,7 @@ if ($hangupCallEvent->isActive()) {
   // get our basic data 
   $call = new Catapult\Call($hangupCallEvent->callId);
   $last = getRow(
-    sprintf("SELECT * FROM `%s`; ", $application->applicationTable)
+    sprintf("SELECT * FROM %s; ", $application->applicationTable)
   );
   $conference = new Catapult\Conference($last['conferenceId']);
 
@@ -368,7 +368,7 @@ if ($hangupCallEvent->isActive()) {
     // display it
 
     //$db->query(sprintf(
-    //  "DELETE FROM `%s` WHERE conferenceId = '%s'; ", $application->applicationDataTable, $conference->id
+    //  "DELETE FROM %s WHERE conferenceId = '%s'; ", $application->applicationDataTable, $conference->id
     //));
 
   } else {
@@ -377,7 +377,7 @@ if ($hangupCallEvent->isActive()) {
      // cleaning a members
      // data is recommended.
     //$db->query(sprintf(
-    //  "DELETE FROM `%s` WHERE conferenceId = '%s' AND callFrom = '%s'", $application->datatable, $conference->id, $hangupCallEvent->from
+    //  "DELETE FROM %s WHERE conferenceId = '%s' AND callFrom = '%s'", $application->datatable, $conference->id, $hangupCallEvent->from
     //));
   } 
    

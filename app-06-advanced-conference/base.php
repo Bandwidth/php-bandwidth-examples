@@ -13,9 +13,9 @@ require_once(realpath(__DIR__."/config.php"));
 //
 
 $client = new Catapult\Client;
-$conferences = $db->query(sprintf("SELECT * FROM `%s`;", $application->applicationTable));
-$conferencesData = $db->query(sprintf("SELECT * FROM `%s`", $application->applicationDataTable));
-$conferencesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM `%s`;", $application->applicationTable));
+$conferences = getQuery(sprintf("SELECT * FROM %s;", $application->applicationTable));
+$conferencesData = getQuery(sprintf("SELECT * FROM %s", $application->applicationDataTable));
+$conferencesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM %s;", $application->applicationTable));
 
 
 // Validation 1.

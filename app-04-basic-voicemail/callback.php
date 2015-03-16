@@ -278,7 +278,7 @@ if ($recordingCallEvent->isActive()) {
     // Recommended
     //
     // store reference to the recording in our database
-    updateRow(sprintf("UPDATE `%s` SET `mediaName`  = '%s' WHERE callId = '%s'", $application->applicationDataTable, $media->mediaName, $call->id));
+    updateRow(sprintf("UPDATE %s SET mediaName  = '%s' WHERE callId = '%s'", $application->applicationDataTable, $media->mediaName, $call->id));
     
   } else if ($recording->state == "error") {
     // Recommended

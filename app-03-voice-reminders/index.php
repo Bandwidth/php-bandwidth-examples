@@ -55,7 +55,7 @@
         <?php while ($reminder = $reminders->fetchArray()): 
             // now we need to get the
             // reminder data for this call
-            $reminderData = getRow(sprintf("SELECT * FROM `%s` WHERE callId = '%s'; ", $application->applicationDataTable, $reminder['meta']));
+            $reminderData = getRow(sprintf("SELECT * FROM %s WHERE callId = '%s'; ", $application->applicationDataTable, $reminder['meta']));
             $date = makeDate($reminderData);
           ?>
           <tr>

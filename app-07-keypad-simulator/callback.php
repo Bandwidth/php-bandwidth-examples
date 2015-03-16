@@ -81,7 +81,7 @@ if ($hangupCallEvent->isActive()) {
   // we should probably clean up our intermiediatte data here
   // 
   // for this demo, given it is on display we won't
-  //$db->query(sprintf("DELETE FROM `%s` WHERE callId = '%s'", $application->applicationDataTable, $hangupCallEvent->from));
+  //$db->query(sprintf("DELETE FROM %s WHERE callId = '%s'", $application->applicationDataTable, $hangupCallEvent->from));
 }
 
 if ($dtmfCallEvent->isActive()) {
@@ -141,7 +141,7 @@ if ($dtmfCallEvent->isActive()) {
       $call->hangup();
 
       // finalize and clean our data
-      $db->query(sprintf("DELETE FROM `%s` WHERE callId = '%s'",  $application->applicationDataTable, $call->id));
+      $db->query(sprintf("DELETE FROM %s WHERE callId = '%s'",  $application->applicationDataTable, $call->id));
 
 
    }
@@ -151,7 +151,7 @@ if ($dtmfCallEvent->isActive()) {
    // need to know where we are in the simulator
    // get the count of levels
    // the user has traversed
-   $level = getCount(sprintf("SELECT COUNT(*) as count FROM `Keypad Simulator Data` WHERE callId = '%s'",$call->id));
+   $level = getCount(sprintf("SELECT COUNT(*) as count FROM Keypad Simulator Data WHERE callId = '%s'",$call->id));
 
    // add this key in our records only
    // if its a valid one for context
@@ -167,7 +167,7 @@ if ($dtmfCallEvent->isActive()) {
        // in this keypad simulation
        $collection = array(); 
        for ($i = 0; $i <= $level; $i ++) {
-          $ltext = $db->query(sprintf("SELECT * FROM `Keypad Simulator Data` WHERE callId = '%s' AND level = '%s'",$call->id, $i));
+          $ltext = $db->query(sprintf("SELECT * FROM Keypad Simulator Data WHERE callId = '%s' AND level = '%s'",$call->id, $i));
           while ($rec = $ltext->fetchArray()) {
             $key = $rec['key'];
             $context = $context->$key;
@@ -221,7 +221,7 @@ if ($dtmfCallEvent->isActive()) {
             //
             // for the demo we will keep this available
 
-            $db->query(sprintf("DELETE FROM `%s` WHERE callId = '%s'",  $application->applicationDataTable, $call->id));
+            $db->query(sprintf("DELETE FROM %s WHERE callId = '%s'",  $application->applicationDataTable, $call->id));
 
             exit(1);
          } else {

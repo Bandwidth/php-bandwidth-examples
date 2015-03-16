@@ -10,9 +10,9 @@ require_once(__DIR__."/config.php");
 // should look in callback.php
 
 $client = new Catapult\Client;
-$simulations = $db->query(sprintf("SELECT * FROM `%s`; ", $application->applicationTable));
-$simulationsData = $db->query(sprintf("SELECT * FROM `%s`; ", $application->applicationDataTable));
-$simulationsCnt = getCount(sprintf("SELECT COUNT (*) as count FROM `%s`; ", $application->applicationTable));
+$simulations = getQuery(sprintf("SELECT * FROM %s; ", $application->applicationTable));
+$simulationsData = getQuery(sprintf("SELECT * FROM %s; ", $application->applicationDataTable));
+$simulationsCnt = getCount(sprintf("SELECT COUNT (*) as count FROM %s; ", $application->applicationTable));
 
 $status = "";
 

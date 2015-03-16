@@ -25,7 +25,7 @@ $client = new Catapult\Client;
 // our auto reply text. So make sure its something unique.
 
 // uses sqlite in doing
-$messages = $db->query(sprintf("SELECT * FROM %s;", $application->applicationTable));
+$messages = getQuery(sprintf("SELECT * FROM %s;", $application->applicationTable));
 $messagesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM %s", $application->applicationTable));
 
 
