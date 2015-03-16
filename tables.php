@@ -117,20 +117,6 @@ $tables = array(
         key VARCHAR(255)
     ); ",
     "type" => "data"
-  ),
-  array(
-    "table" => "baml_call_transfers_data",
-    "schema" => "CREATE TABLE baml_call_transfers_data (
-      verb VARCHAR(255),
-      markup VARCHAR(255)
-    ); ",
-    "type" => "data"
-  ),
-  array(
-    "table" => "sip_domains_data",
-    "schema" => "CREATE TABLE sip_domains_data ( 
-    ); ",
-    "type" => "data"
   )
 );
 

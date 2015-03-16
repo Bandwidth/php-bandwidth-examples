@@ -171,7 +171,7 @@ function addRecord($apptable, $recordarray, $colsarray=null) {
   $recstr = '';
   $valstr = '';
   if (is_array($colsarray)) {
-    $strcols = DB_TILDE . implode($colsarray, DB_TILDE . "," . DB_TILDE) . DB_TILDE;
+    $strcols = RESERVED . implode($colsarray, RESERVED . "," . RESERVED) . RESERVED;
   } else {
     $strcols = implode($cols, ",");
   } 
@@ -180,8 +180,8 @@ function addRecord($apptable, $recordarray, $colsarray=null) {
   } 
   $recstr = preg_replace("/,$/", "", $recstr);
 
-  $q = "INSERT INTO " . DB_TILDE . "$apptable" . DB_TILDE . "($strcols) VALUES ($recstr); ";
-
+  $q = "INSERT INTO " . RESERVED . "$apptable" . RESERVED . "($strcols) VALUES ($recstr); ";
+ 
   $result = $db->query($q); 
 } 
 

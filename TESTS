@@ -1,0 +1,17 @@
+Catapult Bandwidth Examples Tests
+====================================================
+
+A list of setups this has been tested on.
+
+These examples have been tested on:
+  
+  Heroku with
+  Apache 2.2 
+ 
+
+Databases: 
+  Heroku Variants:
+    PostGresQL
+
+  Linux (local) with Apache >= 2.2, redHat:
+    SQLite3
