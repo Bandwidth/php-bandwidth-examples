@@ -58,7 +58,7 @@ try {
     $username = $cleardb['username'];
     $password = $cleardb['password'];
     $db = substr($cleardb, 1);
-    $host = $cleardb['host']
+    $host = $cleardb['host'];
 
     $db = new SQLite3Fallback($host, $username, $password, $db);
   } else {
@@ -66,7 +66,9 @@ try {
     // make no assumption as to 
     // what we're using
     //
-    //  TODO
+    //
+    //
+    //  TODO needs aws support
 
   }
 
