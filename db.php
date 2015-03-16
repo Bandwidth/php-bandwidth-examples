@@ -4,7 +4,6 @@ require_once(__DIR__."/bootstrap.php");
 require_once(__DIR__."/tables.php");
 require_once(__DIR__."/config.php");
 
-define("DB_TILDE","`");
 $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
 /**
  * Basic DB wrapper around Catapult examples
@@ -35,14 +34,14 @@ $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
 // lightppd
 if (class_exists(SQLite3)) {
   // this means we're not running
-  // with heroku cleardb, so we will
-  // try SQLite3 when the class isn't
-  // found try basic PDO
+  // with heroku cleardb, nor do we need
+  // mysql so we will run with
+  // the native SQLite3 wrapper
   
-  // heroku by default will stop
-  // running without this:
 
    require_once(__DIR__."/db.sqlite.php");
+
+   define("DB_TILDE", "`");
 } else {
   // either heroku or
   // without SQlite3
@@ -73,6 +72,7 @@ if (class_exists(SQLite3)) {
     // support 
     $postdb = extract(parse_url($heroku_post));
     $db = new SQLite3Fallback2("user=$user password=$pass host=$host dbname=" . substr($path, 1));
+    define("DB_TILDE", "");
   }
 
   elseif ($heroku_cdb) {
@@ -86,6 +86,11 @@ if (class_exists(SQLite3)) {
     $host = $cleardb['host'];
 
     $db = new SQLite3Fallback($host, $username, $password, $db);
+
+    // for clearDB
+    // we use mySQL which
+    // needs the infixes for reserved variables
+    define("DB_TILDE", "`");
   } else {
     // simple mysqli fallback
     // make no assumption as to 
@@ -99,6 +104,7 @@ if (class_exists(SQLite3)) {
 
     $db = new SQLite3Fallback($host, $username, $password, $db);
 
+    define("DB_TILDE", "`");
   }
 
 
@@ -126,7 +132,7 @@ $cols = array(
  * the data in each application
  */
 foreach (array_merge($applications, $tables) as $app) {
-  $res = $db->query("SELECT * FROM `" . $app['name'] . "`");
+  $res = $db->query("SELECT * FROM " . DB_TILDE . "" . $app['name'] . "".  DB_TILDE);
   if (!$res) {
     if (isset($app['schema'])) {
       $sql = $app['schema'];

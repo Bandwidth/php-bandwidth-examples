@@ -73,6 +73,7 @@ class SQLite3Fallback2Query {
 class SQLite3Fallback2 extends SQLiteFallbackCheck {
   public function __construct($connection) { 
     $this->db = pg_connect($connection);
+    $this->postgresql = true;
   }
 
   public function query($query) {
