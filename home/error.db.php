@@ -55,6 +55,8 @@
       </li>
   
 
+      <small>Have you updated your setup? </small>
+      <a class="btn-primary" href="./">Go back</a>
 
     </div>
 
