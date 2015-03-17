@@ -65,7 +65,7 @@ if (!$Voice->isValid()) {
 $Media = new Catapult\MediaURL($application->voicemailFile);
 
 if (!$Media->isValid()) {
-  $message = "Voice mail file does not exist.";
+  $message = "Voice mail " . $application->voicemailFile . " file does not exist.";
 }
 
 if (!isset($message)) {

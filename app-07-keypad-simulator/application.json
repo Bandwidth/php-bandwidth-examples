@@ -3,7 +3,7 @@
     "applicationTable": "keypad_simulator",
     "applicationDataTable": "keypad_simulator_data",
     "applicationName": "Keypad Simulator",
-    "keypadSimulatorNumber": "+17192995670",
+    "keypadSimulatorNumber": "+NUMBER",
     "keypadSimulatorWrongDigit": "Sorry that was not a valid digit for this selection!",
     "keypadSimulatorVoice": "Bridget",
     "keypadSimulatorVoiceGender": "female",

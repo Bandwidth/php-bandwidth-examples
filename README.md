@@ -218,6 +218,23 @@ a Tip is a hint on which objects to use
 Validation will describe how to validate
 using the Catapult library
 
+
+Even more other things
+-----------------------------------------------------------
+TO make sure these examples run on your RBDMS we have used
+a simple style guide:
+
+- underscores in all our table names
+- no infixes for the table names
+- reserved characters where applicable
+  i.e
+  "from" for postGresQL
+   will be
+  `from` for SQLite
+
+
+
+
 Other Notes
 ===========================================================
 

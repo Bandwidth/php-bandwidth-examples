@@ -119,7 +119,6 @@ if ($dtmfCallEvent->isActive()) {
    $call->stopSentence();
 
 
-
    // Optional    
    //
    // having an exit digit allows
@@ -151,7 +150,14 @@ if ($dtmfCallEvent->isActive()) {
    // need to know where we are in the simulator
    // get the count of levels
    // the user has traversed
-   $level = getCount(sprintf("SELECT COUNT(*) as count FROM Keypad Simulator Data WHERE call_id = '%s'",$call->id));
+   //
+   // Implementors Note:
+   // rows will not be made until
+   // atleast one dtmf digit is pressed, as a result
+   // level should always be 0 when nothing is pressed
+   // and no records should be present
+
+   $level = getCount(sprintf("SELECT COUNT(*) as count FROM %s WHERE call_id = '%s'",$application->applicationDataTable, $call->id));
 
    // add this key in our records only
    // if its a valid one for context
@@ -167,7 +173,7 @@ if ($dtmfCallEvent->isActive()) {
        // in this keypad simulation
        $collection = array(); 
        for ($i = 0; $i <= $level; $i ++) {
-          $ltext = $db->query(sprintf("SELECT * FROM Keypad Simulator Data WHERE call_id = '%s' AND level = '%s'",$call->id, $i));
+          $ltext = $db->query(sprintf("SELECT * FROM %s WHERE call_id = '%s' AND level = '%s'",$application->applicationDataTable, $call->id, $i));
           while ($rec = $ltext->fetchArray()) {
             $key = $rec['key'];
             $context = $context->$key;
