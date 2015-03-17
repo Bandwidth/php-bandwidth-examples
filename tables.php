@@ -63,10 +63,10 @@ $tables = array(
   array(
     "table" => "basic_conference_data",
     "schema" => array(
-      array("callFrom", "VARCHAR(255)"),
-      array("receiverCallFrom", "VARCHAR(255)"),
+      array("call_from", "VARCHAR(255)"),
+      array("receiver_call_from", "VARCHAR(255)"),
       array("attended", "VARCHAR(255)"),
-      array("conferenceId", "VARCHAR(255)"),
+      array("conference_id", "VARCHAR(255)"),
       array("digits", "VARCHAR(255)")
     ),
     "type" => "data"
@@ -75,8 +75,8 @@ $tables = array(
 
     "table" => "voice_reminders_data",
     "schema" => array(
-      array("callId", "VARCHAR(255)"),
-      array("recordingId", "VARCHAR(255)"),
+      array("call_id", "VARCHAR(255)"),
+      array("recording_id", "VARCHAR(255)"),
       array("title", "VARCHAR(255)"),
       array("speech", "VARCHAR(255)"),
       array("initiated", "VARCHAR(255)"),
@@ -92,9 +92,9 @@ $tables = array(
   array(
     "table" => "basic_voice_mail_data",
     "schema" => array(
-      array("callId", "VARCHAR(255)"),
-      array("recordingId", "VARCHAR(255)"),
-      array("mediaName", "VARCHAR(255)"),
+      array("call_id", "VARCHAR(255)"),
+      array("recording_id", "VARCHAR(255)"),
+      array("media_name", "VARCHAR(255)"),
       array("initiated", "VARCHAR(255)"),
       array("date", "VARCHAR(255)")
      ) 
@@ -102,8 +102,8 @@ $tables = array(
   array(
     "table" => "basic_conference_data",
     "schema" => array(
-        array("callFrom", "VARCHAR(255)"),
-        array("conferenceId", "VARCHAR(255)"),
+        array("call_from", "VARCHAR(255)"),
+        array("conference_id", "VARCHAR(255)"),
         array("callId", "VARCHAR(255)"),
       ),
     "type" => "data"
@@ -112,7 +112,7 @@ $tables = array(
     "table" => "keypad_simulator_data",
     "schema" => array(
         array("level", "VARCHAR(255)"),
-        array("callId", "VARCHAR(255)"),
+        array("call_id", "VARCHAR(255)"),
         array("key", "VARCHAR(255)"),
       ),
     "type" => "data"

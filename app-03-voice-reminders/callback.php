@@ -85,7 +85,7 @@ if ($inboundCallEvent->isActive()) {
 
   
    addRecordBasic( $application->applicationTable, array($call->from, $call->to,$call->id, $date->format("Y-m-d")));
-   addRecord($application->applicationDataTable, array($call->id, 1), array("callId", "initiated"));
+   addRecord($application->applicationDataTable, array($call->id, 1), array("call_id", "initiated"));
 
    sleep(12);
 
@@ -140,7 +140,7 @@ if ($recordingCallEvent->isActive()) {
     // for best results we should save
     // the recording's id as we can later access
     updateRow(sprintf(
-      "UPDATE %s SET recordingId = '%s' WHERE callId = '%s'", $application->applicationDataTable, $recording->id, $call->id
+      "UPDATE %s SET recording_id = '%s' WHERE call_id = '%s'", $application->applicationDataTable, $recording->id, $call->id
     ));
   }
   // Recommended
@@ -152,7 +152,7 @@ if ($recordingCallEvent->isActive()) {
   // (set in the SQLite field)
   if ($recording->state == Catapult\RECORDING_STATUSES::error) {
     updateRow(sprintf(
-      "UPDATE %s SET message = ' %s', recordingId = '%s' WHERE callId = '%s'", 
+      "UPDATE %s SET message = ' %s', recording_id = '%s' WHERE call_id = '%s'", 
       $application->applicationDataTable, 
       $application->applicationErrorMessage,
       $recording->id,
@@ -327,7 +327,7 @@ if ($gatherCallEvent->isActive()) {
       // gather ending
 
       updateRow(sprintf(
-        "UPDATE %s SET %s = '%s' WHERE callId = '%s';", $application->applicationDataTable, $currentSequence, $digits, $call->id));
+        "UPDATE %s SET %s = '%s' WHERE call_id = '%s';", $application->applicationDataTable, $currentSequence, $digits, $call->id));
 
 
 

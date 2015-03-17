@@ -108,7 +108,7 @@ if ($inboundCallEvent->isActive()) {
      //
      // now we can assign this
      // code to our attendee
-     addRecord($application->applicationDataTable, array($code,$call->to, $attendee, $conference->id,0), array("code", "callFrom", "receiverCallFrom", "conferenceId","attended"));
+     addRecord($application->applicationDataTable, array($code,$call->to, $attendee, $conference->id,0), array("code", "call_from", "receiver_call_from", "conference_id","attended"));
 
      $created[] = $code;
     }
@@ -137,7 +137,7 @@ if ($inboundCallEvent->isActive()) {
 
      // we should first retrieve our conference id
      // then call
-     $conference = new Catapult\Conference($last['conferenceId']);
+     $conference = new Catapult\Conference($last['conference_id']);
      $call = new Catapult\Call($inboundCallEvent->callId);
 
 
@@ -164,7 +164,7 @@ if ($inboundCallEvent->isActive()) {
      sleep(5);
 
      $last = getRow(sprintf(
-      "SELECT * FROM %s WHERE callFrom = '%s'",
+      "SELECT * FROM %s WHERE call_from = '%s'",
       $call->to)); 
     
       // Important
@@ -238,7 +238,7 @@ if ($gatherCallEvent->isActive()) {
 
   if ($state == "complete") {
    $last = getRow(sprintf(
-      "SELECT * FROM %s WHERE callFrom = '%s' AND receiverCallFrom = '%s'",
+      "SELECT * FROM %s WHERE call_from = '%s' AND receiver_call_from = '%s'",
       $application->datatable, $call->to, $call->from)); 
 
     $code = $last['code']; 
@@ -250,7 +250,7 @@ if ($gatherCallEvent->isActive()) {
       // the user has entered
       // the right digits
       // we can  let him in at this point
-      $conference = new Catapult\Conference($last['conferenceId']);
+      $conference = new Catapult\Conference($last['conference_id']);
     
       $call = new Catapult\Call($event->callId);
 
@@ -271,7 +271,7 @@ if ($gatherCallEvent->isActive()) {
       // update the SQlite data so 
       // everything is viewable 
       // from the interface
-      updateRow(sprintf("UPDATE %s SET attended = 1 WHERE receiverCallFrom = '%s'; ", $call->from));
+      updateRow(sprintf("UPDATE %s SET attended = 1 WHERE receiver_call_from = '%s'; ", $call->from));
 
 
     } else {
@@ -308,7 +308,7 @@ if ($conferenceMemberEvent->isActive()) {
    $conference = new Catapult\Conference($conferenceMember->conferenceId);
 
    $name = getRow(sprintf(
-      "SELECT name FROM Advanced Conferences Data WHERE callFrom = '%s' AND conferenceId = '%s';", $call->from, $conference->id
+      "SELECT name FROM Advanced Conferences Data WHERE call_from = '%s' AND conference_id = '%s';", $call->from, $conference->id
    ));
 
 
@@ -354,7 +354,7 @@ if ($hangupCallEvent->isActive()) {
   $last = getRow(
     sprintf("SELECT * FROM %s; ", $application->applicationTable)
   );
-  $conference = new Catapult\Conference($last['conferenceId']);
+  $conference = new Catapult\Conference($last['conference_id']);
 
   if ($hangupCallEvent->from == $application->conferenceInitiateNumber) {
     // Important
@@ -368,7 +368,7 @@ if ($hangupCallEvent->isActive()) {
     // display it
 
     //$db->query(sprintf(
-    //  "DELETE FROM %s WHERE conferenceId = '%s'; ", $application->applicationDataTable, $conference->id
+    //  "DELETE FROM %s WHERE conference_id = '%s'; ", $application->applicationDataTable, $conference->id
     //));
 
   } else {
@@ -377,7 +377,7 @@ if ($hangupCallEvent->isActive()) {
      // cleaning a members
      // data is recommended.
     //$db->query(sprintf(
-    //  "DELETE FROM %s WHERE conferenceId = '%s' AND callFrom = '%s'", $application->datatable, $conference->id, $hangupCallEvent->from
+    //  "DELETE FROM %s WHERE conference_id = '%s' AND call_from = '%s'", $application->datatable, $conference->id, $hangupCallEvent->from
     //));
   } 
    

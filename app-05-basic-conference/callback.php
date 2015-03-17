@@ -84,7 +84,7 @@ if ($inboundCallEvent->isActive()) {
       //
       // we need to save the conference's
       // data in our database
-      addRecord($application->applicationTable, array($call->from, $conference->id), array("callFrom", "conferenceId"));
+      addRecord($application->applicationTable, array($call->from, $conference->id), array("call_from", "conference_id"));
 
    } else {
 
@@ -103,9 +103,9 @@ if ($inboundCallEvent->isActive()) {
      }
   
      $last = getRow(sprintf(
-      "SELECT * FROM %s WHERE callFrom = '%s'",
+      "SELECT * FROM %s WHERE call_from = '%s'",
       $application->applicationDatable, $call->from)); 
-     $conferences = new Catapult\Conference($last['conferenceId']);
+     $conferences = new Catapult\Conference($last['conference_id']);
      
 
       // Optional 
@@ -142,7 +142,7 @@ if ($inboundCallEvent->isActive()) {
      // we can add the members
      // entry in our database 
      // 
-     addRecord($application->applicationDatatable, array($conference->id, $call->id, $call->from), array("conferenceId", "callId", "callFrom"));
+     addRecord($application->applicationDatatable, array($conference->id, $call->id, $call->from), array("conference_id", "call_id", "call_from"));
    }
 } 
 

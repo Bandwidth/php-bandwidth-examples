@@ -84,7 +84,7 @@ if ($inboundCallEvent->isActive()) {
   addRecordBasic($application->applicationTable, array($inboundCallEvent->from, $inboundCallEvent->to, $call->id, $date->format("Y-m-d"))); 
   // We will be using this table
   // to store all our data
-  addRecord($application->applicationDataTable, array($inboundCallEvent->callId, 1), array("callId", "initiated"));
+  addRecord($application->applicationDataTable, array($inboundCallEvent->callId, 1), array("call_id", "initiated"));
 } 
 
 if ($speakCallEvent->isActive()) {
@@ -278,7 +278,7 @@ if ($recordingCallEvent->isActive()) {
     // Recommended
     //
     // store reference to the recording in our database
-    updateRow(sprintf("UPDATE %s SET mediaName  = '%s' WHERE callId = '%s'", $application->applicationDataTable, $media->mediaName, $call->id));
+    updateRow(sprintf("UPDATE %s SET media_name  = '%s' WHERE call_id = '%s'", $application->applicationDataTable, $media->mediaName, $call->id));
     
   } else if ($recording->state == "error") {
     // Recommended
