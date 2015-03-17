@@ -13,9 +13,7 @@ require_once(__DIR__."/config.php");
 // On success will provide a listing of voice mail recordings
 // which can be then used with Catapult's Media object
 
-
 $client = new Catapult\Client;
-
 // By default we have set incoming calls to
 // auto. If you plan on using the manual version
 // you will need to comment this out
@@ -225,6 +223,15 @@ if ($recordingCallEvent->isActive()) {
    
     $media = $recording->getMediaFile();
 
+
+    // Here we will use a custom
+    // naming convention to better
+    // identify our Catapult files
+    // they, afterwards store on 
+    // on the server
+    //
+    $date = new DateTime;
+    $mediaName = sprintf("%s-%s-%s.wav", $application->voicemailIdentifier,str_replace("+","",$call->from),$date->format("M-d_H-i"));
     // Optional
     //
     // while this is optional we visit 
@@ -234,7 +241,7 @@ if ($recordingCallEvent->isActive()) {
     //
     // our files will be labeled as the 
     // recordings name and be set in the database
-    $file = __DIR__ . "/data/" . $recording->id;
+    $file = __DIR__ . "/data/" . $mediaName;
     $media->store($file);
 
     // This application 
@@ -255,7 +262,8 @@ if ($recordingCallEvent->isActive()) {
     // this example will append the call from
     // to the voicemailIdentifier
     //
-    $mediaName = $application->voicemailIdentifier.$call->from;
+    // with the date and time, reuploading onto
+    // Catapult
     $newMedia = new Catapult\Media;
     $newMedia->create(array(
         "mediaName" => $mediaName,
@@ -265,18 +273,21 @@ if ($recordingCallEvent->isActive()) {
     // Recommended
     //
     // we can now unlink this from our files
-    unlink($file);
+    // 
+    // note:
+    // for demo purposes we will keep it
+    //unlink($file);
 
     // and we can delete our
     // initial recording
     //
-    $recording->delete();
+    //$recording->delete();
 
 
     // Recommended
     //
     // store reference to the recording in our database
-    updateRow(sprintf("UPDATE %s SET media_name  = '%s' WHERE call_id = '%s'", $application->applicationDataTable, $media->mediaName, $call->id));
+    updateRow(sprintf("UPDATE %s SET media_name  = '%s' WHERE call_id = '%s'", $application->applicationDataTable, $mediaName,  $call->id));
     
   } else if ($recording->state == Catapult\RECORDING_STATUSES::complete) {
     // Recommended

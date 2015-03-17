@@ -1,6 +1,6 @@
 <?php
-/**
- * @type FileHandler
+/** 
+ * @type  FileHandler
  * 
  * Minimal filehandler
  * for media types.  
@@ -13,14 +13,9 @@ final class FileHandler extends Types {
         return -1;
       }
 
-      if (is_dir($as)) {
-        throw new \CatapultApiException("cannot store media file as: $as . directory exists");
-      } elseif (is_file($as)) {
-        throw new \CatapultApiException("file already exists as: $as. Will not overwrite");
-      }
 
-      return file_put_contents($as, $contents);
-    }	
+      return file_put_contents(realpath($as) . $as, $contents);
+    } 
 
     public static function read($filename)
     {
@@ -40,7 +35,7 @@ final class FileHandler extends Types {
     {
       $matches = array();
       preg_match("/(.*\/).*$/", $file, $matches);
-
+      
       try {
         if (sizeof($matches) >= 1) {
           $folder = $matches[1];

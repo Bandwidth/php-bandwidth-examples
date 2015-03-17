@@ -10,7 +10,7 @@
   "voicemailInvalid": "Sorry the digit you pressed was invalid",
   "voicemailTimeout": "Sorry the call timed out",
   "voicemailThanks": "Thank you we have saved the recordintg. Goodbye",
-  "voicemailIdentifier": "voice-mail-", 
+  "voicemailIdentifier": "voice-mail", 
   "voicemailTerminateDigit": "#",
   "callbackUrl": ""
 }
