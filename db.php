@@ -111,7 +111,7 @@ if (class_exists('SQLite3')) {
   // past this point, we will
   // still try to run, warn and store
   // no data
-  if (!$db->isConnected()) {
+  if (!isDbConnected()) {
     if (preg_match("/error/", $_SERVER{"REQUEST_URI"}, $m) == null) {
      route(stripLocation("home/error.db.php"));
     }

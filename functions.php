@@ -151,5 +151,15 @@ function isIndex() {
   return false;
 }
 
+function isDbConnected() {
+  global $db;
+
+  if (get_class($db) == "SQLite3" || isset($db->isConnected) && $db->isConnected()) {
+    return true;
+  }
+
+  return false;
+}
+
 
 ?>

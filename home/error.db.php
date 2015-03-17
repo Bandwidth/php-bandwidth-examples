@@ -6,7 +6,7 @@
   // when we're already
   // connected do not
   // come back here!
-  if ($db->isConnected()) {
+  if (isDbConnected()) {
     route("./");
   }
   ?>
