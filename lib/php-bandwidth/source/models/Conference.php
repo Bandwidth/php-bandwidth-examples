@@ -61,7 +61,7 @@ final class Conference extends AudioMixin {
       $url = URIResource::Make($this->path, array($this->id, "members"));
       $memberid = Locator::Find($this->client->post($url, $args->get()));
     
-      return $this->member($memberid);
+      return new ConferenceMember($this->id, $memberid);
     }
 
    /**
@@ -84,10 +84,11 @@ final class Conference extends AudioMixin {
      * Return a partial for
      * the member selected
      *
+     * @param id: a conference member's id
      */
-    public function member()
+    public function member($id)
     {
-      return new ConferenceMember($this->id);
+      return new ConferenceMember($this->id, $id);
     }
 }
 

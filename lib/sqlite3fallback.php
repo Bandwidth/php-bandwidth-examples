@@ -36,6 +36,7 @@ final class SQLite3Fallback extends SQLiteFallbackCheck {
   // to create database
   public function __construct($host, $username, $password, $db) {
     $this->db = mysqli_connect($host, $username, $password, $db);
+    $this->postgresql = false;
   }
   
   // forward a queyr 

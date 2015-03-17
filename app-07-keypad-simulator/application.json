@@ -15,7 +15,7 @@
             "1": {
                 "speech": "We are transfering you now.",
                 "transfer": true,
-                "transferNumber": "+2322"
+                "transferNumber": "+NUMBER"
             },
             "speech": "Hello this is our technical assistance line press one if you'd like to be transferred to the next available Catapult developer!"
         },
@@ -28,7 +28,7 @@
            "2": {
               "speech": "Thank you, we are transferring you now.",
               "transfer": true,
-              "transferNumber": "+3232"
+              "transferNumber": "+NUMBER"
            }
         },
         "3": {

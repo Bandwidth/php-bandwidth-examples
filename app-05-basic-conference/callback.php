@@ -50,7 +50,7 @@ if ($inboundCallEvent->isActive()) {
     // in is best in these cases
     // as it would only be
     // started by one member
-    if ($call->to == $application->conferenceFromNumber ) {
+    if ($call->to == $application->conferenceFromNumber && $call->from == $application->conferenceInitiateNumber) {
 
       // Important
       // 
@@ -73,6 +73,17 @@ if ($inboundCallEvent->isActive()) {
         //"callId" => $call->id
       ));
 
+
+      // Important
+      //
+      // we should set the host's
+      // conference id this will
+      // be our main call
+      $call->update(array(
+        "conferenceId" => $conference->id
+      ));
+
+
       // Optional 
       //
       // save this conference's basic data
@@ -84,7 +95,7 @@ if ($inboundCallEvent->isActive()) {
       //
       // we need to save the conference's
       // data in our database
-      addRecord($application->applicationTable, array($call->from, $conference->id), array("call_from", "conference_id"));
+      addRecord($application->applicationDataTable, array($call->to, $conference->id), array("call_from", "conference_id"));
 
    } else {
 
@@ -103,9 +114,48 @@ if ($inboundCallEvent->isActive()) {
      }
   
      $last = getRow(sprintf(
-      "SELECT * FROM %s WHERE call_from = '%s'",
-      $application->applicationDatable, $call->from)); 
-     $conferences = new Catapult\Conference($last['conference_id']);
+      "SELECT * FROM %s WHERE call_from = '%s' ORDER BY conference_id ASC LIMIT 1",
+      $application->applicationDataTable, $call->to)); 
+
+     $conference = new Catapult\Conference($last['conference_id']);
+
+
+      // Optional
+      //
+      // Treating SQLite is
+      // good here as things
+      // the record may not be there yet..
+      if (!$last) {
+          $call->speakSentence(array(
+            "sentence" => $application->conferenceError,
+            "voice" => $application->conferenceVoice, 
+            "gender" => $application->conferenceVoiceGender
+          ));  
+          sleep(10);
+          exit(1);
+      }
+
+      // Recommended
+      //
+      // checking whether
+      // a conference is still running is needed
+
+      if ($conference->state == Catapult\CONFERENCE_STATES::completed) {
+
+        // We will warn the user
+        // that the conference is over 
+        // then end the call
+        $call->speakSentence(array(
+          "sentence" => $application->conferenceEnded,
+          "voice" => $application->conferenceVoice,
+          "gender" => $application->conferenceVoiceGender
+        ));
+
+        sleep(10);
+        $call->hangup();
+        exit(1);
+
+      }
      
 
       // Optional 
@@ -113,14 +163,18 @@ if ($inboundCallEvent->isActive()) {
       // this conference checks whether
       // the caller is from our accepted
       // list. This is however optional
-     if (in_array($event->from, $application->conferenceAttendees)) {
+     if (!in_array($inboundCallEvent->from, $application->conferenceAttendees)) {
 
+
+        $call->speakSentence(array(
+          "sentence" => $application->conferenceGreeting,
+          "voice" => $application->conferenceVoice,
+          "gender" => $application->conferenceVoiceGender
+        ));
         // accept this
         // user and add him to
         // our conference
         $conference->addMember(array(
-          "joinTone" => false,
-          "leaveTone" => false,
           "callId" => $call->id
         )); 
 
@@ -129,7 +183,6 @@ if ($inboundCallEvent->isActive()) {
        // we should accept
        // and warn
 
-       $call->accept();
        $call->speakSentence(array(
           "sentence"=>$application->conferenceNoEntry,
           "gender" => $application->conferenceVoiceGender,
@@ -176,13 +229,13 @@ if ($conferenceMemberEvent->isActive()) {
 
   // is this for a conference
   // member joining or leaving
-  if ($conferenceMemberEvent->state == Catapult\CONFERENCE_MEMBER_STATES::STARTED) {
+  if ($conferenceMemberEvent->state == Catapult\CONFERENCE_MEMBER_STATES::started) {
     $conference->speakSentence(array(
       "voice" => $voice,
       "gender" => $application->conferenceVoiceGender,
       "sentence" => "A user has joined. There is now $activeMembers in the conference"
     ));
-  } else if ($conferenceMemberEvent->state == Catapult\CONFERENCE_MEMBER_STATES::DONE) {
+  } else if ($conferenceMemberEvent->state == Catapult\CONFERENCE_MEMBER_STATES::completed) {
 
     $conference->speakSentence(array(
       "voice" => $voice,

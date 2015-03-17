@@ -68,6 +68,34 @@ function generateMenu() {
   printf("</ul>");
 }
 
+/**
+ * takes out all 
+ * of the string aside from
+ * php-bandwidth-examples
+ *
+ * {host}/php-bandwidth-examples
+ */
+function stripLocation($other) {
+  $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  $url = preg_replace("/php-bandwidth-examples\/.*/", "php-bandwidth-examples/", $url);
+
+  return "http://" . $url . $other;
+}
+
+/**
+ * check if our uri matches
+ *
+ */
+function isPage($url) {
+  $m = array();
+  $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  preg_match("/\/(.*)$/", $url, $m);
+  if ($m[1] == $url) {
+    return true;
+  }
+  return false;
+}
+
 function route($area) {
   printf("<script>top.location.href='%s'</script>",$area);
 }

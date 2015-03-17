@@ -65,6 +65,7 @@ $tables = array(
     "schema" => array(
       array("call_from", "VARCHAR(255)"),
       array("receiver_call_from", "VARCHAR(255)"),
+      array("receiver_call_id", "VARCHAR(255)"),
       array("attended", "VARCHAR(255)"),
       array("conference_id", "VARCHAR(255)"),
       array("digits", "VARCHAR(255)")

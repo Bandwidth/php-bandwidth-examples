@@ -104,10 +104,19 @@ final class Credentials {
         throw new \CatapultApiException("$file was not found in directory " . self::$credentials_opts['path']);
       }
        
-      if ($user_token && $api_token && $api_secret)
+      if ($user_token && $api_token && $api_secret) {
         $this->credentials = new CredentialsUser($user_token, $api_token, $api_secret);
-      else
-        $this->credentials = file_get_contents(self::$credentials_opts['path']);
+      } else {
+        $this->credentials = json_decode(file_get_contents(self::$credentials_opts['path']));
+
+        /**
+         * warn when the JSON
+         * is invalid
+         */
+        if (!is_object($this->credentials)) {
+          throw new \CatapultApiException("$file is not valid JSON");
+        }
+      }
     } 
 
 
@@ -147,7 +156,7 @@ final class Credentials {
      */
     protected function getVal($key, $show=TRUE)
     {
-      if (!($this->credentials instanceof CredentialsUser)) {
+      if (!($this->credentials instanceof CredentialsUser) || is_object($this->credentials)) {
         $content = json_decode(file_get_contents(self::$credentials_opts['path']));
       } else {
         $content = $this->credentials;

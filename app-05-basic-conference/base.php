@@ -51,7 +51,10 @@ if ($phoneNumbers->isEmpty()) {
 foreach ($application->conferenceAttendees as $cMember) {
   $phoneNumber = new Catapult\PhoneNumber($cMember);
   if (!($phoneNumber->isValid())) {
-    $message .= "conference number: $cMember is not a valid phone number. Please use E.164";
+    if (!isset($message)) { 
+      $message = ""; 
+    }
+    $message .= "<br />conference number: $cMember is not a valid phone number. Please use the E.164 format";
   }
 }
 

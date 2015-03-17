@@ -53,7 +53,7 @@ if ($inboundCallEvent->isActive()) {
   // this is event based and will require
   // one of the authenticated users "conferenceInitiateNumber"
   // calling in.
-  if ($call->to == $application->conferenceFromNumber) {
+  if ($call->to == $application->conferenceFromNumber && $call->from == $application->conferenceInitiateNumber) {
 
 
     // Important
@@ -89,13 +89,7 @@ if ($inboundCallEvent->isActive()) {
 
     $created = array();
     foreach ($application->conferenceAttendees as $attendee) {
-     // Recommended
-     //
-     // using the gather is very useful
-     // here as we can track what's inputted.
-      
-
-
+           
       // we will keep generating a 4 digit code
       // until we find a unique one
      $code = rand(1000, 9999);
@@ -137,17 +131,38 @@ if ($inboundCallEvent->isActive()) {
 
      // we should first retrieve our conference id
      // then call
+
+     $last = getRow(sprintf("SELECT * FROM %s WHERE call_from = '%s'; ", $call->to));
      $conference = new Catapult\Conference($last['conference_id']);
      $call = new Catapult\Call($inboundCallEvent->callId);
-
 
     // Important 
     //
     // When using the manual
     // approach we will need to
     // accept calls ourselves
-    if ($call->state == "started") {
+    if ($call->state == Catapult\CALL_STATES::started) {
       $call->accept();
+    }
+
+
+    // Recommended
+    //
+    // check whether our conference
+    // is still active
+    //
+    if ($conference->state == Catapult\CONFERENCE_STATES::completed) {
+      // Our conference has ended
+      // we will display our ended
+      // message
+      $call->speakSentence(array(
+        "sentence" => $application->conferenceEnded,
+        "voice" => $application->conferenceVoice,
+        "gender" => $application->conferenceVoiceGender
+      ));
+      sleep(5);
+      exit(1);
+
     }
 
     if (in_array($call->from, $application->conferenceAttendees)) {
@@ -181,9 +196,6 @@ if ($inboundCallEvent->isActive()) {
           "gender" => $application->conferenceEnterDigits
         )
       ));
-
-
-      $date = new DateTime;
 
     } else {
 
@@ -231,12 +243,46 @@ if ($gatherCallEvent->isActive()) {
   // for this call
   $call->stopSpeaking();
 
-   
+
+
+  // recommended
+  //
+  // we should treat inter digit timeouts
+  // when this happens we will recreate the
+  // same gather with the initial code
+  if ($gather->state == Catapult\GATHER_STATES::completed
+  && $gather->reason == Catapult\GATHER_REASONS::interDigitTimeout) {
+
+    // prompt the user
+    // again for the same
+    // input
+    //
+    $gather = new Catapult\Gather($call->id, array(
+       "maxDigits" => $application->conferenceGatherMaxDigits,
+        // adding a shorter or longer
+        // timeout is something you can do 
+        // with interDigitTimeout
+        //
+        //"interDigitTimeout" => 10,
+        // let's remake our prompt      
+        // it will have the same speech
+        // as our last
+        "prompt" => array(
+          "sentence" => $application->conferenceSecondAttemptDigits,
+          "voice" => $application->conferenceVoice,
+          "gender" => $application->conferenceGender
+        )
+    ));
+
+  }
+
+     
   // we should only evaluate our input
   // once the terminating digit
   // is pressed
 
-  if ($state == "complete") {
+  if ($gather->state  == Catapult\GATHER_STATES::completed 
+  && $gather->reason == Catapult\GATHER_REASONS::maxDigits) {
    $last = getRow(sprintf(
       "SELECT * FROM %s WHERE call_from = '%s' AND receiver_call_from = '%s'",
       $application->datatable, $call->to, $call->from)); 
@@ -264,6 +310,8 @@ if ($gatherCallEvent->isActive()) {
         "callId" => $callId
       ));
 
+      sleep(10);
+
 
       // Recommended
       // 
@@ -271,7 +319,7 @@ if ($gatherCallEvent->isActive()) {
       // update the SQlite data so 
       // everything is viewable 
       // from the interface
-      updateRow(sprintf("UPDATE %s SET attended = 1 WHERE receiver_call_from = '%s'; ", $call->from));
+      updateRow(sprintf("UPDATE %s SET attended = 1 WHERE receiver_call_from = '%s' AND call_from = '%s'; ", $call->from, $call->to));
 
 
     } else {
@@ -323,7 +371,7 @@ if ($conferenceMemberEvent->isActive()) {
         "gender" => $application->conferenceVoiceGender,
         "voice" => $application->conferenceVoice
      ));
-   } else if ($conferenceMemberEvent->state == Catapult\CONFERENCE_MEMBER_STATES::completed) {
+   } else if ($conferenceMemberEvent->state == Catapult\CONFERENCE_MEMBER_STATES::done) {
 
       // Recommended 
       //

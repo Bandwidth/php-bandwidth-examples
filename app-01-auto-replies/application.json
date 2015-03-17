@@ -4,7 +4,6 @@
   "applicationTable": "sms_auto_replies",
   "applicationDescription": "This application will auto respond to the incoming number with the listed autoReplyText",
   "autoReplyText": "Hello, I am currently configuring my Catapult Auto Reply application, I will get back to you shortly.",
-  "autoReplyNumber": "+12135147675",
-  "autoReplyInitiateNumber": "+17192991226",
-  "autoReplyCallback": "http://159.100.186.106/php-bandwidth-examples/app-01-auto-replies/callback.php"
+  "autoReplyNumber": "+NUMBER",
+  "autoReplyInitiateNumber": "+NUMBER"
 }

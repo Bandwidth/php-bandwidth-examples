@@ -36,7 +36,7 @@ final class ConferenceMember extends AudioMixin {
            ),
            new LoadsResource(array("primary" => "GET", "init" => array("conferenceId"), "id" => "id", "silent"=>FALSE)),
            new SchemaResource(array("fields" => array(
-                'id', 'state', 'addedTime', 'hold', 'mute', 'joinTone', 'leavingone'
+                'id', 'state', 'addedTime', 'hold', 'mute', 'joinTone', 'leavingTone'
             ), "needs" => array("id", "state", "from"))
           )
        );

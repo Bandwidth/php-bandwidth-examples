@@ -39,6 +39,15 @@ require_once(__DIR__ . "/config.php");
 require_once(__DIR__ . "/functions.php");
 // include the sqLite database
 
+if (!isConnected()) {
+  // when we have
+  // an error don't
+  // route
+  if (preg_match("/error/", $_SERVER{"REQUEST_URI"}, $m) == null) {
+    route(stripLocation("home/error.api.php"));
+  }
+}
+
 if (isIndex()) {
   foreach ($files as $file) {
     if ($file['type']=='js') {

@@ -2,6 +2,15 @@
 <html>
   <head>
   <?php require_once(__DIR__."/../bootstrap.php"); ?>
+  <?php
+  // when we're already
+  // connected do not
+  // come back here!
+  if ($db->isConnected()) {
+    route("./");
+  }
+  ?>
+
   </head>
   <body>
     <div style="border: 1px solid #E3E3E3; padding: 20px; ">

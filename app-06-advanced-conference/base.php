@@ -18,6 +18,7 @@ $conferencesData = getQuery(sprintf("SELECT * FROM %s", $application->applicatio
 $conferencesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM %s;", $application->applicationTable));
 
 
+$success = 'error';
 // Validation 1.
 // check if the initial number is valid
 $phoneNumbers = new Catapult\PhoneNumbersCollection;
@@ -26,6 +27,12 @@ $phoneNumbers->find(array("number" => $application->conferenceFromNumber));
 
 if ($phoneNumbers->isEmpty()) {
   $message = $application->conferenceFromNumber . " is not a phone number in your catapult list"; 
+}
+
+
+$phoneNumber = new Catapult\PhoneNumber($application->conferenceFromNumber);
+if (!$phoneNumber->isValid()) {
+  $message = $application->conferenceFromNumber . " is not a valid number";
 }
 
 
@@ -46,11 +53,14 @@ if (!$media->isValid()) {
 foreach ($application->conferenceAttendees as $cMember) {
   $phoneNumber = new Catapult\PhoneNumber($cMember);
   if (!($phoneNumber->isValid())) {
-    $message .= "conference number: $cMember is not a valid phone number. Please use E.164";
+    if (!isset($message)) {
+      $message = "";
+    }
+    $message .= "<br />conference number: $cMember is not a valid phone number. Please use E.164";
   }
 }
 
-if (!isset($member)) {
+if (!isset($message)) {
   $status = "success";
   $message = "You can begin this conference, use number: " . $application->conferenceFromNumber; 
 }

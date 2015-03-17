@@ -34,6 +34,11 @@ $messagesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM %s", $application
 //$messages = new Catapult\Message;
 // $messages->listAll(find);
 
+if ($application->autoReplyInitiateNumber == $application->autoReplyNumber) {
+  $message = "'initiate' number and 'to' number need to be different. This will cause a infinite message sequence";
+  $status = "warning";
+}
+
 // Validation 1
 //
 // perform some introspection here
@@ -46,6 +51,7 @@ $messagesCnt = getCount(sprintf("SELECT COUNT(*) as count FROM %s", $application
 $PhoneNumber =   new Catapult\PhoneNumber($application->autoReplyNumber);
 
 if (!$PhoneNumber->isValid()) {
+  $status = "error";
   $message = "Your autoReplyNumber is not valid.. it needs to be E.164 format";
 }
 
@@ -63,12 +69,8 @@ $PhoneNumbers->listAll(array("size" => 1000));
 $PhoneNumbers->find(array("number" => $application->autoReplyNumber));
 
 if ($PhoneNumbers->isEmpty()) {
+  $status = "error";
   $message = "The number you entered is not listed in your Catapult account";
-}
-
-if ($application->autoReplyInitiateNumber == $application->autoReplyNumber) {
-  $message = "'initiate' number and 'to' number need to be different. This will cause a infinite message sequence";
-  $status = "warning";
 }
 
 // no errors, application should be

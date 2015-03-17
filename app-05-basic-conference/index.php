@@ -39,6 +39,7 @@
 
         $attendees = "None yet.."; 
         if (sizeof($conferenceAttendees) > 0) {
+          $attendees = "";
           foreach ($conferenceAttendees as $cs) {
             $attendees .= $cs['call_from'] . ", ";
           } 

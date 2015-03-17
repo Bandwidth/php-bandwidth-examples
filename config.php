@@ -27,6 +27,10 @@ function isMockMode() {
  */
 function isConnected() {
   $connected = true; 
+
+  require_once(__DIR__."/lib/php-bandwidth/source/Catapult.php");
+  Catapult\Credentials::setPath(__DIR__);
+
   try {
      $client = new Catapult\Client;
 

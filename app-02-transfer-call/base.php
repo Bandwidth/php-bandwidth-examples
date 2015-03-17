@@ -46,7 +46,7 @@ if (!$number2->isValid()) {
 // account
 $pn = new Catapult\PhoneNumbers;
 $list = $pn->listAll(array("size" => 1000));
-$numbers1 = $list->find(array("number" => $number1));
+$numbers1 = $list->find(array("number" => $application->transferNumber));
 
 
 // Transferring number is 
@@ -59,10 +59,11 @@ if ($numbers1->isEmpty()) {
 }
 
 $list = $pn->listAll();
-$numbers2 = $list->find(array("number" => $number2));
+$numbers2 = $list->find(array("number" => $application->listeningNumber));
 
 // Listening number is not listed
 if ($numbers2->isEmpty()) {
+  $status = "error";
   $message = "The listening number is not setup under your Catapult account";
 }
 

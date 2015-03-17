@@ -33,13 +33,14 @@ $application = json_decode(file_get_contents(__DIR__ . "/setup.json"));
 // Apache HTTPd >= 2.2
 // nGinx (not tested)
 // lightppd
-if (class_exists(SQLite3)) {
+if (class_exists('SQLite3')) {
   // this means we're not running
   // with heroku cleardb, nor do we need
   // mysql so we will run with
   // the native SQLite3 wrapper
   
    $db = new SQLite3(__DIR__ . "/" . $application->sqliteDatabaseFile, SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+   $db->postgresql = false;
 
    define("DB_TILDE", "`");
 } else {
@@ -111,7 +112,9 @@ if (class_exists(SQLite3)) {
   // still try to run, warn and store
   // no data
   if (!$db->isConnected()) {
-    header("location: ./home/error.db.php");
+    if (preg_match("/error/", $_SERVER{"REQUEST_URI"}, $m) == null) {
+     route(stripLocation("/home/error.db.php"));
+    }
   }
 
 

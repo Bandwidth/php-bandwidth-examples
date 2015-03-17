@@ -49,19 +49,6 @@ if ($inboundCallEvent->isActive()) {
   }   
   
 
-
-  // Important
-  //
-  // make sure we update
-  // our recordingEnabled
-  // this will allow us to 
-  // make a recording
-
-  $call->update(array(
-    "recordingEnabled" => true
-  ));
-
-
   // Recommended
   //
   // this speech will instruct the user
@@ -72,6 +59,25 @@ if ($inboundCallEvent->isActive()) {
      "gender" => $application->voicemailGender
   ));
   sleep(5);
+
+  $call->playAudio($application->voicemailFile);
+
+  // Important
+  //
+  // make sure we update
+  // our recordingEnabled
+  // this will allow us to 
+  // make a recording
+  //
+  // Implementors Note: for best results
+  // try to enable recording as soon as it 
+  // is needed this helps in the recording quality
+  // and keeping it shorter
+
+  $call->update(array(
+    "recordingEnabled" => true
+  ));
+
 
   // Important
   //
@@ -85,29 +91,12 @@ if ($inboundCallEvent->isActive()) {
   addRecord($application->applicationDataTable, array($inboundCallEvent->callId, 1), array("call_id", "initiated"));
 } 
 
-if ($speakCallEvent->isActive()) {
-
-   // Step 02. 
-   // 
-   // We have outputted speech, this means its time
-   // for the beep 
-   // 
-   // Note:
-   // Please make sure the audio file
-   // is a fully qualified URL
-  $call->playAudio($application->voicemailFile);
-
-  $call = new Catapult\Call($speakCallEvent->callId);
-  
-}
-
 if ($playbackCallEvent->isActive()) {
 
    // Step 03.
    // 
    // Our playback event has been trigged
    // this means we can start our audio recording
-   // for the voice reminder
 
   $call = new Catapult\Call($playbackCallEvent->callId);
 
@@ -277,12 +266,6 @@ if ($recordingCallEvent->isActive()) {
     // note:
     // for demo purposes we will keep it
     //unlink($file);
-
-    // and we can delete our
-    // initial recording
-    //
-    //$recording->delete();
-
 
     // Recommended
     //
