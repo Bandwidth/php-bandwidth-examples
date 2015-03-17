@@ -217,8 +217,7 @@ if ($recordingCallEvent->isActive()) {
 
   $call = new Catapult\Call($recordingCallEvent->callId);
   $recording = new Catapult\Recording($recordingCallEvent->recordingId);
-   
-  if ($recordingCallEvent == Catapult\RECORDING_STATES::complete) {
+  if ($recordingCallEvent->status == Catapult\RECORDING_STATUSES::complete) {
     // Recording is complete
     // this means we can get the
     // the media file 
@@ -235,9 +234,8 @@ if ($recordingCallEvent->isActive()) {
     //
     // our files will be labeled as the 
     // recordings name and be set in the database
-    $file = realpath(__DIR__ . "./data/") . "/" . $recording->id;
+    $file = __DIR__ . "/data/" . $recording->id;
     $media->store($file);
-
 
     // This application 
     // will demonstrate how to reupload
@@ -280,7 +278,7 @@ if ($recordingCallEvent->isActive()) {
     // store reference to the recording in our database
     updateRow(sprintf("UPDATE %s SET media_name  = '%s' WHERE call_id = '%s'", $application->applicationDataTable, $media->mediaName, $call->id));
     
-  } else if ($recording->state == "error") {
+  } else if ($recording->state == Catapult\RECORDING_STATUSES::complete) {
     // Recommended
     //
     // treating errorneous recordings can also 

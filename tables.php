@@ -61,7 +61,7 @@ $applications = array(
  */
 $tables = array(
   array(
-    "table" => "basic_conference_data",
+    "table" => "advanced_conference_data",
     "schema" => array(
       array("call_from", "VARCHAR(255)"),
       array("receiver_call_from", "VARCHAR(255)"),
@@ -104,7 +104,7 @@ $tables = array(
     "schema" => array(
         array("call_from", "VARCHAR(255)"),
         array("conference_id", "VARCHAR(255)"),
-        array("callId", "VARCHAR(255)"),
+        array("call_id", "VARCHAR(255)"),
       ),
     "type" => "data"
   ),

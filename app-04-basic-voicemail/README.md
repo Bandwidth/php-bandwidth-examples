@@ -12,6 +12,8 @@ To setup voice mail make sure:
 
   3. Please make sure you specify your voicemail number
 
+  4. Directory /data/ will need to r+w on your server
+
 Note:
 
 This application will receive the media from Catapult's server
