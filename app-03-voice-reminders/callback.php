@@ -123,7 +123,7 @@ if ($recordingCallEvent->isActive()) {
   // we use Catapult constants
   // to check our statuses as it is better
   // for debugging purposeses
-  if ($recordingCallEvent->status == Catapult\RECORDING_STATUSES::completed) {
+  if ($recordingCallEvent->status == Catapult\RECORDING_STATUSES::complete) {
     // Implementors Note:
     // 
     // recording objects provide
