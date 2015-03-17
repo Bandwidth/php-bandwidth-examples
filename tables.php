@@ -68,6 +68,7 @@ $tables = array(
       array("receiver_call_id", "VARCHAR(255)"),
       array("attended", "VARCHAR(255)"),
       array("conference_id", "VARCHAR(255)"),
+      array("code", "VARCHAR(255)"),
       array("digits", "VARCHAR(255)")
     ),
     "type" => "data"

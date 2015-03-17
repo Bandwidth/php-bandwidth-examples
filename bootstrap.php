@@ -48,6 +48,13 @@ if (!isConnected()) {
   }
 }
 
+if (!isDbConnected()) {
+  if (preg_match("/error/", $_SERVER{"REQUEST_URI"}, $m) == null) {
+    route(stripLocation("home/error.db.php"));
+  }
+}
+
+
 if (isIndex()) {
   foreach ($files as $file) {
     if ($file['type']=='js') {
@@ -56,4 +63,8 @@ if (isIndex()) {
       printf("<link rel='stylesheet' href='%s' />\n", "../".$file['type']."/".$file['file'].".".$file['type']);
     }
   }
+}
+
+if (isset($_REQUEST['message'])) {
+  alert($_REQUEST['message']);
 }

@@ -12,18 +12,30 @@
 <body>
   <?php generateMenu(); ?> 
   <div class="app-content">
-      <form method="POST" enctype="multipart/form-data" action="./initiate.php">
      <h2><?php echo $application->applicationName; ?></h2>
     <div class="box">
       <div class="status <?php echo $status; ?>"></div>
       <small>Status:</small>
       <?php echo $message; ?>
     </div>
+      <hr />
+
+      <form method="POST" enctype="multipart/form-data" action="./add.php">
+    <h4>Add an attendee</h2>
+        <small>This adds an attendee to the conference</small>
+        <label>E.164 Phone Number</label>
+        <br />
+        <input name="attendee" placeholder="e.g: +17192995670" />
+        <input type="submit" />
+      </form>
+      <form method="POST" enctype="multipart/form-data" action="./initiate.php">
+      <hr />
     <h4>Initiate it yourself</h4>
       <button type="form-control" type="submit" value="Initiate Call">Initiate Conference</button>
       <br />
       <small>This will start a conference, and perform the conference flow</small> 
       <hr />
+      </form>
 
     <h3>List of conferences from this application</h3>
     <?php if ($conferencesCnt > 0): ?>

@@ -25,4 +25,7 @@ if (isset($_REQUEST['recordingId']) && $_REQUEST['recordingId'] !== "") {
   // of our media which is exceptional
   // here as we serve on request
   echo $media->data;
+} else {
+
+  die("This recording is not ready or was corrupted. Sorry");
 }

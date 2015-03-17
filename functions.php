@@ -77,7 +77,7 @@ function generateMenu() {
  */
 function stripLocation($other) {
   $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-  $url = preg_replace("/php-bandwidth-examples\/.*/", "php-bandwidth-examples/", $url);
+  $url = preg_replace("/(home.*|app.*)$/", "", $url);
 
   return "http://" . $url . $other;
 }
@@ -151,13 +151,25 @@ function isIndex() {
   return false;
 }
 
+/**
+ * check if our database
+ * is connected
+ *
+ */
 function isDbConnected() {
   global $db;
 
-  if (get_class($db) == "SQLite3" || isset($db->isConnected) && $db->isConnected()) {
-    return true;
+  if ($db) {
+    if ($db->postgresql) {
+      if ($db->db) {
+        return true;
+      }
+    } else {
+      if ($db) {
+        return true;
+      }
+    }
   }
-
   return false;
 }
 

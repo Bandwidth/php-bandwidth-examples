@@ -163,7 +163,7 @@ if ($inboundCallEvent->isActive()) {
       // this conference checks whether
       // the caller is from our accepted
       // list. This is however optional
-     if (!in_array($inboundCallEvent->from, $application->conferenceAttendees)) {
+     if (in_array($inboundCallEvent->from, $application->conferenceAttendees)) {
 
 
         $call->speakSentence(array(

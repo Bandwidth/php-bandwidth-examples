@@ -1,6 +1,6 @@
 <?php
-require_once(__DIR__."../config.php");
-require_once(__DIR__."config.php");
+require_once(__DIR__."/../config.php");
+require_once(__DIR__."/config.php");
 
 // Application 006 initiation. This will
 // look at the applicationNumbers and initiate
@@ -20,11 +20,11 @@ $call = new Catapult\Call(array(
   "to" => $application->conferenceFromNumber
 ));
 
-sleep(40);
+sleep(5);
 
-// add this as saved record
-// the conference 
 $date = new DateTime;
-addRecord(array($application->conferenceFromNumber, $application->conferenceMembersToAdd, $application->conferenceMembersToAdd, $date->format("Y-M-D H:i:s")));
+die;
+
+route(sprintf("./?message=%s", "Initiated conference, waiting for your attendees"));
 
 ?>

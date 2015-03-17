@@ -59,12 +59,18 @@ Basic conference
 
 Has Been Tested
 
++ add area to add attendes by form.
+Needs validation
+
 App 006
 -------------------------------------------------
 
 Application 006 on success should provide a gather
 code for each attendee make sure each trial returns
 the needed codes and fills the database accordingly
+
++ add area to add attendees from
+form. Needs validation
 
 Needs Testing
 

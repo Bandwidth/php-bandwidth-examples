@@ -65,7 +65,7 @@ if ($inboundCallEvent->isActive()) {
       $call->accept();
     }
     $call->speakSentence(array(
-      "voice" => $applicaiton->conferenceVoice,
+      "voice" => $application->conferenceVoice,
       "gender" => $application->conferenceVoiceGender,
       "sentence" => $application->conferenceInitiate
     ));
@@ -85,6 +85,7 @@ if ($inboundCallEvent->isActive()) {
     // we need to create a code for every
     // attendee this sequence will need to
     // be unique for everyone
+
 
 
     $created = array();
