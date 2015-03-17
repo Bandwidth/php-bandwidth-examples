@@ -51,7 +51,7 @@
               <td><?php echo $vm['from']; ?></td>
               <td><?php echo $vm['to']; ?></td>
               <td>
-                <a href="./data/<?php echo $voiceMailData['recordingId']; ?>">
+                <a href="./data/<?php echo $voiceMailData['recording_id']; ?>">
                 Listen to mail
                 </a>
 

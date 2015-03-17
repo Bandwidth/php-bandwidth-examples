@@ -37,10 +37,12 @@
         // attendees
         $conferenceAttendees = getRows(sprintf("SELECT * FROM %s WHERE conference_id = '%s'; ", $application->applicationDataTable, $entry['meta']));
 
-        $attendees = ""; 
-        foreach ($conferenceAttendees as $cs) {
-          $attendees .= $cs['call_from'] . ", ";
-        } 
+        $attendees = "None yet.."; 
+        if (sizeof($conferenceAttendees) > 0) {
+          foreach ($conferenceAttendees as $cs) {
+            $attendees .= $cs['call_from'] . ", ";
+          } 
+        }
 
     ?>
        <tr> 

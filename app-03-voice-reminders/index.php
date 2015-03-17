@@ -61,7 +61,7 @@
             <td><?php echo $reminder['from']; ?></td>
             <td><?php echo $reminder['to']; ?></td>
             <td><?php echo $date->format("Y-m-d"); ?></td>
-            <td><a href="./play.php?recordingId=<?php echo $reminderData['recordingId']; ?>">Play Reminder</a></td>
+            <td><a href="./play.php?recordingId=<?php echo $reminderData['recording_id']; ?>">Play Reminder</a></td>
           </tr>
 
         <? endwhile; ?>
