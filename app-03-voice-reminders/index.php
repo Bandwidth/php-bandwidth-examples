@@ -6,9 +6,8 @@
 </head>
 
 <!-- 
-  Catapult Bandwidth's Application 001 Interface 
-  Send Auto Replies to the incoming numbers
-  then list them.
+  Catapult Bandwidth's Application 003
+  Call Transfers
  -->
 <body>
   <?php generateMenu(); ?> 

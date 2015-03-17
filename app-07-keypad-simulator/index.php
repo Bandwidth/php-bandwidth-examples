@@ -6,9 +6,8 @@
 </head>
 
 <!-- 
-  Catapult Bandwidth's Application 001 Interface 
-  Send Auto Replies to the incoming numbers
-  then list them.
+  Catapult Bandwidth's Application 007 Interface 
+  This will list the keypad simulator trials.
  -->
 <body>
   <?php generateMenu(); ?> 

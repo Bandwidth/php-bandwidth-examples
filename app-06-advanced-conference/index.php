@@ -6,9 +6,8 @@
 </head>
 
 <!-- 
-  Catapult Bandwidth's Application 001 Interface 
-  Send Auto Replies to the incoming numbers
-  then list them.
+  Catapult Bandwidth's Application 006 Interface 
+  this will list the advanced conferences held
  -->
 <body>
   <?php generateMenu(); ?> 
@@ -33,10 +32,10 @@
       <th>From</th>
       <th>Gather Codes (access)</th>
     <?php while($conference = $conferences->fetchArray()): 
-       $conferenceData = getRows(sprintf("SELECT * FROM %s WHERE conferenceId = '%s'", $application->applicationDataTable, $conference['meta']));
+       $conferenceData = getRows(sprintf("SELECT * FROM %s WHERE conference_id = '%s'", $application->applicationDataTable, $conference['meta']));
        $codes = "";
        foreach ($conferenceData as $cd) {
-          $codes .= $cd['receiverCallFrom'] .":". $cd['code'] . "<br />";
+          $codes .= $cd['receiver_call_from'] .":". $cd['code'] . "<br />";
        }
 
 
