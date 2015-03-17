@@ -222,7 +222,7 @@ Validation will describe how to validate
 using the Catapult library
 
 
-Even more other things
+Even more
 -----------------------------------------------------------
 TO make sure these examples run on your RBDMS we have used
 a simple style guide:

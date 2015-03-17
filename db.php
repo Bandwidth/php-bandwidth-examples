@@ -78,7 +78,7 @@ if (class_exists('SQLite3')) {
     $cleardb = parse_url($heroku_cdb);
     $username = $cleardb['username'];
     $password = $cleardb['password'];
-    $db = substr($cleardb, 1);
+    $db = substr($cleardb['path'], 1);
     $host = $cleardb['host'];
 
     $db = new SQLite3Fallback($host, $username, $password, $db);
