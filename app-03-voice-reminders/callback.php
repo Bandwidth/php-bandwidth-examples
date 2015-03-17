@@ -109,9 +109,9 @@ if ($recordingCallEvent->isActive()) {
   // being complete. It is called manually
   // when we know the speech segment is
   // over
+
   $recording = new Catapult\Recording($recordingCallEvent->recordingId);
   $call = new Catapult\Call($recordingCallEvent->callId);
-
   // Recommended
   //
   // we need to check if 
@@ -152,7 +152,7 @@ if ($recordingCallEvent->isActive()) {
   // (set in the SQLite field)
   if ($recording->state == Catapult\RECORDING_STATUSES::error) {
     updateRow(sprintf(
-      "UPDATE %s SET message = ' %s', recording_id = '%s' WHERE call_id = '%s'", 
+      "UPDATE %s SET message = '%s', recording_id = '%s' WHERE call_id = '%s'", 
       $application->applicationDataTable, 
       $application->applicationErrorMessage,
       $recording->id,

@@ -39,7 +39,7 @@ interface CALL_ERROR {
 // 
 interface RECORDING_STATUSES {
   const recording = "recording";
-  const complete = "complet";
+  const complete = "complete";
   const saving = "saving";
   const error = "error";
 }
