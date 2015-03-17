@@ -203,7 +203,7 @@ if ($gatherCallEvent->isActive()) {
     // would be our call
 
     $record = getRow(sprintf(
-       "SELECT * FROM %s WHERE callId = '%s' LIMIT 1", $application->applicationDataTable,$call->id)
+       "SELECT * FROM %s WHERE call_id = '%s' LIMIT 1", $application->applicationDataTable,$call->id)
     );
 
 
