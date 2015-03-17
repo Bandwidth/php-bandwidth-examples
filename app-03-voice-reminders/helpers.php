@@ -61,6 +61,6 @@ function makeDate($data) {
  * getting the array values (application.json)
  */
 function titlecase($str) {
-  return strtoupper(substr($str, 0, 1)) . strtolower(substr(($str, 1, strlen($str) - 1));
+  return strtoupper(substr($str, 0, 1)) . strtolower(substr($str, 1, strlen($str) - 1));
 
 }
