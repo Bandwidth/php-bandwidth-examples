@@ -96,8 +96,25 @@ function isPage($url) {
   return false;
 }
 
+/**
+ * library friendly route
+ * use javascript in acheiving
+ */
 function route($area) {
   printf("<script>top.location.href='%s'</script>",$area);
+}
+
+/**
+ * alert then remove the message
+ * tag.
+ */
+function alert($message) {
+  printf(sprintf("<script>
+   alert('%s');
+   var location = document.location.href;
+  document.location.replace(document.location.href.replace(/\?message=.*/, '')) + '#';
+
+   </script>", $message));
 }
 
 /**
