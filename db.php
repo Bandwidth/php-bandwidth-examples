@@ -156,6 +156,13 @@ function addRecordBasic($apptable, $array) {
   return addRecord($apptable, $array, array('from', 'to', 'meta', 'date'));
 }
 
+// no logic 
+// here will execute query
+function updateRow($expr) {
+  global $db;
+  return $db->query($expr);
+}
+
 function getCount($expr) {
   global $db;
 
