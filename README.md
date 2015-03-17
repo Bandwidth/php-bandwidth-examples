@@ -71,6 +71,9 @@ be installed using:
   heroku addons:add cleardb:ignite 
 
 
+currently Heroku is tested with postGresql
+
+
 
 
 AWS
