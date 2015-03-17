@@ -54,3 +54,13 @@ function makeDate($data) {
 
   return $date;
 }
+
+
+/**
+ * needed for
+ * getting the array values (application.json)
+ */
+function titlecase($str) {
+  return substr(strtoupper($str, 0, 1)) . substr(strtolower($str, 1, strlen($str) - 1));
+
+}
