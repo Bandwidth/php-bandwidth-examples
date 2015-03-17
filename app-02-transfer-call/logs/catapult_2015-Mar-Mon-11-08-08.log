@@ -1,1 +1,0 @@
- (line: 14) - APPLICATION: [Mar/03/15:23:08:08] - Request was brought back with error => {"Cache-Control":"no-cache","Content-Type":"text\/plain","Date":"Mon, 16 Mar 2015 23:08:07 GMT","Server":"Jetty(8.1.10.v20130312)","Vary":"Accept-Encoding","transfer-encoding":"chunked","Connection":"keep-alive"}
