@@ -109,5 +109,19 @@ function generateForm($elements) {
   return $html;
 }
 
+/**
+ * only need to load
+ * things when we're given
+ * the index
+ */
+function isIndex() {
+  $page = $_SERVER['PHP_SELF'];
+  $m = array();
+  if (preg_match("/index.php$|\/$/", $page, $m)) {
+    return true;
+  }
+  return false;
+}
+
 
 ?>

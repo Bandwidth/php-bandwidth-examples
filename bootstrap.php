@@ -36,11 +36,15 @@ $files = array(
 );
 
 require_once(__DIR__ . "/config.php");
+require_once(__DIR__ . "/functions.php");
 // include the sqLite database
 
-
-foreach ($files as $file) 
-  if ($file['type']=='js')
-    printf("<script src='%s' type='text/javascript'></script>\n", "../".$file['type']."/".$file['file'].".".$file['type']);
-  else
-    printf("<link rel='stylesheet' href='%s' />\n", "../".$file['type']."/".$file['file'].".".$file['type']);
+if (isIndex()) {
+  foreach ($files as $file) {
+    if ($file['type']=='js') {
+      printf("<script src='%s' type='text/javascript'></script>\n", "../".$file['type']."/".$file['file'].".".$file['type']);
+    } else {
+      printf("<link rel='stylesheet' href='%s' />\n", "../".$file['type']."/".$file['file'].".".$file['type']);
+    }
+  }
+}

@@ -1,5 +1,5 @@
 <?php
-
+$UI=FALSE;
 require_once("../config.php");
 require_once("./config.php");
 // For demo purposes only:
