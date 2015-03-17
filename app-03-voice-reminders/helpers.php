@@ -32,6 +32,15 @@ function getNextCol($col) {
   return $cols[getArrayKey($cols, $col) + 1];
 }
 
+function getArrayKey($array, $col) {
+  foreach ($array as $c => $a) {
+    if ($col == $a) {
+      return $c; 
+    }
+  }
+  return 0;
+}
+
 
 /**
  * get a php friendly DateTime
