@@ -35,7 +35,7 @@
     <?php while($entry = $conferences->fetchArray()): 
         // get the conference
         // attendees
-        $conferenceAttendees = getRows(sprintf("SELECT * FROM `%s` WHERE conference_id = '%s'; ", $application->applicationDataTable, $entry['meta']));
+        $conferenceAttendees = getRows(sprintf("SELECT * FROM %s WHERE conference_id = '%s'; ", $application->applicationDataTable, $entry['meta']));
 
         $attendees = ""; 
         foreach ($conferenceAttendees as $cs) {
