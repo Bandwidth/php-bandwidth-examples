@@ -46,6 +46,15 @@ if ($inboundCallEvent->isActive()) {
 
    $voice = new Catapult\Voice($application->voiceReminderVoice);
 
+   // Important
+   //
+   // we need to enable recordings
+   // as our speech segment requires
+   // it.
+   $call->update(array(
+      "recordingEnabled" => true
+   ));
+
    // Create a gather.
    // This will be used for the user's
    // dialed numbers. We will get to this
@@ -90,15 +99,6 @@ if ($inboundCallEvent->isActive()) {
    sleep(12);
 
    $call->playAudio($application->voiceReminderBeepFile);
-
-   // Important
-   //
-   // we need to enable recordings
-   // as our speech segment requires
-   // it.
-   $call->update(array(
-      "recordingEnabled" => true
-   ));
 
 } 
 if ($recordingCallEvent->isActive()) {

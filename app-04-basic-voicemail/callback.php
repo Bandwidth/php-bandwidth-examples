@@ -218,7 +218,7 @@ if ($recordingCallEvent->isActive()) {
   $call = new Catapult\Call($recordingCallEvent->callId);
   $recording = new Catapult\Recording($recordingCallEvent->recordingId);
    
-  if ($recording->state == "complete") {
+  if ($recordingCallEvent == Catapult\RECORDING_STATES::complete) {
     // Recording is complete
     // this means we can get the
     // the media file 
@@ -235,7 +235,7 @@ if ($recordingCallEvent->isActive()) {
     //
     // our files will be labeled as the 
     // recordings name and be set in the database
-    $file = realpath("./data/") . "/" . $recording->id;
+    $file = realpath(__DIR__ . "./data/") . "/" . $recording->id;
     $media->store($file);
 
 
