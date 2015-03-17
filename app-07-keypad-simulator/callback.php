@@ -81,7 +81,7 @@ if ($hangupCallEvent->isActive()) {
   // we should probably clean up our intermiediatte data here
   // 
   // for this demo, given it is on display we won't
-  //$db->query(sprintf("DELETE FROM %s WHERE callId = '%s'", $application->applicationDataTable, $hangupCallEvent->from));
+  //$db->query(sprintf("DELETE FROM %s WHERE call_id = '%s'", $application->applicationDataTable, $hangupCallEvent->from));
 }
 
 if ($dtmfCallEvent->isActive()) {

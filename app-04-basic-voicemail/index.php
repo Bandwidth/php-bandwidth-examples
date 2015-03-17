@@ -45,7 +45,7 @@
           <th>To</th>
           <th>VoiceMail</th>
         <?php while ($vm = $voicemail->fetchArray()): 
-          $voiceMailData = getRow(sprintf("SELECT * FROM %s WHERE callId = '%s'; ", $application->applicationDataTable, $vm['meta']));
+          $voiceMailData = getRow(sprintf("SELECT * FROM %s WHERE call_id = '%s'; ", $application->applicationDataTable, $vm['meta']));
         ?>
            <tr> 
               <td><?php echo $vm['from']; ?></td>
