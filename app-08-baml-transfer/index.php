@@ -68,7 +68,7 @@
     <?endwhile; ?> 
     </table>
     <? else: ?>
-      Application has not sent any auto replies yet..
+      Application has not generated BaML yet..
     <? endif; ?>
 
   </div>
