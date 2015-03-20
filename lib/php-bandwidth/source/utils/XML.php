@@ -80,7 +80,6 @@ final class XMLUtility extends BaseUtilities {
      * render using the default encoding
      */
     public static function getHeader() {
-      header("Content-Type: application/xml");
       return self::$options['header']; 
     }
 

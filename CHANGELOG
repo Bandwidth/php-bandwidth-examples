@@ -16,6 +16,9 @@ the application which will describe the application
 according to the "recommended", "optional" and "important"
 steps. 
 
+03/15/2015:
+BaML transfer example added
+
 
 App 001 
 --------------------------------------------------------
@@ -73,3 +76,10 @@ Keypad Simulator
 - same support as App 001 without initiate button
 - uses sqLite like App 005
 
+App 008
+
+---------------------------------------------------------
+
+0.1.0
+BaML transfer verb
+- same support as App 001

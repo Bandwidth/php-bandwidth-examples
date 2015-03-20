@@ -12,7 +12,7 @@ Includes:
   - Basic Conference
   - Advanced Conference
   - Keypad Simulator
-  - BaML Call Transfers *
+  - BaML Call Transfers
   - SIP Domain & Endpoints *
 
 
@@ -241,7 +241,11 @@ a simple style guide:
 Other Notes
 ===========================================================
 
-These examples need:
+- Depending on how the callback is implemented some application
+records may take time to appear in the interface.
+
+
+These examples require:
 
 Catapult PHP SDK >= 0.7.3
 SQLite3

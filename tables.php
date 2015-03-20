@@ -42,16 +42,17 @@ $applications = array(
     "table" => "keypad_simulator",
     "link" => "app-07-keypad-simulator"
   ),
-/*
   array(
     "name" => "BaML Transfer Verb",
+    "table" => "baml_transfers",
     "link" => "app-08-baml-transfer"
-  ),
+  )
+  /*
   array(
     "name" => "SIP Domains Application",
     "link" => "app-09-sip-domains"
   )
-*/
+  */
 );
 
 /**

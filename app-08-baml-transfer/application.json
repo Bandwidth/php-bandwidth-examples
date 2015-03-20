@@ -1,0 +1,13 @@
+{
+  "applicationName": "BaML Transfers",
+  "applicationTable": "baml_transfers",
+  "applicationDescription": "BaML call transfers this will initiate as well as generate the baML for a call",
+  "applicationId": "APPLICATION_ID",
+  "BaMLTransferListeningNumber": "+NUMBER",
+  "BaMLTransferToNumber": "+NUMBER",
+  "BaMLTransferVerb": "transferCall",
+  "BaMLTransferSentence": "We are transferring your call, using Bandwidth Markup Language..",
+  "BaMLTransferVoice": "paul",
+  "BaMLTransferVoiceGender": "male",
+  "BaMLTransferVoiceLocale": "en_US"
+}

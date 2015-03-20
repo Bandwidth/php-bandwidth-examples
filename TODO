@@ -81,7 +81,14 @@ replace SQlite usage with Catapult Gathers. Use str_split
 and index positioning in place of current SQLite level
 storing
 
-Needs Testing
++ Tested
+
+App 008
+-------------------------------------------------
+
++ Tested
+
+
 
 Tests
 --------------------------------------------------
