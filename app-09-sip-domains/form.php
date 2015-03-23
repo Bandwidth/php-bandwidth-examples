@@ -1,7 +1,7 @@
 <?php
 
-require_once("../config.php");
-require_once("./config.php");
+require_once(__DIR__ . "/../config.php");
+require_once(__DIR__ . "/config.php");
 // Form processing for SIP/Domains
 // using Try catch here is exceptional
 // because it will allow us to continue
