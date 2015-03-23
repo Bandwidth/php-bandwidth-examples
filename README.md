@@ -198,9 +198,13 @@ Catapult. It will provide an interface to do so. Through it
 you will be able to see step approach of creating
 these domains as well as integrating them with the endpoints.
 
+As like the other interfaces you can also see the history of SIP calls
+made.
+
 Setting Up:
   1. Specify valid names to the interface 
   2. Use these domains in creating your endpoints 
+
 
 Docs
 ---------------------------------------------------------
@@ -222,7 +226,7 @@ Validation will describe how to validate
 using the Catapult library
 
 
-Even more
+Application DB Syntax
 -----------------------------------------------------------
 TO make sure these examples run on your RBDMS we have used
 a simple style guide:
@@ -234,8 +238,27 @@ a simple style guide:
   "from" for postGresQL
    will be
   `from` for SQLite
+- application variables are camelCased and so are JSON objects
 
 
+
+Debugging
+===========================================================
+
+debugging in Heroku, if you know how to already should
+be trivial, one command used in our tests was:
+
+   heroku logs -t
+
+Which will stream callback information as it happens, usually
+logs being kept in the 'logs' directory relative to the application
+is also helpful and you may want to check this. If you have
+questions or concerns please email the maintainer of this package.
+
+
+debugging local
+debugging these applications locally while different from Heroku,
+can still be done using the logs, and PHP warnings. 
 
 
 Other Notes

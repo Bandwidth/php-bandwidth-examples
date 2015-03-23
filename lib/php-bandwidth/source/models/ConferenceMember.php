@@ -32,11 +32,11 @@ final class ConferenceMember extends AudioMixin {
     {
       $data = Ensure::Input(func_get_args());
         parent::_init($data, new DependsResource(array(
-            array("term" => "conference", "plural" => true, "silent" => false, "mandatoryId" => true))
+            array("term" => "conference", "plural" => true, "silent" => false))
            ),
-           new LoadsResource(array("primary" => "GET", "init" => array("conferenceId"), "id" => "id", "silent"=>FALSE)),
+           new LoaderResource(array("primary" => "GET", "init" => array("conferenceId"), "id" => "id")),
            new SchemaResource(array("fields" => array(
-                'id', 'state', 'addedTime', 'hold', 'mute', 'joinTone', 'leavingTone'
+                'id', 'state', 'added_time', 'hold', 'mute', 'join_tone', 'leaving_tone'
             ), "needs" => array("id", "state", "from"))
           )
        );

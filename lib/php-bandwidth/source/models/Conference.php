@@ -29,10 +29,10 @@ final class Conference extends AudioMixin {
 
       parent::_init($data, new DependsResource,
         new LoadsResource(
-          array("primary" => "GET", "id" => "id", "silent" => false, "init" => "")
+          array("primary" => "GET", "id" => "id", "silent" => false)
         ),
         new SchemaResource(
-          array("fields" => array("id", "state", "from", "createdTime", "completedTime", "fallbackUrl"), 
+          array("fields" => array("id", "state", "from", "created_time", "completed_time", "fallback_url"), 
               "needs" => array(
               "id", "state", "from"
               )
@@ -61,7 +61,7 @@ final class Conference extends AudioMixin {
       $url = URIResource::Make($this->path, array($this->id, "members"));
       $memberid = Locator::Find($this->client->post($url, $args->get()));
     
-      return new ConferenceMember($this->id, $memberid);
+      return $this->member($memberid);
     }
 
    /**
@@ -84,11 +84,10 @@ final class Conference extends AudioMixin {
      * Return a partial for
      * the member selected
      *
-     * @param id: a conference member's id
      */
-    public function member($id)
+    public function member()
     {
-      return new ConferenceMember($this->id, $id);
+      return new ConferenceMember($this->id);
     }
 }
 

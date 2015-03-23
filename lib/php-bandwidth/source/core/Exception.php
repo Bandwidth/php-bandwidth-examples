@@ -34,7 +34,7 @@ final class CatapultApiException extends \Exception
   }
 
   public function getResult() {
-    return $this->result;
+    return json_decode($this->result);
   }
 
   public function getType() {

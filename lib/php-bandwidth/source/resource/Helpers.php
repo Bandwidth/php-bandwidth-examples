@@ -14,14 +14,13 @@ namespace Catapult;
 abstract class MetaResource extends BaseResource {
     public function __construct($depends=null) {
         $this->terms = array();
-
+        $checks = array("plural", "mandatory");
         if (!is_array($depends))
             return;
 
         foreach ($depends as $k => $d) {
             $this->terms[$k] = new SubFunctionObject($d);
         }
-
     }
 }
 
@@ -66,18 +65,6 @@ final class DependsObject extends Multi {
 }
 
 /**
- * append information to the object
- * before passing it to the CTor
- */
-final class AppendsObject extends Multi {
-  public $terms = array(
-    "term",
-    "link",
-    "value"
-  );
-}
-
-/**
  * subfunction resource will register
  * functions that are derived from another object
  * i.e
@@ -93,6 +80,19 @@ class SubFunctionResource extends MetaResource {
         "id",
         "plural"
     );
+}
+
+/**
+ * remove properties when
+ * done with computation needed
+ * in certain areas
+ */
+class RemoveResource {
+  public function __construct(&$object, $terms) {
+    foreach ($terms as $v) {
+      unset($object->$v);
+    }
+  }
 }
 
 
@@ -134,85 +134,6 @@ final class DependsResource extends BaseResource {
             $this->terms[$k] = new DependsObject($d);
         }
     }
-}
-
-/**
- * constraints resource
- * should qualify membership in
- * an object only when a term matches
- * MessageEvent("direction" => "incoming")) with array("direction" => "incoming")
- */
-final class ConstraintsResource {
-  /**
-   * this will
-   * attach the terms to an object
-   *
-   * make sure its
-   * @param object: Catapult Model or Event
-   */
-  public function Make(&$object) {
-    $object->constraints = &$this;
-  }
-  /**
-   * construct the terms
-   * usually passed in
-   * as array
-   * 
-   * @param terms
-   */
-  public function __construct($terms) {
-    $this->terms = array();
-    foreach ($terms as $k => $term) {
-      $this->terms->$k = $term;
-    }
-  }
-}
-
-/**
- * sometimes we need information
- * from a parent model. And this information
- * is not provided directly from the returning objects
- * i.e recordings->listTranscriptions
- * this would return transcriptions w/o the recordingID
- * AppendsResource should allows for quick pointing of one recordingId
- * per several children
- *
- * Implementors Note: only useful for collections. The link option
- * will attach a value by reference
- *
- */
-final class AppendsResource extends BaseResource {
-  public static $terms = array(
-    "term",
-    "link",
-    "value" 
-  );
-
-  public function Make(&$object, &$appends) {
-    foreach($appends->data as $ap) {
-      $prop = $ap->term;
-      /** is it by reference? **/
-      if ($ap->link) {
-        $value = &$ap->value;
-        $object->$prop = &$value;
-      } else {
-        $value = $ap->value;
-        $object->$prop = $value;
-      }
-    }
-  }
-  public function __construct($appends) {
-    if (!is_array($appends)) {
-      return;
-    }
-
-    foreach($appends as $k => $a) {
-      if (!in_array($k, self::$terms)) {
-        throw new \CatapultApiException("Fields were built improperly for " . __CLASS__);
-      }
-      $this->data[$k] =new AppendsObject($a);
-    }
-  }
 }
 
 

@@ -1,6 +1,6 @@
 <?php
-/** 
- * @type  FileHandler
+/**
+ * @type FileHandler
  * 
  * Minimal filehandler
  * for media types.  
@@ -15,7 +15,7 @@ final class FileHandler extends Types {
 
 
       return file_put_contents(realpath($as) . $as, $contents);
-    } 
+    }	
 
     public static function read($filename)
     {

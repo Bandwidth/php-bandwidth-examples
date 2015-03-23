@@ -31,7 +31,7 @@ abstract class AudioMixin extends GenericResource {
     /** update add simplicity. playAudio('audioFile') = playAudio(array('audioFile' => 'audioFile')) **/
     if ($args->is_string()) {
       $data = array(
-        "fileUrl" => $data
+        "audioFile" => $data[0]
       );
     }
 
@@ -61,9 +61,8 @@ abstract class AudioMixin extends GenericResource {
 	{
 		$args = Ensure::Input($args);
 		$url = new URIResource($this->getAudioUrl());	
-    $data = $args->get();
 
-		$this->client->post((string) $url, $data);		
+		$this->client->post((string) $url, $data->get());		
 	}
 
 	/**

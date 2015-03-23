@@ -89,6 +89,15 @@ App 008
 + Tested
 
 
+App 009
+-------------------------------------------------
+
++ Interface Tested
++ SIP Calls Mock Tested
+
+
+- move creation interface to
+another page, add link to main page, "Create Domains & Endpoints"
 
 Tests
 --------------------------------------------------

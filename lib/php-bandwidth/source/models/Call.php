@@ -65,6 +65,11 @@ final class Call Extends AudioMixin {
       $data->add("state", CALL_STATES::transferring);
 
       $response = $this->client->post($url, $data->get());
+      
+      $id = Locator::Find($response);
+
+      $data->add("id", $id);
+
       return Constructor::Make($this, $data->get());
     }
 
@@ -117,7 +122,8 @@ final class Call Extends AudioMixin {
     {
       $url = URIResource::Make($this->path, array($this->id));
       $data = new DataPacket(array("state" => CALL_STATES::active));
-      $this->client->post($url, $data->get());
+      $id = Locator::Find($this->client->post($url, $data->get()));
+      $data->add("id", $id);
 
       return Constructor::Make($this, $data->get());
     } 

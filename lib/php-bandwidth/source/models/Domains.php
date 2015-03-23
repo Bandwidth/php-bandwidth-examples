@@ -45,8 +45,8 @@ final class Domains extends GenericResource {
    * @returns EndpointsCollection
    */
   public function listEndpoints() {
-    $uri = new URIResource($this->path, "endpoints");
+    $uri = new URIResource($this->path, array($this->id, "endpoints"));
 
-    return new EndpointsCollection(new DataPacketCollection((string) $uri));
+    return new EndpointsCollection(new DataPacketCollection($this->client->get((string) $uri)));
   }
 }

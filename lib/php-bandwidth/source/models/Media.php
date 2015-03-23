@@ -61,7 +61,7 @@ final class Media extends GenericResource {
      * we will need both the mediaName and url
      *
      * @param args
-     * must contain mediaName and file(path to file)
+     * must contain fileName and file(path to file)
      */
     public function upload($args)
     {

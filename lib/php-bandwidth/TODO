@@ -10,8 +10,10 @@ Each item is rated by its priority level
 - consider using (array) casting in place
 of built in Converter::toArray. Benchmark results
 in demos.
-(array)$json
 
+to add:
+(array)$json
+current:
 Converter::toArray($json)
 
 - add 0.5.0 features backwards compatability. '_' functions
@@ -35,3 +37,7 @@ or
 CONFERENCE_MEMBER_STATE::done
 
 - states need to checked agaisnt lowercase. 
+=======
+- maybe add support for 0.5.0 underscored
+functions. Note: functions can be mocked using GenericResource's
+init. get_transcriptions becomes getTranscriptions 

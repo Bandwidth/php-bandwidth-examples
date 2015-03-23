@@ -21,7 +21,7 @@ class CollectionObject {
     *
     * @param data -> initial set of data
     */	 
-    public function __construct($data=array(), AppendsResource $appends = NULL, $quiet = TRUE)
+    public function __construct($data=array(), $quiet = TRUE)
     {
       $this->data = array();
       $this->order = array();
@@ -36,6 +36,7 @@ class CollectionObject {
           */
 
            $primary = ResolverResource::key($d);
+
            /**
             * by default don't fetch the contents
             * of the model. This is useful when loading large lists
@@ -46,15 +47,6 @@ class CollectionObject {
               $this->data[$d[$primary]] = $this->setup($d);
           }
 
-
-          /**
-           * add any additional
-           * things we may need
-           */
-
-          if ($appends) {
-           AppendsResource::Make($this->data[$d[$primary]], $appends);
-          }
           $this->order[$cnt] = $d{$primary};
 
           $cnt ++;
@@ -213,6 +205,7 @@ class CollectionObject {
               if ($d[$k] === $term)
                 $out[] = $d;
           }
+
         }
       }
 
@@ -269,20 +262,21 @@ class CollectionObject {
     }
 
     /**
-     * make one array
-     * all inner data should
-     * have toArray/1 available
-     */
-    public function toArray()
-    {
-      $arr = array();
-      foreach ($this->data as $d) {
-        $arr[] = $d->toArray();
-      }
-      return $arr;
-    }
-  }
+     * all collections
+     * should provide
+     * toArray/0
+     */   
 
+     public function toArray() {
+      $arr = array();
+      foreach ($this->data as $data) {
+        $arr[]= $data->toArray();
+      }
+
+      return $arr;
+     }
+    
+  }
 
 /**
  * provide functions
@@ -427,7 +421,7 @@ final class DataPacket extends BaseUtilities {
           if (isset($arg->serialize) 
               && !$arg->serialize) {
 
-            $this->data[$k] = $arg;
+            $this->data[$k] = $arg->toArray();
           } else {
             $this->data[$k] = (string) $arg;
           }
@@ -452,6 +446,20 @@ final class DataPacket extends BaseUtilities {
           return $this->data[0];
 
       return $this->data;
+    }
+
+    /**
+     * make one array
+     * all inner data should
+     * have toArray/1 available
+     */
+    public function toArray()
+    {
+      $arr = array();
+      foreach ($this->data as $d) {
+        $arr[] = $d->toArray();
+      }
+      return $arr;
     }
 
     /** 

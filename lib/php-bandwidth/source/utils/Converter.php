@@ -17,7 +17,6 @@ final class Converter extends BaseUtilities {
 	 * in later seles
 	 *
 	 * @param json: one layer json object
-   * @param add: new data to add
 	 */
 	public function ToArray($json)
 	{

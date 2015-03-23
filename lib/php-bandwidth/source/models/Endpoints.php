@@ -2,6 +2,8 @@
 /**
  * @model Endpoints
  *
+ * http://ap.bandwidth.com/docs/rest-api/endpoints-2/
+ *
  * Provides endpoints functionality
  */ 
 
@@ -27,13 +29,13 @@ final class Endpoints extends GenericResource {
   public function __construct() {
     $data = Ensure::Input(func_get_args());
     return parent::_init($data, new DependsResource(array(
-         array("term" => "domains", "plural" => TRUE, "mandatoryId" => TRUE)
+         array("term" => "domains", "plural" => TRUE)
       )), 
       new LoadsResource(
-         array("primary" => "GET", "init" => array("domainId"), "id" => "id", "silent"=> TRUE)
+         array("parent" => false, "primary" => "create", "init" => array("domainId"), "id" => "id", "silent"=> TRUE)
       ), 
       new SchemaResource(array(
-        "fields" => array('name', 'description', 'applicationId', 'domainId', 'sipUri', 'enabled', 'credentials'), 
+        "fields" => array('id', 'name', 'description', 'applicationId', 'domainId', 'sipUri', 'enabled', 'credentials'), 
         "needs" => array('name', 'domainId', 'credentials')
       ))
      );
@@ -53,13 +55,39 @@ final class Endpoints extends GenericResource {
    */
   public function load() {
     $data = Ensure::Input(func_get_args());
+    $data = $data->get();
 
     return parent::load($data,  
-      new PathResource(array(
+      new PathResource($this,array(
         "domains" => $data['domainId'], 
-        "endpoint" => ""
+        "endpoints" => ""
       )
     ));
+  }
+ 
+  /**
+   * Create musn't preserve the domainId
+   * as this will be our path. We will pass
+   * it in the parameter, use PathResource
+   * then remove it
+   *
+   * @param: args Endpoint create data
+   */ 
+  public function create() {
+    $data = Ensure::Input(func_get_args());
+    $data = $data->get();
+    if (!isset($data['domainId'])) {
+      $data['domainId'] = '';
+    }
+
+    return parent::create($data, 
+      new RemoveResource($this, array("domainId"),
+      new PathResource($this, array( 
+         "domains" => $data['domainId'],
+         "endpoints" => ""       
+          )
+      ))
+    );
   }
 
   /** 

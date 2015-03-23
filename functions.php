@@ -101,7 +101,7 @@ function isPage($url) {
  * use javascript in acheiving
  */
 function route($area) {
-  printf("<script>top.location.href='%s'</script>",$area);
+  printf("<script>top.location.href=\"%s\"</script>",$area);
 }
 
 /**
@@ -126,7 +126,11 @@ function alert($message) {
  */
 function generateForm($elements) {
   $html = "";
-  $html .= sprintf("<form name='' method='POST' action='./form.php'>");
+  // add a unique id to the form
+  // name to allow multiple forms
+  // on the same page without having name
+  // conflicts
+  $html .= sprintf("<form name='mainFrm_%s' method='POST' action='./form.php'>", uniqid(true));
   foreach ($elements as $k => $el) {
     if ($el['type'] !== 'submit') {
       $html .= sprintf("<label>%s</label>", $k);

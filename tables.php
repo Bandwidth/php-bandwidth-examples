@@ -46,13 +46,12 @@ $applications = array(
     "name" => "BaML Transfer Verb",
     "table" => "baml_transfers",
     "link" => "app-08-baml-transfer"
-  )
-  /*
+  ),
   array(
     "name" => "SIP Domains Application",
+    "table" => "sip_domains",
     "link" => "app-09-sip-domains"
   )
-  */
 );
 
 /**

@@ -43,7 +43,7 @@ final class EndpointsMulti extends CollectionObject {
    */
   public function pushEndpoint(/** polymorphic **/) {
     $data = Ensure::Input(func_get_args());
-      
+
     $this->data[] = $data->get();
     $this->queued ++;
   }
@@ -52,7 +52,9 @@ final class EndpointsMulti extends CollectionObject {
       throw new CatapultApiException("You've already done this.");
     }
     foreach ($this->data as $d) {
-      $endpoint = new Endpoints($this->domain, $d);
+      $endpoint = new Endpoints;
+      $d['domainId'] = $this->domain;
+      $endpoint->create($d);
 
       $this->queued --;
     }

@@ -1,0 +1,11 @@
+{
+  "applicationName": "SIP Domains Application",
+  "applicationTitle": "SIP Domains Applications",
+  "applicationTable": "sip_domains",
+  "applicationDescripion": "Deploy SIP domains and endpoints",
+  "sipDomainsSetup": "You have setup the domains & endpoints using Catapult. For more information on this please view our online documentation. Thanks for using!",
+  "sipDomainsThankYou": "Thank you for trying the Domains and Endpoints demo",
+  "sipDomainsVoice": "Paul",
+  "sipDOmainsVoiceGender": "male",
+  "callbackUrl": ""
+}
