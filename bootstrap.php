@@ -55,7 +55,7 @@ if (!isDbConnected()) {
 }
 
 
-if (isIndex()) {
+if (isIndex() || isset($requestAssets)) {
   foreach ($files as $file) {
     if ($file['type']=='js') {
       printf("<script src='%s' type='text/javascript'></script>\n", "../".$file['type']."/".$file['file'].".".$file['type']);

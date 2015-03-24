@@ -96,88 +96,9 @@
         
 
       </ul>
-
+      <hr />
 
       <h3>Creating Domains & Endpoints</h3>
-     <ul id="sip-domains"> 
-       <h5><b>Create A Domain</b></h5>
-        <hr />
-      <?php if (isset($domainsResult)): ?>
-        <?php if (isset($domainsSuccess) && $domainsSuccess): ?>
-          <h2 class='success'><?php echo $domainsResult; ?></h2>
-        <? else: ?> 
-          <h2 class="error"><?php echo $domainsResult; ?></h2>
-        <?php endif ; ?>
-      <?php endif; ?>
-
-      <?php echo generateForm($form['domains']);?>
-
-     </ul> 
-
-     <ul id="sip-domains">
-      <h5><b>Create An Endpoint</b></h5>
-        <hr />
-       <?php if (isset($endpointsResult)): ?>
-        <?php if($endpointsSuccess): ?>  
-          <h2 class="success"><?php echo $endpointsResult; ?></h2>
-        <? else: ?>
-          <h2 class="error"><?php echo $endpointsResult; ?></h2>
-        <? endif; ?>
-      <?php endif; ?>
-       <?php echo generateForm($form['endpoints']); ?>
-     </ul>
-
-  <script>
-    // minimal 
-    // jQuery to 
-    // allow validation 
-    var inputs = $('inputs').get().concat($('select').get());
-    var alertColor = '#ffe161';
-    var initialColor = '#fff';
-     
-  
-    var retainColor = function(el) {
-      el.style.backgroundColor = initialColor;
-      remPlaceholderMessage(el); 
-    }; 
-    var remPlaceholderMessage = function(el) {
-      el.setAttribute("placeholder","");
-    };
-    var setPlaceholderMessage = function(el) {
-      el.setAttribute("placeholder", "This needs to be filled");
-    };
-    var disposeColor = function(el) {
-      el.style.backgroundColor = alertColor;
-      setPlaceholderMessage(el);
-    };
-    $('input[type=submit]').click(function(e, el) {
-        e.preventDefault();
-        var needs = 0;
-        var frmInputs = e.target.parentNode.childNodes; 
-
-        for (var i in frmInputs) {
-          if (frmInputs[i].value==='') {
-            disposeColor(frmInputs[i]);
-            frmInputs[i].onfocus = function() {
-              return retainColor(this);
-            };
-            needs++;
-          }
-        }
-        if (needs > 0) {
-          return;
-        }
-
-        e.target.parentNode.submit();
-    }); 
-
-     $('#domainSelect').change(function(e) {
-        var that = e.target;
-        var dId = that.value; 
-
-        $(".endpoints").hide();
-        $("#" + dId).show();
-     });
-  </script>
-
+      <a href="./create.php"><button>Create New</button></a>
+   
 </body>

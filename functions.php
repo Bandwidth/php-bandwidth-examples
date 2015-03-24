@@ -166,7 +166,7 @@ function generateForm($elements) {
 function isIndex() {
   $page = $_SERVER['PHP_SELF'];
   $m = array();
-  if (preg_match("/index.php$|\/$/", $page, $m)) {
+  if (preg_match("/index.php$|create.php|\/$/", $page, $m)) {
     return true;
   }
   return false;

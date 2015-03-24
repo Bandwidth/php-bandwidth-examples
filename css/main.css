@@ -138,3 +138,7 @@ ul#sip-domains h2.success {
   padding: 5px;
   color: black;
 }
+
+.clear {
+  clear: both;
+}
