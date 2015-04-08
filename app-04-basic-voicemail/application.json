@@ -2,7 +2,7 @@
   "applicationName": "Basic Voice Mail",
   "applicationTable": "basic_voice_mail",
   "applicationDataTable": "basic_voice_mail_data",
-  "voicemailNumber": "+18726661384",
+  "voicemailNumber": "+NUMBER",
   "voicemailSentence": "This person is busy. Please leave a message at the beep. When you are done please hit pound or hangup",
   "voicemailFile": "http://php-bandwidth-examples.herokuapp.com/app-04-basic-voicemail/files/beep.wav",
   "voicemailVoice": "Bridget",

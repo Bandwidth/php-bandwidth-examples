@@ -4,7 +4,7 @@
   "applicationTitle": "Voice Reminders",
   "applicationDataTable": "voice_reminders_data",
   "applicationDescription": "This application will set voice reminders",
-  "voiceReminderNumber": "+13156594693",
+  "voiceReminderNumber": "+NUMBER",
   "voiceReminderThanks": "Thanks, we have saved your voice reminder and date. We will remind you on this date",
   "voiceReminderSentence": "Hi. You are using Catapult Voice Reminders to enter a voice reminder please start recording your voice after the beep. Once you are done please press pound.",
   "voiceReminderVoice": "Bridget",
