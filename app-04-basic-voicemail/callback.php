@@ -58,7 +58,7 @@ if ($inboundCallEvent->isActive()) {
      "sentence" => $application->voicemailSentence,
      "gender" => $application->voicemailGender
   ));
-  sleep(5);
+  sleep($application->voicemailSpeechTimeoutVoicemail);
 
   $call->playAudio($application->voicemailFile);
 
@@ -148,7 +148,7 @@ if ($timeoutCallEvent->isActive()) {
     "gender" => $application->voicemailGender
   ));
 
-  sleep(5);
+  sleep($application->voicemailSpeechTimeoutPause);
   $call->hangup();
 
 }
@@ -172,7 +172,11 @@ if ($dtmfCallEvent->isActive()) {
       "gender" => $application->voicemailGender
     ));
 
-    sleep(5);
+    // Recommended
+    //
+    // the dtmf terminate prompt should
+    // have a timeout as we hangup afterwards
+    sleep($application->voicemailSpeechTimeoutDtmf);
 
     $call->hangup();
   } else {
@@ -272,7 +276,7 @@ if ($recordingCallEvent->isActive()) {
     // store reference to the recording in our database
     updateRow(sprintf("UPDATE %s SET media_name  = '%s' WHERE call_id = '%s'", $application->applicationDataTable, $mediaName,  $call->id));
     
-  } else if ($recording->state == Catapult\RECORDING_STATUSES::complete) {
+  } else if ($recording->state == Catapult\RECORDING_STATUSES::error) {
     // Recommended
     //
     // treating errorneous recordings can also 

@@ -226,7 +226,7 @@ Validation will describe how to validate
 using the Catapult library
 
 
-Application DB Syntax
+Even more
 -----------------------------------------------------------
 TO make sure these examples run on your RBDMS we have used
 a simple style guide:
@@ -238,27 +238,8 @@ a simple style guide:
   "from" for postGresQL
    will be
   `from` for SQLite
-- application variables are camelCased and so are JSON objects
 
 
-
-Debugging
-===========================================================
-
-debugging in Heroku, if you know how to already should
-be trivial, one command used in our tests was:
-
-   heroku logs -t
-
-Which will stream callback information as it happens, usually
-logs being kept in the 'logs' directory relative to the application
-is also helpful and you may want to check this. If you have
-questions or concerns please email the maintainer of this package.
-
-
-debugging local
-debugging these applications locally while different from Heroku,
-can still be done using the logs, and PHP warnings. 
 
 
 Other Notes
@@ -266,6 +247,10 @@ Other Notes
 
 - Depending on how the callback is implemented some application
 records may take time to appear in the interface.
+
+- PHP's sleep/1 is added in multiple areas, this while commented for the examples
+use case, should be leveraged with how you build your applications.
+For more, you will find the sleep timeouts in application.json
 
 
 These examples require:

@@ -27,6 +27,7 @@ $timeoutCallEvent = new Catapult\TimeoutCallEvent;
 $hangupCallEvent = new Catapult\HangupCallEvent;
 $recordingCallEvent = new Catapult\RecordingCallEvent;
 $gatherCallEvent = new Catapult\GatherCallEvent;
+$inboundCallEvent->active = true;
 
 if ($inboundCallEvent->isActive()) {
    // Step 1
@@ -96,7 +97,12 @@ if ($inboundCallEvent->isActive()) {
    addRecordBasic( $application->applicationTable, array($call->from, $call->to,$call->id, $date->format("Y-m-d")));
    addRecord($application->applicationDataTable, array($call->id, 1), array("call_id", "initiated"));
 
-   sleep(12);
+   // Recommended
+   //
+   // we should wait an amount before
+   // beggining our next step
+   //
+   sleep($application->voiceReminderSpeechInitialTimeout);
 
    $call->playAudio($application->voiceReminderBeepFile);
 
@@ -219,7 +225,12 @@ if ($gatherCallEvent->isActive()) {
         "voice" => $application->voiceReminderVoice,
         "gender" => $application->voiceReminderVoiceGender
       ));
-      sleep(10);
+      // Recommended
+      //
+      // before hanging up
+      // it is important to wait 
+      // as it will not affect the next step
+      sleep($application->voiceReminderSpeechPromptTimeout);
       $call->hangup();
       exit(1);
     }
@@ -294,7 +305,7 @@ if ($gatherCallEvent->isActive()) {
         // to empty
         $digits = $application->voiceReminderTerminatingDigits;
 
-        sleep(3);
+        sleep($application->voiceReminderSpeechDigitTimeout);
 
         $started = true;
       } 
@@ -375,7 +386,7 @@ if ($gatherCallEvent->isActive()) {
         // until our last message
         // is emitted. Then we can
         // safely hangup
-        sleep(7);
+        sleep($application->voiceReminderSpeechThanksTimeout);
         $call->hangup();
       }
 

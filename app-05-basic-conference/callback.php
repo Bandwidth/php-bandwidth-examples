@@ -131,7 +131,7 @@ if ($inboundCallEvent->isActive()) {
             "voice" => $application->conferenceVoice, 
             "gender" => $application->conferenceVoiceGender
           ));  
-          sleep(10);
+          sleep($application->conferenceWelcomeTimeout);
           exit(1);
       }
 
@@ -151,7 +151,7 @@ if ($inboundCallEvent->isActive()) {
           "gender" => $application->conferenceVoiceGender
         ));
 
-        sleep(10);
+        sleep($application->conferenceEndTimeout);
         $call->hangup();
         exit(1);
 

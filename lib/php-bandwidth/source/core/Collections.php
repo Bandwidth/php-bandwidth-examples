@@ -260,22 +260,6 @@ class CollectionObject {
 
       return $protolist;
     }
-
-    /**
-     * all collections
-     * should provide
-     * toArray/0
-     */   
-
-     public function toArray() {
-      $arr = array();
-      foreach ($this->data as $data) {
-        $arr[]= $data->toArray();
-      }
-
-      return $arr;
-     }
-    
   }
 
 /**
@@ -421,7 +405,7 @@ final class DataPacket extends BaseUtilities {
           if (isset($arg->serialize) 
               && !$arg->serialize) {
 
-            $this->data[$k] = $arg->toArray();
+            $this->data[$k] = $arg;
           } else {
             $this->data[$k] = (string) $arg;
           }
@@ -446,20 +430,6 @@ final class DataPacket extends BaseUtilities {
           return $this->data[0];
 
       return $this->data;
-    }
-
-    /**
-     * make one array
-     * all inner data should
-     * have toArray/1 available
-     */
-    public function toArray()
-    {
-      $arr = array();
-      foreach ($this->data as $d) {
-        $arr[] = $d->toArray();
-      }
-      return $arr;
     }
 
     /** 

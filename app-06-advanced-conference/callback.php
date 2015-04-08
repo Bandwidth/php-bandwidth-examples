@@ -71,7 +71,11 @@ if ($inboundCallEvent->isActive()) {
     ));
 
     // let the initiate speech begin. then we will start our conference
-    sleep(13);
+    
+    // It's recommended
+    // we wait for the welcome
+    // message to be complete
+    sleep($application->conferenceWelcomeTimeout);
 
     $conference = new Catapult\Conference;
     $conference->create(array(
@@ -161,7 +165,8 @@ if ($inboundCallEvent->isActive()) {
         "voice" => $application->conferenceVoice,
         "gender" => $application->conferenceVoiceGender
       ));
-      sleep(5);
+
+      sleep($application->conferenceEndedTimeout);
       exit(1);
 
     }
@@ -174,10 +179,10 @@ if ($inboundCallEvent->isActive()) {
         "sentence" => $application->conferencePreJoinMessage
       ));
 
-     sleep(10);
+     sleep($application->conferenceJoinTimeout);
      $call->playAudio($application->conferenceBeepFile);
 
-     sleep(5);
+     sleep($application->conferenceAudioTimeout);
 
      $last = getRow(sprintf(
       "SELECT * FROM %s WHERE call_from = '%s'",
@@ -299,7 +304,7 @@ if ($gatherCallEvent->isActive()) {
       // we can  let him in at this point
       $conference = new Catapult\Conference($last['conference_id']);
     
-      $call = new Catapult\Call($event->callId);
+      $call = new Catapult\Call($gatherCallEvent->callId);
 
       $call->speakSentence(array(
         "voice" => $application->conferenceVoice,
@@ -311,7 +316,11 @@ if ($gatherCallEvent->isActive()) {
         "callId" => $callId
       ));
 
-      sleep(10);
+      // Optional
+      // 
+      // we should generally wait 
+      // as we will be using the DB next
+      sleep($application->conferenceMemberTimeout);
 
 
       // Recommended

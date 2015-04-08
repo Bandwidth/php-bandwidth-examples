@@ -136,7 +136,7 @@ if ($dtmfCallEvent->isActive()) {
       ));
 
 
-      sleep(7);
+      sleep($application->keypadSimulatorSpeakTimeout);
       $call->hangup();
 
       // finalize and clean our data
@@ -284,7 +284,7 @@ if ($dtmfCallEvent->isActive()) {
           "gender" => $application->keypadSimulatorVoiceGender,
           "sentence" => $current->speech
         ));
-        sleep(5);
+        sleep($application->keypadSimulatorTransferTimeout);
         $call->transfer($current->transferNumber);
 
      } 
@@ -355,7 +355,7 @@ if ($timeoutCallEvent->isActive()) {
     "sentence" => $application->keypadSimulatorTimeout 
   ));
 
-  sleep(5);
+  sleep($application->keypadSimulatorHangupTimeout);
   $call->hangup();
 
 }

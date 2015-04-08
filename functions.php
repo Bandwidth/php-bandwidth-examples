@@ -57,6 +57,14 @@ function generateMenu() {
   $url = $_SERVER['PHP_SELF'];
   $matches = array();
   if (preg_match("/((?:app-[\w\d\-]+)|(home))/", $url, $matches)) {
+    // add the home link
+    //
+    if (isset($matches[2])) {
+      printf("<a href='%s'>\n<li class='active'>%s</li></a>", getHomeLink(), "Home");
+    } else {
+      printf("<a href='%s'>\n<li>%s</li></a>", getHomeLink(), "Home");
+    }
+
     foreach ($applications as $app) {
       if ($app['link'] == $matches[1]) {  
         printf("<a href=%s>\n<li class='active'>%s</li></a>", "../" . $app['link'], $app['name']); 
@@ -81,6 +89,23 @@ function stripLocation($other) {
 
   return "http://" . $url . $other;
 }
+
+/**
+ * get the home link relative
+ * to where we are
+ *
+ */
+function getHomeLink() {
+   // in an app ../
+   // in home ./
+   $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; 
+   if (preg_match("/app/", $url, $m)) {
+      return "../home";
+   }
+
+   return "./home";
+}
+
 
 /**
  * check if our uri matches
@@ -166,7 +191,7 @@ function generateForm($elements) {
 function isIndex() {
   $page = $_SERVER['PHP_SELF'];
   $m = array();
-  if (preg_match("/index.php$|create.php|\/$/", $page, $m)) {
+  if (preg_match("/index.php$|\/$/", $page, $m)) {
     return true;
   }
   return false;

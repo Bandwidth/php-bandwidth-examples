@@ -26,12 +26,9 @@ final class EndpointsCredentials{
    */
   public function setup($data) {
 
-    if (isset($data[0]) && is_object($data[0])) {
+    if (is_object($data[0])) {
       $data = Converter::toArray($data[0]); 
     } 
-    if (is_object($data)) {
-      $data = Converter::toArray($data);
-    }
 
     foreach ($data as $k => $d) {
       if (!in_array($k,array("username","password","realm"))) {
@@ -47,14 +44,6 @@ final class EndpointsCredentials{
     // important don't serialize
     // when sending in a Endpoints object
     $this->serialize = FALSE;    
-  }
-
-  public function toArray() {
-    return array(
-      "username" => $this->username,
-      "password" => $this->password,
-      "realm" => $this->realm
-    );
   }
 
   public function __toString() {
