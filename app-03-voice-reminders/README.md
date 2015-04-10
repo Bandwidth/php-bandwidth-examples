@@ -18,7 +18,7 @@ To setup voice reminders make sure:
   4. Please make sure the voicemailNumber is specified
 
   3. Voice reminders will be stored in ./data/ and on success be available
-  throw the application's interface
+  threw the application's interface
 
 Note:
 
