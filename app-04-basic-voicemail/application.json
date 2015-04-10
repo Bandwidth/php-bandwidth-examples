@@ -12,7 +12,7 @@
   "voicemailThanks": "Thank you we have saved the recordintg. Goodbye",
   "voicemailIdentifier": "voice-mail", 
   "voicemailSpeechTimeoutVoicemail": 5,
-  "voicemailSpeechTimeoutTimeoutPause": 5,
+  "voicemailSpeechTimeoutPause": 5,
   "voicemailSpeechTimeoutDtmf": 5,
   "voicemailTerminateDigit": "#",
   "callbackUrl": ""

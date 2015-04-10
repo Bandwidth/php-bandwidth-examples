@@ -27,7 +27,6 @@ $timeoutCallEvent = new Catapult\TimeoutCallEvent;
 $hangupCallEvent = new Catapult\HangupCallEvent;
 $recordingCallEvent = new Catapult\RecordingCallEvent;
 $gatherCallEvent = new Catapult\GatherCallEvent;
-$inboundCallEvent->active = true;
 
 if ($inboundCallEvent->isActive()) {
    // Step 1
