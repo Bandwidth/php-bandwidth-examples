@@ -6,7 +6,7 @@ require_once(__DIR__."/config.php");
 // This is a simple implementation of call transferring.
 //
 // more accuratly described here:
-// https://catapult.inetwork.com/guides/call-forwarding
+// http://ap.bandwidth.com/docs/how-to-guides/call-forwarding/ 
 //
 //
 //

@@ -10,7 +10,7 @@ require_once(__DIR__."/config.php");
 // implementation for SMS
 // auto replies
 
-// https://catapult.inetwork.com/docs/guides/sms-auto-reply/
+// http://ap.bandwidth.com/docs/how-to-guides/sms-auto-reply/
 //
 // You can access messageEvents
 // directly with Catapult\MessageEvent

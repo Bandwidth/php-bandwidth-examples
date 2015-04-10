@@ -7,7 +7,7 @@ require_once(__DIR__."/config.php");
 // this application implements the approach 
 // described here:
 //
-// https://catapult.inetwork.com/docs/guides/voicemail/
+// http://ap.bandwidth.com/docs/how-to-guides/basic-voicemail/ 
 //
 //
 // On success will provide a listing of voice mail recordings

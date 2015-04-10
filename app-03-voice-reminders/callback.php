@@ -9,7 +9,7 @@ require_once(__DIR__."/config.php");
 // this defines a simple voice reminder
 // application which functions like:
 //
-// http://catapult.inetwork.com/guides/voice-reminders
+// http://ap.bandwidth.com/docs/how-to-guides/voice-appointment-reminders/
 
 
 $client = new Catapult\Client;
