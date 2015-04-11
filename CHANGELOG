@@ -21,7 +21,7 @@ BaML transfer example added
 03/15/2015:
 SIP Domains example added -
 
-0.2.1
+0.5.0
 04/08/2015:
 - Add sleep timeouts to application.json
 each should be commented and describe how it effects the next step, things
