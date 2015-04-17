@@ -3,7 +3,6 @@ Example Applications For Bandwidth PHP SDK
 
 Includes:
 -----------------------------------------------------
-* coming soon
 
   - SMS Auto Replies
   - Call Transfers 
@@ -15,6 +14,7 @@ Includes:
   - BaML Call Transfers
   - SIP Domain & Endpoints *
 
+* coming soon
 
 Setup
 ------------------------------------------------------
@@ -55,7 +55,7 @@ tested with Heroku and Amazon Elastic Beanstalk.
 
 Heroku
 -------------------------------------------------------
-you will need to create a Heroku application, then you can deploy :
+You'll need to create a Heroku application, then you can deploy :
 
   heroku create "php-bandwidth-examples"
   
@@ -64,15 +64,17 @@ you will need to create a Heroku application, then you can deploy :
   git push heroku master
 
 
-To run these examples on heroku you will need clearDB OR postgres, which can
+To run these examples on heroku you will need clearDB OR Postgres, which can
 be installed using:
 
   heroku addons:add heroku-postgresql:dev 
-  OR 
+  
+  OR
+  
   heroku addons:add cleardb:ignite 
 
 
-currently Heroku is tested with postGresql
+currently Heroku is tested with Heroku Postgres
 
 
 
