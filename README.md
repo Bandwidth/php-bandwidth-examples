@@ -14,7 +14,7 @@ Includes:
   - BaML Call Transfers
   - SIP Domain & Endpoints *
 
-* coming soon
+              * coming soon
 
 Setup
 ------------------------------------------------------
