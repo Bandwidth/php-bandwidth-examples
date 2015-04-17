@@ -5,6 +5,20 @@ below describes what the test progress is as well as
 features may be included in the listed
 appliciation as well as what we've put in:
 
+PHP-Bandwidth-SDK migration to git submodule
+----------------------------------------------------
+
+[+] PHP-Bandwidth-SDK should 
+be a gitsubmodule under this repository
+this encourages best use case and integration
+of 
+
+git submodule add http://github.com/bandwidthcom/php-bandwidth
+git submodule init
+
+Needs testing on Heroku and AWS
+
+
 App 001
 --------------------------------------------------
 

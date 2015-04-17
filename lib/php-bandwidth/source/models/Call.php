@@ -1,7 +1,7 @@
 <?php
 /**
  * @model Call
- * https://catapult.inetwork.com/docs/api-docs/calls/ 
+ * http://ap.bandwidth.com/docs/rest-api/calls/
  *
  *
  * Provides call functionality
@@ -35,7 +35,7 @@ final class Call Extends AudioMixin {
           new SchemaResource(
             array("fields" => array(
             'id', 'from', 'to', 'recordingEnabled', 'recordingFileFormat', 'callbackUrl', 'events',
-            'direction', 'state', 'startTime', 'endTime', 'activeTime', 'bridgeId'
+            'direction', 'callbackHttpMethod', 'state', 'startTime', 'endTime', 'activeTime', 'bridgeId'
             ), "needs" => array("id", "direction", "from", "to"))
           ),
           new SubFunctionResource(
