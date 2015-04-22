@@ -42,10 +42,10 @@
           <? endforeach; ?>
         </thead>
             
-      <?php foreach ($transactions as $transactionType): // seperate by the transactiontype ?>
-         <?php foreach ($transactionType as $productType => $transaction): ?>
-            <?php foreach ($transaction as $numberVal => $number): ?>
+      <?php foreach ($transactions as $transactionType => $transactionTypeArr): // seperate by the transactiontype ?>
+         <?php foreach ($transactionTypeArr as $productType => $transaction): ?>
               <tr>
+            <?php foreach ($transaction as $numberVal => $number): ?>
               <?php foreach ($headers as $header): // treat productType and transactionType different ?> 
                   <?php if ($header == "productType"): ?>
                     <td><?php echo $productType; ?></td>
@@ -56,8 +56,8 @@
                   <? else: ?>
                    <td><?php echo $number[$header]; ?></td>
                   <? endif; ?>
-               </tr>
               <? endforeach; ?>
+              </tr>
             <? endforeach; ?>
          <? endforeach; ?>
       <? endforeach; ?>

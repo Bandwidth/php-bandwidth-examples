@@ -13,14 +13,14 @@ $headers = array(
    "number",
    "transactionType", // credit, charge, etc
    "productType", // sms-in, mms-out, etc
-   "unit",
-   "charge" // a unit charge
+   "units",
+   "amount" // a unit charge
 );
 $transactionTypes = array(
   "credit",
   "charge",
   "payment",
-  //"auto-recharge"
+  "auto-recharge"
 );
 
 ?>

@@ -48,7 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // type may not alway sbe there
         //
         if (isset($trans->productType)) {
-          $number = $transactions[$transactionType][$trans->productType]['number'];
+          $number = $trans->number;
+
+          if (!isset($transactions[$transactionType][$trans->productType])) {
+              $transactions[$transactionType][$trans->productType] = array();
+          }  
           if (isset($transactions[$transactionType][$trans->productType][$number])) {
             $transactions[$transactionType][$trans->productType][$number]['amount'] += (double) $trans->amount;
             $transactions[$transactionType][$trans->productType][$number]['units'] += $trans->units;
