@@ -17,18 +17,19 @@ final class Transaction extends GenericResource {
      * GET
      * Transaction('transaction-id') 
      */
-    public function __construct($data=null)
+    public function __construct()
     {
-       $data = Ensure::Input($data);
-       parent::_input($data, new DependsResource(
+       $data = Ensure::Input(func_get_args());
+       parent::_init($data, new DependsResource(
         array(
-          array( "term" => "accounts", "plural" => false))
+          array( "term" => "account", "plural" => false))
         ),
-        new LoaderResource(
-          array("primary" => "GET", "id" => "id", "silent" => false)
+        new LoadsResource(
+          array("primary" => "GET", "id" => "id", "init" => "id", "silent" => false)
         ),
         new SchemaResource(
-          array("fields" => array("id"))
+          array("fields" => array("id", "time", "units", "type", "amount", "productType"), 
+          "needs" => array("id"))
         )
       );
     }

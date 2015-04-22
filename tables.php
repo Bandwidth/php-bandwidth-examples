@@ -51,6 +51,11 @@ $applications = array(
     "name" => "SIP Domains Application",
     "table" => "sip_domains",
     "link" => "app-09-sip-domains"
+  ),
+  array(
+    "name" => "Catapult Transaction History",
+    "table" => "catapult_transactions",
+    "link" => "transactions"
   )
 );
 

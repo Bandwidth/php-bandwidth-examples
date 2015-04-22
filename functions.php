@@ -56,7 +56,8 @@ function generateMenu() {
   printf("<ul class='left-nav'>");
   $url = $_SERVER['PHP_SELF'];
   $matches = array();
-  if (preg_match("/((?:app-[\w\d\-]+)|(home))/", $url, $matches)) {
+  $specials = implode("|",array("home", "transactions"));
+  if (preg_match("/((?:app-[\w\d\-]+)|($specials))/", $url, $matches)) {
     // add the home link
     //
     if (isset($matches[2])) {
