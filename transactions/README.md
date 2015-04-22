@@ -1,5 +1,4 @@
 Listing Catapult Transactions
-
 =========================================================================
 
 This example expands on the following gist:
@@ -17,8 +16,8 @@ example:
 startDate = 2014-02-01
 endDate = 2014-03-01
 
-transactionType      |         productType          |          units         |             charge
-------------------------------------------------------------------------------------------------------------
-credit                          mms-in                         10                           20
-charge                          sms-in                         10                           20
-charge                        sip-call-in                      10                           20
+number               |       transactionType      |         productType          |          units         |             charge
+-------------------------------------------------------------------------------------------------------------------------------------------
+number                          credit                          mms-in                       10                           20
+number                          charge                          sms-in                       10                           20
+number                          charge                        sip-call-in                    10                           20
