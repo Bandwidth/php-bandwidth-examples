@@ -45,22 +45,22 @@ ran an application once it will create all the table
 for these demos
 
 
+Getting The Dependancies
+--------------------------------------------------------
+to get the latest php-bandwidth SDK 
+run the following:
 
-Deploying
-=========================================================
-
-Once you've setup your applications you can deploy. Currently
-tested with Heroku and Amazon Elastic Beanstalk.
+  composer update
 
 
 Heroku
 -------------------------------------------------------
 You'll need to create a Heroku application, then you can deploy :
 
+
   heroku create "php-bandwidth-examples"
-  
-  heroku config:set ON_HEROKU=1
-  
+  git add * 
+  git commit -m 'updating php-bandwidth-examples!'
   git push heroku master
 
 
