@@ -28,6 +28,11 @@ each should be commented and describe how it effects the next step, things
 to consider
 - add home link
 
+0.5.1
+05/28/2015:
+- Use composer for loading php bandwidth sdk
+- minor updates to functions.php
+
 
 App 001 
 --------------------------------------------------------

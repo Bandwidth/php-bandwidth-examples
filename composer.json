@@ -6,6 +6,9 @@
     "homepage": "http://github.com/bandwidthcom/php-bandwidth-examples",
     "reference": "v0.5.0",
     "license": "MIT",
+    "require": {
+      "bandwidth/catapult": "0.8.*"
+    },
     "authors": [
         {
             "name": "Nadir Hamid",
