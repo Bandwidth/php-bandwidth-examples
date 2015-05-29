@@ -86,9 +86,9 @@ function generateMenu() {
  */
 function stripLocation($other) {
   $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-  $url = preg_replace("/(home.*|app.*)$/", "", $url);
+  $url = preg_replace("/\/(home.*|app.*)$/", "", $url);
 
-  return "http://" . $url . $other;
+  return "http://" . $url . "/" . $other;
 }
 
 /**
