@@ -1,0 +1,66 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "c31b5004057a31dfab2d077ce14f6657",
+    "packages": [
+        {
+            "name": "bandwidth/catapult",
+            "version": "v0.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bandwidthcom/php-bandwidth.git",
+                "reference": "41941c53b3e91bdd7c464c790b6084604d8c8fcb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bandwidthcom/php-bandwidth/zipball/41941c53b3e91bdd7c464c790b6084604d8c8fcb",
+                "reference": "41941c53b3e91bdd7c464c790b6084604d8c8fcb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "php": ">=5.3.0",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "source/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nadir Hamid",
+                    "email": "matrix.nad@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Bandwidth's Catapult SDK for PHP",
+            "homepage": "http://github.com/bandwidthcom/php-bandwidth",
+            "keywords": [
+                "bandwidth",
+                "catapult",
+                "php",
+                "sdk"
+            ],
+            "time": "2015-04-27 00:05:12"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
