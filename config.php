@@ -3,9 +3,8 @@
 
 require_once(__DIR__."/db.php");
 require_once(__DIR__."/functions.php");
-require_once(__DIR__."/lib/php-bandwidth/source/Catapult.php");
+require_once(__DIR__."/vendor/autoload.php");
 /** set the credentials path without this it would use the Catapult source tree! **/
-Catapult\Credentials::setPath(__DIR__);
 
 $MOCK = TRUE;
 /** defines the mininum account balance needed to run an application **/
@@ -28,8 +27,7 @@ function isMockMode() {
 function isConnected() {
   $connected = true; 
 
-  require_once(__DIR__."/lib/php-bandwidth/source/Catapult.php");
-  Catapult\Credentials::setPath(__DIR__);
+  require_once(__DIR__."/vendor/autoload.php");
 
   try {
      $client = new Catapult\Client;
