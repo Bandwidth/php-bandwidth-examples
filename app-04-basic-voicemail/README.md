@@ -6,7 +6,7 @@ To setup voice mail make sure:
   stored in ./files/
 
    for an updated list visit:
-   https://catapult.inetwork.com/docs/api-docs/calls/
+   http://ap.bandwidth.com/docs/rest-api/calls/#resourcePOSTv1usersuserIdcallscallIdaudio
 
   2. You need to also setup the callback url to your servers
 
