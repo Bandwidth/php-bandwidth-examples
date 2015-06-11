@@ -26,7 +26,7 @@
 
     <h2>Bandwidth API Credentials</h2>
     <p>
-     You're Bandwidth credentials are located in {root}/main.json, you will need to update this
+     Your Bandwidth credentials are located in {root}/main.json, you will need to update this
     </p>
     <h2>Running on AWS Elastic Beanstalk</h2>
      Heres's how to deploy this to AWS 
