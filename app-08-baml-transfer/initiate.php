@@ -3,6 +3,7 @@
 require_once(__DIR__."/../config.php");
 require_once(__DIR__."/config.php");
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 $phoneNumbers = new Catapult\PhoneNumbersCollection;
 $last = $phoneNumbers->listAll()->last()->number;

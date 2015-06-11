@@ -23,6 +23,7 @@ require_once(__DIR__ . "/config.php");
 
 
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 $reminders = getQuery(sprintf("SELECT * FROM %s",  $application->applicationTable));
 $remindersCnt = getCount(sprintf("SELECT COUNT(*) as count FROM %s",$application->applicationTable));

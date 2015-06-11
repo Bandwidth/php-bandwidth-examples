@@ -9,6 +9,7 @@ require_once(__DIR__."/config.php");
 // for the application's implementation you
 // should look in callback.php
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 $simulations = getQuery(sprintf("SELECT * FROM %s; ", $application->applicationTable));
 $simulationsData = getQuery(sprintf("SELECT * FROM %s; ", $application->applicationDataTable));

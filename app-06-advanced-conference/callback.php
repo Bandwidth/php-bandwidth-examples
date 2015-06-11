@@ -21,6 +21,7 @@ require_once(__DIR__."/config.php");
 
 
 // Set up our client
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 // Start our event this will 
 // be multipurpose and used for Gathers

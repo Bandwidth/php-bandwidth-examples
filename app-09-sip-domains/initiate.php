@@ -8,6 +8,7 @@ require_once(__DIR__."/config.php");
 // that the interface passes
 // it 
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 
 $domain = new Catapult\Domains($_REQUEST['domainId']);

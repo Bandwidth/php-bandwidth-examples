@@ -12,6 +12,7 @@ require_once(__DIR__."/config.php");
 // setup properly.
 //
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 
 // get the application's calls (so far),  from 

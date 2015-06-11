@@ -17,6 +17,7 @@ require_once(__DIR__."/config.php");
 // setup properly.
 
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 
 // get all the voicemail so far

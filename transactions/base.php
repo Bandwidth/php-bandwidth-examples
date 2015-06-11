@@ -6,6 +6,7 @@
 //
 require_once(__DIR__."/config.php");
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 $status = "success";
 $message = "You have start listing your Catapult transactions";

@@ -18,6 +18,7 @@ require_once(__DIR__."/config.php");
 // By default we listen to applications with auto incoming
 // calls answering set to true.
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 // if you're using manual incoming calls
 // comment this out

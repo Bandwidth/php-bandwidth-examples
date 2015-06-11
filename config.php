@@ -30,6 +30,7 @@ function isConnected() {
   require_once(__DIR__."/vendor/autoload.php");
 
   try {
+     Catapult\Credentials::setPath(__DIR__);
      $client = new Catapult\Client;
 
      $account = new Catapult\Account;

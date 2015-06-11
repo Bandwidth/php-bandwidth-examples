@@ -12,6 +12,7 @@ require_once(__DIR__."/config.php");
 // http://ap.bandwidth.com/docs/how-to-guides/voice-appointment-reminders/
 
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 
 // By default we are accepting auto incoming

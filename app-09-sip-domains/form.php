@@ -9,6 +9,7 @@ require_once(__DIR__ . "/config.php");
 // or successes
 
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 $domainsResult = "";
 $domainsSuccess = "false";
