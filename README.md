@@ -67,11 +67,11 @@ You'll need to create a Heroku application, then you can deploy :
 To run these examples on heroku you will need clearDB OR Postgres, which can
 be installed using:
 
-  heroku addons:add heroku-postgresql:dev 
+  heroku addons:create heroku-postgresql:dev 
   
   OR
   
-  heroku addons:add cleardb:ignite 
+  heroku addons:create cleardb:ignite 
 
 
 currently Heroku is tested with Heroku Postgres
