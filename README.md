@@ -274,3 +274,16 @@ When using Heroku:
 
 AWS:
   MySQL
+
+### Open external access via ngrock
+
+As alternative to deployment to external hosting you can open external access to local web server via [ngrock](https://ngrok.com/).
+
+First instal ngrock on your computer. Run ngrock by
+
+
+```
+ngrok http 80 #you can use another free port if need 
+```
+
+You will see url like http://XXXXXXX.ngrok.io on console output. Use this link to access your app externally.
