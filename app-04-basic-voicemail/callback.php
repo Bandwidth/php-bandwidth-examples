@@ -13,6 +13,7 @@ require_once(__DIR__."/config.php");
 // On success will provide a listing of voice mail recordings
 // which can be then used with Catapult's Media object
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 // By default we have set incoming calls to
 // auto. If you plan on using the manual version

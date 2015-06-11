@@ -12,6 +12,7 @@ require_once("./config.php");
 
 if (isset($_REQUEST['recordingId']) && $_REQUEST['recordingId'] !== "") {
 
+  Catapult\Credentials::setPath(__DIR__."/..");
   $client = new Catapult\Client;
   $recording = new Catapult\Recording($_REQUEST['recordingId']);
   // get the media file and set 

@@ -12,6 +12,7 @@ require_once(realpath(__DIR__."/config.php"));
 // setup properly.
 //
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 
 // First check what's in our database

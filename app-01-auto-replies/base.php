@@ -17,6 +17,7 @@ require_once(__DIR__."/config.php");
 //
 // also setup ./event.php with in your Catapult callback
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 
 // get all the messages that we're considered auto replies

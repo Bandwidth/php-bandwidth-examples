@@ -11,6 +11,7 @@ require_once(__DIR__."/config.php");
 // is properly setup as this will impact where
 // conferences are responded to.
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 // First we start our primary
 // call. This should be using ourselves

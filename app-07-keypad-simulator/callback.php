@@ -25,6 +25,7 @@ require_once(__DIR__."/config.php");
 // This will function according to what
 // is in application.json. 
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 // For the keypad simulator
 // we are usinhg a manual approach

@@ -12,6 +12,7 @@ require_once(realpath(__DIR__."/config.php"));
 // setup properly.
 //
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 $conferences = getQuery(sprintf("SELECT * FROM %s;", $application->applicationTable));
 $conferencesData = getQuery(sprintf("SELECT * FROM %s", $application->applicationDataTable));

@@ -6,6 +6,7 @@ require_once(__DIR__."/config.php");
 // it will use your last number send to the number in auto replies.
 // Result, would mock the same functionality as phsically sending the message 
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 
 // send our message

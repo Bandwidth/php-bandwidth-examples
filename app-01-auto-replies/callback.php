@@ -17,6 +17,7 @@ require_once(__DIR__."/config.php");
 // Afterwards construct a new message
 // to the sender
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 try {
   // Step 1.

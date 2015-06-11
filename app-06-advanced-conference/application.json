@@ -27,7 +27,7 @@
     "conferenceGatherDigits": "#1234",
     "conferenceTerminatingDigit": "#",
     "conferenceGatherMaxDigits": "4",
-    "conferenceBeepFile": "",
+    "conferenceBeepFile": "http://php-bandwidth-examples.herokuapp.com/app-06-advanced-conference/files/beep.wav",
     "conferenceVoice": "Violeta",
     "conferenceVoiceGender": "female"
 }

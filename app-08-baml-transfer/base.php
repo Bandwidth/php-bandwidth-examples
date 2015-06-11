@@ -12,6 +12,7 @@ require_once(__DIR__."/config.php");
 //
 
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 
 $transfers = getQuery(sprintf("SELECT * FROM %s; ", $application->applicationTable));

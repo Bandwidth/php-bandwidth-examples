@@ -24,6 +24,7 @@ require_once(__DIR__."/config.php");
 
 function createIfNeeded($username='', $password='', $domainName=DEFAULT_DOMAIN_NAME, $domainDescription=DEFAULT_DOMAIN_DESCRIPTION, $endpointDescription=DEFAULT_ENDPOINT_DESCRIPTION, $areaCode=DEFAULT_AREA_CODE, $applicationName=DEFAULT_APPLICATION_NAME) {
   try {
+    Catapult\Credentials::setPath(__DIR__);
     $client = new Catapult\Client;
     $account = new Catapult\Account; 
 

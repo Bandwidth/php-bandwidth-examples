@@ -11,6 +11,7 @@ require_once(__DIR__ . "/config.php");
 // checking whether your application
 // has been setup properly
 
+Catapult\Credentials::setPath(__DIR__."/..");
 $client = new Catapult\Client;
 
 $domains = new Catapult\DomainsCollection;
