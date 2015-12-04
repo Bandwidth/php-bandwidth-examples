@@ -1,7 +1,7 @@
 Example Applications For [Bandwidth's App Platform](ap.bandwidth.com/?utm_medium=social&utm_source=github&utm_campaign=dtolb&utm_content=)
+======================================================
 
 Built using the [PHP SDK](https://github.com/bandwidthcom/php-bandwidth)
-======================================================
 
 
 Includes:
